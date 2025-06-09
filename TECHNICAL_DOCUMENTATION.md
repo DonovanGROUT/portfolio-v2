@@ -25,8 +25,8 @@ Refonte complète du portfolio avec approche TDD, intégration CI/CD, et respect
 ### Architecture Git
 
 ```bash
-main (production)
-└── develop (intégration)
+main (production) ← Renommé de master
+└── develop (intégration - branche par défaut)
     ├── feature/setup-environment
     ├── feature/design-system
     ├── feature/content-sections
@@ -77,7 +77,7 @@ main (production)
 {
   "strict": true,                        // Déjà activé
   "noUncheckedIndexedAccess": true,     // Force tests cas undefined
-  "exactOptionalPropertyTypes": true,   // Props optionnelles strictes  
+  "exactOptionalPropertyTypes": true,   // Props optionnelles strictes
   "noImplicitReturns": true,           // Return explicites
   "noFallthroughCasesInSwitch": true   // Switch exhaustifs
 }
@@ -95,11 +95,26 @@ main (production)
 
 ## 📝 Journal des modifications
 
-### 09/06/2025 - Initialisation
+### 09/06/2025 - Initialisation GitFlow et configuration
 
-- Création de la documentation technique
-- Analyse de l'existant
-- Définition du plan d'action
+**Commit initial** : `63ff92e` - Documentation technique complète
+
+**GitFlow Setup** :
+
+- ✅ Branche `master` → `main` renommée
+- ✅ Branche `develop` créée (intégration)
+- ✅ Feature `feature/setup-environment` créée
+- ✅ **NOUVEAU** : Dépôt GitHub `portfolio-v2` connecté
+- 🚧 **EN COURS** : Configuration de l'environnement de développement
+
+**Actions en cours** :
+
+- ✅ **TERMINÉ** : Conversion PostCSS en TypeScript (commit: `d3f914e`)
+- ✅ **TERMINÉ** : Configuration Prettier + EditorConfig (commit: `311c3aa`)  
+- ✅ **TERMINÉ** : TypeScript strict mode activé (commit: `f542767`)
+- ✅ **TERMINÉ** : Configuration Prettier intelligente (commit: `32a164f`)
+- 🚧 **EN COURS** : Setup environnement de test Vitest
+- ⏳ **SUIVANT** : Configuration ESLint + intégration avec Prettier
 
 ---
 
