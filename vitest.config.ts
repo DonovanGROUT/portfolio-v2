@@ -35,6 +35,14 @@ export default defineConfig({
         'next.config.js',
         'tailwind.config.js',
         'postcss.config.ts',
+        // Configuration files
+        'eslint.config.ts',
+        'next.config.ts',
+        'vitest.config.ts',
+        // Layout is difficult to test in isolation
+        'src/app/layout.tsx',
+        // Husky hooks are shell scripts
+        '.husky/**',
       ],
       thresholds: {
         global: {
