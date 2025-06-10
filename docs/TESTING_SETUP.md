@@ -180,7 +180,7 @@ export const createMockIntersectionObserver = () => {
 export const createMockMatchMedia = (matches = false) => {
   Object.defineProperty(window, "matchMedia", {
     writable: true,
-    value: vi.fn().mockImplementation((query) => ({
+    value: vi.fn().mockImplementation(query => ({
       matches,
       media: query,
       onchange: null,
@@ -232,21 +232,21 @@ import Home from "./page";
 describe("Home Page", () => {
   it("renders the Next.js logo", () => {
     render(<Home />);
-    
+
     const logo = screen.getByAltText("Next.js logo");
     expect(logo).toBeInTheDocument();
   });
 
   it("displays the getting started text", () => {
     render(<Home />);
-    
+
     const gettingStartedText = screen.getByText(/Get started by editing/i);
     expect(gettingStartedText).toBeInTheDocument();
   });
 
   it("has proper structure with main element", () => {
     render(<Home />);
-    
+
     const main = screen.getByRole("main");
     expect(main).toBeInTheDocument();
     expect(main).toHaveClass("flex", "flex-col", "gap-[32px]");
@@ -270,16 +270,16 @@ describe("Home Page", () => {
 describe("ComponentName", () => {
   // Tests de rendu de base
   it("renders without crashing", () => {});
-  
+
   // Tests de contenu
   it("displays expected content", () => {});
-  
+
   // Tests d'interactions
   it("handles user interactions", () => {});
-  
+
   // Tests d'accessibilité
   it("is accessible", () => {});
-  
+
   // Tests de responsive
   it("adapts to different screen sizes", () => {});
 });
@@ -308,7 +308,7 @@ describe("ComponentName", () => {
 ```typescript
 // Mock Next.js Image
 vi.mock('next/image', () => ({
-  default: ({ src, alt, ...props }: any) => 
+  default: ({ src, alt, ...props }: any) =>
     <img src={src} alt={alt} {...props} />
 }));
 
@@ -336,7 +336,7 @@ describe("Component Integration", () => {
     });
 
     render(<ComponentWithAPI />);
-    
+
     await waitFor(() => {
       expect(screen.getByText('test')).toBeInTheDocument();
     });
@@ -417,3 +417,248 @@ npm run test:coverage -- --reporter=detailed
 ---
 
 ✅ **Configuration des tests complétée** - Environnement TDD prêt pour le développement !
+
+## 🔧 Vérification et Qualité du Code
+
+### Scripts de Vérification
+
+Le projet utilise une approche multicouche pour garantir la qualité du code :
+
+```json
+{
+  "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "lint:strict": "next lint --max-warnings 0",
+    "check": "npm run format:check && npm run lint:strict && npm run test:run"
+  }
+}
+```
+
+### Configuration ESLint Strict
+
+**Fichier** : `eslint.config.ts` (TypeScript pour cohérence)
+
+```typescript
+const eslintConfig = [
+  // Configuration de base Next.js
+  ...compat.extends("next/core-web-vitals", "next/typescript"),
+
+  // Intégration Prettier (désactive les conflits)
+  ...compat.extends("eslint-config-prettier"),
+
+  // Règles strictes personnalisées
+  {
+    files: ["**/*.{js,ts,tsx}"],
+    rules: {
+      // TypeScript strict
+      "@typescript-eslint/no-unused-vars": "error",
+      "@typescript-eslint/no-explicit-any": "warn",
+      "@typescript-eslint/no-non-null-assertion": "error",
+      "@typescript-eslint/prefer-as-const": "error",
+
+      // Qualité de code
+      "no-console": "warn",
+      "no-debugger": "error",
+      "prefer-const": "error",
+      "no-var": "error",
+
+      // React/Next.js
+      "react/jsx-key": "error",
+      "react/jsx-no-target-blank": "error",
+      "react-hooks/exhaustive-deps": "warn",
+
+      // Accessibilité de base
+      "jsx-a11y/alt-text": "error",
+      "jsx-a11y/anchor-is-valid": "error",
+    },
+  },
+
+  // Configuration spéciale pour les tests
+  {
+    files: ["**/*.{test,spec}.{ts,tsx}"],
+    rules: {
+      "@typescript-eslint/no-explicit-any": "off",
+      "no-console": "off",
+    },
+  },
+];
+```
+
+**Avantages de cette configuration :**
+
+- ✅ **Étend Next.js** : Garde la compatibilité totale
+- ✅ **Intègre Prettier** : Aucun conflit de formatage
+- ✅ **TypeScript strict** : Détection d'erreurs avancée
+- ✅ **Accessibilité** : Respect WCAG de base
+- ✅ **Tests adaptés** : Règles moins strictes pour les tests
+
+### Commandes de Vérification
+
+#### 1. Vérification du Formatage
+
+```bash
+# Vérifier le formatage (sans modifier)
+npm run format:check
+
+# Corriger automatiquement le formatage
+npm run format
+```
+
+**Exemple de sortie :**
+
+```bash
+> npm run format:check
+Checking formatting...
+All matched files use Prettier code style! ✅
+
+# Ou si problèmes détectés :
+[warn] src/app/page.tsx
+Code style issues found in 1 file. Run Prettier with --write to fix.
+```
+
+#### 2. Vérification ESLint
+
+```bash
+# Linting standard (autorise avertissements)
+npm run lint
+
+# Linting strict (zéro avertissement toléré)
+npm run lint:strict
+
+# Correction automatique des erreurs ESLint
+npm run lint:fix
+```
+
+**Exemple de sortie :**
+
+```bash
+> npm run lint:strict
+✔ No ESLint warnings or errors ✅
+
+# Ou si problèmes détectés :
+./src/app/page.tsx
+4:7  Warning: 'unusedVar' is assigned but never used  @typescript-eslint/no-unused-vars
+```
+
+#### 3. Vérification Complète
+
+```bash
+# Vérification complète : formatage + linting + tests
+npm run check
+```
+
+**Cette commande exécute dans l'ordre :**
+
+1. **Format check** : Vérifie le style de code
+2. **Lint strict** : Vérifie la qualité sans avertissements
+3. **Test run** : Exécute tous les tests
+
+**Exemple de sortie complète :**
+
+```bash
+> npm run check
+
+> npm run format:check
+All matched files use Prettier code style! ✅
+
+> npm run lint:strict
+✔ No ESLint warnings or errors ✅
+
+> npm run test:run
+✓ src/app/page.test.tsx (5 tests) 172ms
+Test Files  1 passed (1)
+Tests  5 passed (5) ✅
+```
+
+### Workflow de Développement Recommandé
+
+#### Avant chaque commit
+
+```bash
+# 1. Corriger automatiquement le formatage
+npm run format
+
+# 2. Vérification complète
+npm run check
+
+# 3. Si tout passe, commit
+git add .
+git commit -m "feat: nouvelle fonctionnalité"
+```
+
+#### En cas d'erreurs
+
+**Problèmes de formatage :**
+
+```bash
+# Correction automatique
+npm run format
+```
+
+**Erreurs ESLint :**
+
+```bash
+# Tentative de correction automatique
+npm run lint:fix
+
+# Si ça ne suffit pas, correction manuelle nécessaire
+```
+
+**Tests qui échouent :**
+
+```bash
+# Tests en mode watch pour debug
+npm run test:watch
+
+# Tests avec interface graphique
+npm run test:ui
+```
+
+### Intégration avec l'Éditeur
+
+**VS Code Settings** (`.vscode/settings.json`) :
+
+```json
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  }
+}
+```
+
+**Cela garantit :**
+
+- ✅ Formatage automatique à la sauvegarde
+- ✅ Correction ESLint automatique
+- ✅ Feedback immédiat dans l'éditeur
+
+### Métriques de Qualité
+
+#### Objectifs Zero-Warning
+
+Le projet vise **zéro avertissement** en production :
+
+- 🎯 **Format** : 100% des fichiers respectent Prettier
+- 🎯 **ESLint** : Zéro warning/error en mode strict
+- 🎯 **Tests** : 100% de réussite + 80% couverture minimum
+- 🎯 **TypeScript** : Aucune erreur de compilation
+
+#### Monitoring Continu
+
+```bash
+# Dashboard complet de la qualité
+npm run check
+
+# Couverture de tests détaillée
+npm run test:coverage
+
+# Rapport ESLint détaillé
+npm run lint -- --format=detailed
+```
+
+---
