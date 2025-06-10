@@ -120,7 +120,7 @@ Objet simulé qui remplace une dépendance réelle pendant les tests :
 
 ```javascript
 // Mock d'une API
-const mockFetch = vi.fn().mockResolvedValue({ data: 'test' });
+const mockFetch = vi.fn().mockResolvedValue({ data: "test" });
 ```
 
 **Mocking**
@@ -217,15 +217,16 @@ Attaque où du code malveillant est injecté dans une page web pour voler des do
 
 ```javascript
 // MOCK - Remplace complètement l'objet
-const mockApi = vi.fn().mockReturnValue({ data: 'mocked' });
+const mockApi = vi.fn().mockReturnValue({ data: "mocked" });
 
 // SPY - Observe les appels sans changer le comportement
-const spy = vi.spyOn(console, 'log');
+const spy = vi.spyOn(console, "log");
 
 // STUB - Retourne des valeurs prédéfinies
-const stub = vi.fn()
-  .mockReturnValueOnce('first call')
-  .mockReturnValueOnce('second call');
+const stub = vi
+  .fn()
+  .mockReturnValueOnce("first call")
+  .mockReturnValueOnce("second call");
 ```
 
 ### Types de Tests par Scope
@@ -250,7 +251,7 @@ const stub = vi.fn()
        /   \
     Integration
    /           \
-  Unit Tests    
+  Unit Tests
  (Foundation)
 ```
 
@@ -269,14 +270,14 @@ const stub = vi.fn()
 
 ```javascript
 // ✅ Bon - Descriptif et clair
-it('should display error message when form is invalid')
-it('renders navigation menu with correct links')
-it('calls onSubmit when form is submitted')
+it("should display error message when form is invalid");
+it("renders navigation menu with correct links");
+it("calls onSubmit when form is submitted");
 
 // ❌ Mauvais - Trop vague
-it('works correctly')
-it('test 1')
-it('should work')
+it("works correctly");
+it("test 1");
+it("should work");
 ```
 
 ---
@@ -290,5 +291,3 @@ it('should work')
 **Code Coverage** mesure → **Qualité des Tests**
 
 ---
-
-✅ **Glossaire complété** - Tous les termes techniques clarifiés !
