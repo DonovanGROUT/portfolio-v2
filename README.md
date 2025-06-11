@@ -2,7 +2,8 @@
 
 <!-- DEPLOY-LINK-START -->
 
-Pas encore déployé
+🌐 **Production**: [portfolio-v2-eight-tan.vercel.app](https://portfolio-v2-eight-tan.vercel.app)  
+🔗 **Domaine personnalisé**: donovan-grout.com _(configuration en cours)_
 
 <!-- DEPLOY-LINK-END -->
 
@@ -10,16 +11,25 @@ Refonte complète de mon portfolio avec une approche moderne, TDD-driven et avec
 
 ## ✅ Phase 2 CI/CD - TERMINÉE
 
-**Date de completion**: 11 juin 2025
-**Statut**: ✅ TERMINÉE
+**Date de completion**: 11 juin 2025  
+**Statut**: ✅ TERMINÉE  
+**Déploiement production**: ✅ OPÉRATIONNEL
 
-### 🚀 Pipeline Automatisé
+### 🚀 Pipeline CI/CD Opérationnel
 
-- ✅ **CI Tests**: 12/12 tests passent (100%)
-- ✅ **Quality Gates**: ESLint + Prettier + TypeScript
-- ✅ **Déploiement**: Vercel automatisé (optimisé Next.js)
-- ✅ **Performance**: Monitoring Lighthouse
-- ✅ **Sécurité**: Audit automatisé des vulnérabilités
+- ✅ **CI Pipeline**: 4 jobs (Quality, Security, Performance, Summary)
+- ✅ **Quality Gates**: 12/12 tests + ESLint + Prettier + TypeScript
+- ✅ **Déploiement**: Vercel automatisé avec preview branches
+- ✅ **Performance**: Lighthouse CI + Core Web Vitals monitoring
+- ✅ **Sécurité**: Audit automatisé des vulnérabilités critiques
+- ✅ **GitFlow**: Workflow professionnel (feature → develop → main)
+
+### 🌐 Architecture Déploiement
+
+- **Production**: Vercel optimisé Next.js
+- **Preview**: Déploiements automatiques sur PR
+- **Monitoring**: Analytics et performance tracking
+- **Domaine**: Configuration hybride (Vercel + domaine personnalisé)
 
 ## 🎯 Objectifs
 

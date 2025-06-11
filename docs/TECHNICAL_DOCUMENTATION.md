@@ -401,7 +401,7 @@ main (production) ← Renommé de master
 **Architecture de déploiement** :
 
 ```bash
-🌍 donovan-grout.com (PlanetHoster - redirection)
+🌍 donovan-grout.com (PlanetHoster)
 ├── 301 redirect → portfolio.vercel.app
 └── Configuration DNS CNAME (optionnel)
 
@@ -411,155 +411,146 @@ main (production) ← Renommé de master
 └── Analytics: Core Web Vitals automatiques
 ```
 
-**Secrets GitHub requis** :
+**Secrets GitHub configurés** :
 
-```bash
-# Secrets Vercel (principaux)
-VERCEL_TOKEN = [token-personnel]
-VERCEL_ORG_ID = [team-id]
-VERCEL_PROJECT_ID = [project-id]
+- `VERCEL_TOKEN` - Token d'authentification Vercel
+- `VERCEL_ORG_ID` - ID organisation Vercel
+- `VERCEL_PROJECT_ID` - ID projet Vercel
 
-# Secrets PlanetHoster (redirection domaine)
-PLANETHOSTER_HOST = [serveur].n0c.com
-PLANETHOSTER_USERNAME = [nom-utilisateur]
-PLANETHOSTER_SSH_PRIVATE_KEY = [clé-ssh-privée]
-PLANETHOSTER_PORT = 5022
-PLANETHOSTER_PATH = /public_html
-```
+### Étape 2.6 : Historique détaillé des commits Phase 2
 
-**Variables d'environnement** :
+**Commits de configuration infrastructure CI/CD** :
 
-- NODE_VERSION: "18.x"
-- Timeout configurations
-- Cache strategies
+#### `e902bd6` - feat: add GitHub Actions CI/CD pipeline with Lighthouse
 
----
+**Date** : 10/06/2025  
+**Auteur** : Donovan GROUT  
+**Fichiers modifiés** :
 
-## 🚀 Phase 2 : Pipeline CI/CD Simplifié (TERMINÉE)
+- ✅ `.github/workflows/ci.yml` (174 lignes) - Pipeline CI complet 4 jobs
+- ✅ `.github/workflows/deploy.yml` (81 lignes) - Pipeline CD Vercel
+- ✅ `.lighthouserc.json` (24 lignes) - Configuration Lighthouse
+- ✅ `vercel.json` (9 lignes) - Configuration Next.js optimisée
 
-### Objectifs Phase 2
+**Description** : Création infrastructure CI/CD complète avec GitHub Actions, incluant jobs qualité, sécurité, performance et déploiement automatique Vercel.
 
-1. ✅ **Pipeline CI** : Tests automatiques qualité + sécurité
-2. ✅ **Pipeline CD** : Déploiement automatique vers Vercel + redirection domaine
-3. ✅ **Configuration adaptée** : Simple et maintenable
-4. ✅ **Documentation complète** : Guides pratiques
+#### `04e294c` - deps: add CI/CD dependencies
 
-### Approche retenue : Simplicité et efficacité
+**Date** : 10/06/2025  
+**Auteur** : Donovan GROUT  
+**Fichiers modifiés** :
 
-**Principes directeurs** :
+- ✅ `package.json` - Ajout dépendances CI/CD
 
-- 🎯 **Focus sur l'essentiel** : Tests qualité + déploiement optimisé Vercel
-- ⚡ **Rapidité** : Pipeline < 5 minutes + CDN mondial
-- 🔧 **Maintenabilité** : Configuration simple et flexible (Vercel + domaine personnalisé)
-- 💰 **Économie** : Plan Hobby Vercel + redirection domaine existant
+**Dépendances ajoutées** :
 
-### Workflows GitHub Actions créés
+- `@lhci/cli@^0.14.0` - Lighthouse CI automation
+- `audit-ci@^7.1.0` - Audit sécurité automatisé
+- `wait-on@^8.0.1` - Attente serveur pour tests
 
-#### 1. Pipeline CI (`ci.yml`)
+**Scripts ajoutés** :
 
-**Jobs** :
+- `check` - Validation complète (format + lint + build + test)
+- `lighthouse` - Audit Lighthouse local
+- `audit:security` - Audit sécurité avec seuils
 
-- **quality** : Tests + Build + Coverage (3-4 min)
-- **security** : Audit vulnérabilités npm (1 min)
-- **lighthouse** : Performance optionnelle (2 min)
-- **summary** : Statut global du pipeline
+#### `c3f54f9` - docs: restructure documentation into logical phases
 
-**Déclenché sur** : Push et PR vers main/develop
+**Date** : 10/06/2025  
+**Auteur** : Donovan GROUT  
+**Fichiers modifiés** :
 
-#### 2. Pipeline Deploy (`deploy.yml`)
+- ✅ `docs/PHASE_1_TDD_SETUP.md` (154 lignes) - Guide Phase 1 structuré
+- ✅ `docs/PHASE_2_CI_CD_SETUP.md` (200+ lignes) - Guide Phase 2 CI/CD
+- ✅ `docs/GLOSSARY.md` (350+ lignes) - Glossaire enrichi (+20 termes CI/CD)
+- ✅ Migration `TECHNICAL_DOCUMENTATION.md` → `docs/`
 
-**Jobs** :
+**Description** : Restructuration complète documentation en phases logiques avec guides détaillés pour chaque étape du développement.
 
-- **quality-gate** : Vérification finale avant déploiement
-- **deploy** : Déploiement optimisé sur Vercel avec preview branches
+#### `0ef30eb` - feat: enhance code documentation and finalize Vercel deployment
 
-**Déclenché sur** : Push vers main (production) + PR (preview)
+**Date** : 10/06/2025  
+**Auteur** : Donovan GROUT  
+**Fichiers modifiés** :
 
-### Configuration simplifiée vs initiale
+- ✅ `src/app/page.tsx` - Commentaires français complets
+- ✅ `src/app/layout.tsx` - Documentation metadata et structure
+- ✅ `src/test/utils.tsx` - Commentaires utilitaires test français
+- ✅ `vitest.config.ts` - Configuration commentée français
+- ✅ `next.config.ts` - Configuration Next.js documentée
 
-#### ❌ Supprimé (complexité inutile)
+**Description** : Finalisation documentation code source avec commentaires français exhaustifs et préparation déploiement Vercel.
 
-- **Codecov** → Coverage local Vitest suffisant
-- **Matrix builds** → Ubuntu seul (portfolio web simple)
-- **Vercel deployment** → PlanetHoster via SFTP
-- **Docker/AWS** → Hébergement traditionnel
-- **Multi-environnements** → Production directe
+#### `a4a34ad` - docs: update technical documentation to reflect Vercel hybrid deployment
 
-#### ✅ Conservé (essentiel)
+**Date** : 10/06/2025  
+**Auteur** : Donovan GROUT  
+**Fichiers modifiés** :
 
-- **Tests qualité** : ESLint + Prettier + TypeScript + Vitest
-- **Audit sécurité** : npm audit pour vulnérabilités critiques
-- **Performance** : Lighthouse (informatif, non-bloquant)
-- **Déploiement** : Vercel optimisé + redirection domaine personnalisé
+- ✅ `docs/TECHNICAL_DOCUMENTATION.md` - Mise à jour architecture hybride
+- ✅ `README.md` - Correction approche déploiement Vercel
 
-### Métriques de qualité définies
+**Description** : Mise à jour documentation technique pour refléter l'architecture hybride Vercel + domaine personnalisé au lieu de l'approche SSH/SFTP initiale.
 
-#### Quality Gate (obligatoire) ✅
+#### `02eebfe` - fix(ci): update deprecated upload-artifact action from v3 to v4
 
-- **Tests unitaires** : 100% réussite
-- **Coverage** : Rapport local (≥ 80%)
-- **Formatage** : Prettier conforme
-- **Linting** : ESLint strict (0 warning)
-- **Types** : TypeScript sans erreur
-- **Build** : Compilation Next.js OK
+**Date** : 11/06/2025  
+**Auteur** : Donovan GROUT  
+**Fichiers modifiés** :
 
-#### Security Gate (obligatoire) 🔒
+- ✅ `.github/workflows/ci.yml` - Correction action dépréciée
 
-- **Vulnérabilités critiques** : Aucune tolérée
-- **Vulnérabilités importantes** : Aucune tolérée
-- **Dépendances** : Audit automatique
+**Description** : Correction action GitHub Actions `upload-artifact` de v3 vers v4 pour compatibilité et sécurité.
 
-#### Performance Gate (informatif) 🚦
+#### `896f840` - fix(ci): resolve Lighthouse artifact upload issue
 
-- **Lighthouse** : Scores affichés
-- **Bundle size** : Surveillance
+**Date** : 11/06/2025  
+**Auteur** : Donovan GROUT  
+**Fichiers modifiés** :
 
-### Documentation créée
+- ✅ `.github/workflows/ci.yml` - Configuration Lighthouse
+- ✅ Résolution `uploadArtifacts: false` pour éviter erreurs naming
 
-1. **`CI_CD_README.md`** - Guide principal et pratique
-2. **`PHASE_2_FINALIZATION_REPORT.md`** - Rapport de finalisation
-3. **`FINAL_ACTIONS_GUIDE.md`** - Guide des actions finales
-4. **Glossaire mis à jour** - Termes CI/CD ajoutés
+**Description** : Résolution problème upload artifacts Lighthouse CI avec configuration `uploadArtifacts: false` et `temporaryPublicStorage: true`.
 
-### Configuration Hybride : Vercel + domaine personnalisé
+#### `1cb7db5` - Merge pull request #3 from DonovanGROUT/feature/ci-cd-pipeline
 
-**Workflow de déploiement** :
+**Date** : 11/06/2025  
+**Auteur** : Donovan GROUT  
+**Description** : Merge complet feature branch CI/CD vers develop avec validation pipeline.
 
-1. Quality gate automatique
-2. Build production Next.js optimisé
-3. Déploiement Vercel avec preview branches
-4. Redirection domaine personnalisé via PlanetHoster (.htaccess)
-5. Monitoring automatique Core Web Vitals
+#### `62edebd` - fix(vercel): remove deprecated name property
 
----
+**Date** : 11/06/2025  
+**Auteur** : Donovan GROUT  
+**Fichiers modifiés** :
 
-## 📝 Journal des modifications Phase 2
+- ✅ `vercel.json` - Suppression propriété `name` dépréciée
 
-### 10/06/2025 - Configuration CI/CD Pipeline
+**Description** : Correction warning Vercel par suppression propriété `name` dépréciée dans configuration.
 
-**Commit Workflows** : `[PENDING]` - Configuration GitHub Actions CI/CD
+#### `154643a` - Merge pull request #4 from DonovanGROUT/develop (PRODUCTION)
 
-- ✅ Création `.github/workflows/ci.yml` : Pipeline intégration 4 jobs
-- ✅ Création `.github/workflows/deploy.yml` : Pipeline déploiement PlanetHoster
-- ✅ Configuration `.lighthouserc.json` : Audit performance automatisé
-- ✅ Ajout dépendances CI : audit-ci, @lhci/cli, wait-on
-- ✅ Scripts package.json : check, lighthouse, audit:security
+**Date** : 11/06/2025  
+**Auteur** : Donovan GROUT  
+**Description** : **DÉPLOIEMENT PRODUCTION** - Merge develop vers main déclenchant pipeline CD complet et déploiement Vercel production.
 
-**Commit Documentation** : `✅ TERMINÉ` - Documentation CI/CD complète
+### Étape 2.7 : Résultats et Métriques Finales
 
-- ✅ `docs/CI_CD_README.md` : Guide principal CI/CD
-- ✅ `docs/PHASE_2_FINALIZATION_REPORT.md` : Rapport de finalisation
-- ✅ `docs/FINAL_ACTIONS_GUIDE.md` : Guide des actions de déploiement
-- ✅ `docs/GLOSSARY.md` : +20 termes CI/CD (GitHub Actions, PlanetHoster, etc.)
-- ✅ Workflows commentés : explications ligne par ligne
-- ✅ Configuration production : .lighthouserc.json, secrets PlanetHoster
+**Pipeline CI validé** :
 
-**État Branche** : `main` - ✅ **PHASE 2 TERMINÉE**
+- ✅ 4 jobs exécutés avec succès (Quality, Security, Performance, Summary)
+- ✅ Tests : 12/12 passent (100% coverage)
+- ✅ Sécurité : 0 vulnérabilité critique/importante
+- ✅ Performance : Lighthouse opérationnel (warning PWA attendu)
+- ✅ Build : Next.js compilation < 5s
 
-- ✅ Pipeline CI/CD fonctionnel et testé
-- ✅ Configuration PlanetHoster prête
-- ✅ Documentation complète livrée
-- ✅ Prêt pour mise en production
+**Pipeline CD opérationnel** :
+
+- ✅ Preview deployments automatiques sur PR
+- ✅ Production deployment sur merge vers main
+- ✅ URL production : `portfolio-v2-eight-tan.vercel.app`
+- ✅ Monitoring Core Web Vitals activé
 
 ---
 
@@ -575,7 +566,7 @@ PLANETHOSTER_PATH = /public_html
 ### ✅ Phase 2 : Pipeline CI/CD - TERMINÉE
 
 1. [x] Configuration GitHub Actions CI/CD
-2. [x] Pipeline de déploiement PlanetHoster
+2. [x] Pipeline de déploiement Vercel
 3. [x] Tests de performance Lighthouse
 4. [x] Audit de sécurité automatisé
 5. [x] Documentation complète CI/CD
@@ -593,22 +584,29 @@ PLANETHOSTER_PATH = /public_html
 
 **Date de completion** : 11/06/2025  
 **Durée totale** : 2 jours de développement  
-**État** : 🎯 **SUCCÈS COMPLET**
+**État** : 🎯 **SUCCÈS COMPLET - DÉPLOYÉ EN PRODUCTION**
 
 ### Métriques finales
 
 - **Tests** : 12/12 passent (100%)
 - **ESLint** : 0 warning, 0 erreur
-- **Build** : ✅ Succès en 2s
-- **Pipeline** : ✅ Workflows validés
-- **Documentation** : ✅ 5 guides créés
+- **Build** : ✅ Succès en <5s
+- **Pipeline** : ✅ CI/CD opérationnel
+- **Documentation** : ✅ 4 guides créés
+- **Production** : ✅ Déployé sur Vercel
 
 ### Livrables validés
 
-- ✅ `.github/workflows/ci.yml` - Pipeline CI (171 lignes)
-- ✅ `.github/workflows/deploy.yml` - Déploiement Vercel optimisé (82 lignes)
-- ✅ `.lighthouserc.json` - Configuration performance
-- ✅ `vercel.json` - Configuration Next.js optimisée
-- ✅ Configuration secrets Vercel + domaine personnalisé
+- ✅ `.github/workflows/ci.yml` - Pipeline CI 4 jobs (174 lignes)
+- ✅ `.github/workflows/deploy.yml` - Déploiement Vercel (81 lignes)
+- ✅ `.lighthouserc.json` - Configuration performance (24 lignes)
+- ✅ `vercel.json` - Configuration Next.js optimisée (8 lignes)
+- ✅ Configuration secrets Vercel + URL production active
 
-**🎉 La Phase 2 CI/CD hybride est maintenant entièrement terminée et prête pour la production !**
+### URLs de production
+
+- **Production** : `portfolio-v2-eight-tan.vercel.app` ✅ LIVE
+- **Domaine personnalisé** : `donovan-grout.com` (redirection à configurer)
+- **Preview branches** : Automatiques sur chaque PR
+
+**🎉 La Phase 2 CI/CD hybride est maintenant entièrement terminée, documentée et déployée en production !**
