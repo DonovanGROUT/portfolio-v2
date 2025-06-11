@@ -35,6 +35,15 @@ Tests exécutés dans un vrai navigateur web pour vérifier le comportement rée
 - **CI** : Intégration continue des changements de code avec tests automatiques
 - **CD** : Déploiement continu des changements validés en production
 
+**Continuous Integration (CI)**
+Pratique de développement où les changements de code sont intégrés fréquemment avec validation automatique.
+
+**Continuous Deployment (CD)**
+Extension du CI où les changements validés sont automatiquement déployés en production.
+
+**Continuous Delivery**
+Approche où le code est toujours dans un état déployable, mais le déploiement reste manuel.
+
 **Code Coverage (Couverture de Code)**
 Métrique indiquant le pourcentage de code exécuté par les tests :
 
@@ -78,6 +87,9 @@ Test qui échoue de manière aléatoire sans changement de code (problème de st
 
 ### G
 
+**GitHub Actions**
+Service d'intégration continue et de déploiement continu intégré à GitHub permettant d'automatiser les workflows.
+
 **GitFlow**
 Modèle de workflow Git avec branches spécialisées :
 
@@ -86,13 +98,16 @@ Modèle de workflow Git avec branches spécialisées :
 - **feature/** : Développement de fonctionnalités
 - **hotfix/** : Corrections urgentes en production
 
+**Green Build**
+État où tous les tests passent et le pipeline CI/CD est en succès (oppose de "Red Build").
+
 ### H
 
 **Happy Path**
 Scénario de test où tout se passe comme prévu, sans erreurs ni cas exceptionnels.
 
 **Husky**
-Outil qui permet d'exécuter des scripts lors des événements Git (hooks).
+Outil qui permet d'exécuter des scripts lors des événements Git (pre-commit, pre-push hooks).
 
 ### I
 
@@ -104,11 +119,22 @@ API du navigateur qui observe quand un élément entre ou sort de la zone visibl
 
 ### J
 
+**Job (GitHub Actions)**
+Ensemble d'étapes qui s'exécutent sur la même machine virtuelle dans un workflow CI/CD.
+
 **jsdom**
 Implémentation JavaScript du DOM, permettant de simuler un navigateur dans Node.js.
 
 **Jest**
 Framework de test JavaScript populaire (remplacé par Vitest dans notre projet).
+
+### L
+
+**Lighthouse**
+Outil d'audit automatisé de Google pour mesurer les performances, l'accessibilité et le SEO des sites web.
+
+**Linting**
+Analyse statique du code pour détecter les erreurs, inconsistances et violations des standards de codage.
 
 ### M
 
@@ -128,13 +154,27 @@ Action de remplacer des dépendances réelles par des objets simulés pour isole
 
 ### P
 
+**Pipeline**
+Séquence automatisée d'étapes pour construire, tester et déployer une application.
+
 **Playwright**
 Framework pour les tests E2E qui automatise les navigateurs (Chrome, Firefox, Safari).
 
 **Prettier**
 Outil de formatage automatique du code pour maintenir un style cohérent.
 
+**Pull Request (PR)**
+Mécanisme pour proposer des changements de code et déclencher une revue avant fusion dans la branche principale.
+
+### Q
+
+**Quality Gate**
+Point de contrôle dans le pipeline CI/CD qui vérifie que certains critères de qualité sont respectés avant de continuer.
+
 ### R
+
+**Red Build**
+État où le pipeline CI/CD échoue à cause de tests qui ne passent pas ou d'erreurs de build.
 
 **Red-Green-Refactor**
 Cycle TDD en 3 étapes :
@@ -146,16 +186,22 @@ Cycle TDD en 3 étapes :
 **Regression Testing**
 Tests qui vérifient que les nouvelles modifications n'ont pas cassé les fonctionnalités existantes.
 
-**ResizeObserver**
-API du navigateur qui observe les changements de taille d'un élément.
+**Rollback**
+Action de revenir à une version précédente stable en cas de problème après déploiement.
 
 ### S
+
+**Secret (GitHub)**
+Variable chiffrée stockée de manière sécurisée pour les tokens d'API, mots de passe, etc.
 
 **Snapshot Testing**
 Test qui compare le rendu actuel d'un composant avec une "photo" sauvegardée.
 
 **Spy**
 Mock qui enregistre les appels (paramètres, nombre d'appels) sans remplacer l'implémentation.
+
+**Stage**
+Étape dans un pipeline de déploiement (ex: dev, staging, production).
 
 **Stub**
 Mock qui retourne des valeurs prédéfinies pour des appels de méthodes spécifiques.
@@ -190,6 +236,9 @@ Simulation d'interactions utilisateur réalistes (clic, frappe, navigation).
 
 ### V
 
+**Vercel**
+Plateforme de déploiement optimisée pour les applications frontend (Next.js, React, etc.).
+
 **Vitest**
 Framework de test moderne et rapide, compatible avec Vite et similaire à Jest.
 
@@ -200,6 +249,9 @@ Tests qui détectent les changements visuels non désirés dans l'interface.
 
 **WCAG (Web Content Accessibility Guidelines)**
 Standards internationaux pour l'accessibilité web (niveaux A, AA, AAA).
+
+**Workflow (GitHub Actions)**
+Fichier YAML définissant une série d'actions automatisées déclenchées par des événements Git.
 
 **White Box Testing**
 Test où le testeur connaît l'implémentation interne du code testé.
@@ -291,3 +343,27 @@ it("should work");
 **Code Coverage** mesure → **Qualité des Tests**
 
 ---
+
+## 🌐 Termes Spécifiques au Projet
+
+**PlanetHoster**
+Hébergeur web utilisé pour notre projet, avec serveurs N0c supportant SSH.
+
+**Public_html**
+Répertoire racine web où sont placés les fichiers accessibles publiquement sur le serveur.
+
+**SSH (Secure Shell)**
+Protocole de communication sécurisé qui permet de se connecter à distance à un serveur.
+
+**SFTP (Secure File Transfer Protocol)**
+Protocole de transfert de fichiers sécurisé qui fonctionne via SSH.
+
+**Artifacts (GitHub Actions)**
+Fichiers générés par un job et conservés temporairement (builds, rapports de tests, etc.).
+
+**Quality Gate**
+Point de contrôle dans le pipeline CI/CD qui vérifie que certains critères de qualité sont respectés avant de continuer.
+
+---
+
+**Dernière mise à jour :** Phase 2 CI/CD - Portfolio TDD

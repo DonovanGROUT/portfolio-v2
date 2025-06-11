@@ -1,0 +1,9 @@
+{
+  "name": "portfolio-donovan-grout",
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm ci",
+  "framework": "nextjs",
+  "outputDirectory": ".next",
+  "ignoreCommand": "npx vercel-ignore-check"
+}

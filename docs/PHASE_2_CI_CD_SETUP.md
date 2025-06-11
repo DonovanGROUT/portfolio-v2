@@ -1,16 +1,48 @@
 # 🚀 Phase 2 : Configuration CI/CD Portfolio
 
 **Statut :** ✅ **TERMINÉE**  
-**Objectif :** Mise en place d'un pipeline CI/CD professionnel avec déploiement automatique vers PlanetHoster
+**Objectif :** Mise en place d'un pipeline CI/CD professionnel avec déploiement automatique vers Vercel (configuration hybride)
+
+## 🌐 Configuration Hybride : Vercel + Domaine Personnalisé
+
+### Secrets GitHub requis
+
+Dans `Settings > Secrets and variables > Actions` :
+
+```bash
+# Secrets Vercel (récupérés depuis vercel.com)
+VERCEL_TOKEN = [votre-token-vercel]
+VERCEL_ORG_ID = [votre-org-id]
+VERCEL_PROJECT_ID = [votre-project-id]
+```
+
+## Configuration du domaine personnalisé
+
+### **Option A : Redirection depuis PlanetHoster**
+
+```apache
+# Dans .htaccess sur donovan-grout.com
+RewriteEngine On
+RewriteRule ^portfolio/?(.*)$ https://portfolio.vercel.app/$1 [R=301,L]
+```
+
+### **Option B : DNS CNAME (recommandé)**
+
+```dns
+# Configuration DNS
+portfolio.donovan-grout.com CNAME portfolio.vercel.app
+```
+
+**Objectif :** Mise en place d'un pipeline CI/CD professionnel avec déploiement automatique vers Vercel (configuration hybride)
 
 ## 📋 Configuration retenue
 
-### Pipeline CI/CD simplifié et pratique
+### Pipeline CI/CD optimisé pour Next.js
 
 ✅ **2 workflows GitHub Actions** :
 
 - `ci.yml` - Tests qualité et sécurité (< 5 min)
-- `deploy.yml` - Déploiement PlanetHoster via SSH/SFTP sécurisé
+- `deploy.yml` - Déploiement Vercel automatisé avec preview branches
 
 ✅ **Tests de qualité** :
 
@@ -29,36 +61,48 @@
 
 - Tests Lighthouse informatifs ✅
 
-## 🔑 Configuration PlanetHoster
+## 🌐 Configuration Hybride Vercel + Domaine Personnalisé
 
-### Secrets GitHub requis
+### Avantages de cette approche
+
+✅ **Performance maximale** : Vercel optimisé pour Next.js
+✅ **Domaine personnalisé** : `donovan-grout.com` via redirection
+✅ **Preview branches** : URL unique pour chaque PR
+✅ **Edge Functions** : CDN mondial automatique
+✅ **Analytics** : Métriques Vercel intégrées
+
+### Architecture de déploiement
+
+```bash
+🌍 donovan-grout.com (domaine principal)
+├── 301 redirect → portfolio.vercel.app
+└── /portfolio → Application Next.js sur Vercel
+
+🚀 Vercel (hébergement optimisé)
+├── Production: main branch → portfolio.vercel.app
+├── Preview: PR branches → deploy-preview-xyz.vercel.app
+└── Analytics: Core Web Vitals automatiques
+```
+
+### Configuration des secrets GitHub
 
 Dans `Settings > Secrets and variables > Actions` :
 
 ```bash
-PLANETHOSTER_HOST = [serveur].n0c.com
-PLANETHOSTER_USERNAME = [nom-utilisateur-planethoster]
-PLANETHOSTER_SSH_PRIVATE_KEY = [votre clé SSH privée]
-PLANETHOSTER_PORT = 5022
-PLANETHOSTER_PATH = /public_html
-```
-
-### Test de connexion SSH
-
-```bash
-# Tester manuellement la connexion SSH avant config GitHub
-ssh -p 5022 [nom-utilisateur-planethoster]@[serveur].n0c.com
-# Vérifier accès au répertoire /public_html
+# Secrets Vercel (récupérés depuis vercel.com)
+VERCEL_TOKEN = [token-vercel]
+VERCEL_ORG_ID = [org-id]
+VERCEL_PROJECT_ID = [project-id]
 ```
 
 ## 🔄 Workflow GitFlow
 
 ```bash
-main        → Déploiement automatique PlanetHoster
+main        → Déploiement automatique Vercel
   ↑
 develop     → Tests CI obligatoires
   ↑
-feature/*   → Tests CI sur Pull Request
+feature/*   → Tests CI + Preview deployments
 ```
 
 ## 📊 Quality Gates
@@ -104,17 +148,18 @@ npm run test:coverage     # Coverage
 
 ### ❌ Déploiement échoue
 
-1. Vérifier secrets PlanetHoster dans GitHub
-2. Tester connexion SSH manuellement (port 5022)
-3. Vérifier permissions dossier /public_html
+1. Vérifier secrets Vercel dans GitHub
+2. Vérifier la connexion du repository avec Vercel
+3. Consulter les logs de déploiement sur vercel.com
 
 ## 🎯 Prochaines étapes
 
 1. **✅ Phase 2 terminée** - Pipeline CI/CD opérationnel
-2. **Configurer secrets** PlanetHoster dans GitHub
-3. **Premier test** de déploiement
-4. **Commencer Phase 3** - Développement composants TDD
+2. **Configurer secrets** Vercel dans GitHub
+3. **Configurer domaine** sur PlanetHoster (redirection)
+4. **Premier test** de déploiement
+5. **Commencer Phase 3** - Développement composants TDD
 
 ---
 
-**🚀 Configuration simple, efficace et adaptée à nos vrais besoins !**
+**🚀 Configuration hybride : Performance Vercel + Domaine personnalisé !**
