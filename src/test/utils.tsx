@@ -9,7 +9,7 @@ interface CustomRenderOptions extends Omit<RenderOptions, 'wrapper'> {
   providers?: React.ComponentType<{ children: React.ReactNode }>[];
 }
 
-// Fonction de rendu personnalisée qui wrapper les composants avec les providers nécessaires
+// Fonction de rendu personnalisée qui va wrapper les composants avec les providers nécessaires
 const customRender = (ui: ReactElement, options?: CustomRenderOptions) => {
   // Pour l'instant, rendu simple, mais on pourra ajouter des wrappers plus tard
   return render(ui, options);

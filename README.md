@@ -1,10 +1,25 @@
 # Portfolio Donovan GROUT
 
 <!-- DEPLOY-LINK-START -->
-<!-- Pas encore déployé -->
+
+Pas encore déployé
+
 <!-- DEPLOY-LINK-END -->
 
-Refonte complète de mon portfolio avec une approche moderne, TDD-driven et respectueuse des meilleures pratiques de développement.
+Refonte complète de mon portfolio avec une approche moderne, TDD-driven et avec un pipeline CI/CD.
+
+## ✅ Phase 2 CI/CD - TERMINÉE
+
+**Date de completion**: 11 juin 2025
+**Statut**: ✅ TERMINÉE
+
+### 🚀 Pipeline Automatisé
+
+- ✅ **CI Tests**: 12/12 tests passent (100%)
+- ✅ **Quality Gates**: ESLint + Prettier + TypeScript
+- ✅ **Déploiement**: Vercel automatisé (optimisé Next.js)
+- ✅ **Performance**: Monitoring Lighthouse
+- ✅ **Sécurité**: Audit automatisé des vulnérabilités
 
 ## 🎯 Objectifs
 
@@ -93,27 +108,28 @@ src/
 └── test/            # Configuration et utilitaires de test
 
 docs/                 # Documentation technique
-├── GLOSSARY.md      # Glossaire des termes techniques
-└── TESTING_SETUP.md # Guide de configuration des tests
+├── GLOSSARY.md              # Glossaire des termes techniques
+├── PHASE_1_TDD_SETUP.md     # Configuration TDD et environnement test
+├── PHASE_2_CI_CD_SETUP.md   # Pipeline CI/CD et déploiement
+└── TECHNICAL_DOCUMENTATION.md  # Documentation technique complète
 ```
 
 ## 📚 Documentation
 
-- [📋 Documentation Technique](TECHNICAL_DOCUMENTATION.md)
-- [🧪 Configuration Tests](docs/TESTING_SETUP.md)
+- [📋 Documentation Technique](docs/TECHNICAL_DOCUMENTATION.md)
+- [🧪 Configuration TDD](docs/PHASE_1_TDD_SETUP.md)
+- [🚀 Pipeline CI/CD](docs/PHASE_2_CI_CD_SETUP.md)
 - [📖 Glossaire](docs/GLOSSARY.md)
-
-## 🤝 Contribution
 
 ### Workflow GitFlow
 
 ```bash
 main          # Production
 └── develop   # Intégration
-    ├── feature/setup-environment    # ✅ Terminé
-    ├── feature/ci-cd-pipeline      # 🚧 En cours
-    ├── feature/design-system       # ⏳ À venir
-    └── feature/content-sections    # ⏳ À venir
+    ├── feature/setup-environment    # ✅ Terminé - Phase 1
+    ├── feature/ci-cd-pipeline      # ✅ TERMINÉE - Phase 2
+    ├── feature/design-system       # ⏳ À venir - Phase 3
+    └── feature/content-sections    # ⏳ À venir - Phase 3
 ```
 
 ### Standards de Commit
@@ -128,9 +144,10 @@ Format : `type: description`
 
 ## 🌐 Déploiement
 
-- **Production** : PlanetHoster (donovan-grout.com)
-- **Staging** : Vercel (previews automatiques)
-- **CI/CD** : GitHub Actions
+- **Production** : Vercel (performance optimisée)
+- **Domaine** : donovan-grout.com → redirection vers Vercel
+- **CI/CD** : GitHub Actions → Déploiement automatique
+- **Monitoring** : Lighthouse CI + Vercel Analytics
 
 ---
 
