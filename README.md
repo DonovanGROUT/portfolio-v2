@@ -2,12 +2,14 @@
 
 <!-- DEPLOY-LINK-START -->
 
-🌐 **Production**: [portfolio-v2-eight-tan.vercel.app](https://portfolio-v2-eight-tan.vercel.app)  
-🔗 **Domaine personnalisé**: donovan-grout.com _(configuration en cours)_
+🌐 **Production**: [donovan-grout.com](https://donovan-grout.com)  
+🎯 **Status**: ✅ Pipeline CI/CD opérationnel - Portfolio en cours de développement TDD
 
 <!-- DEPLOY-LINK-END -->
 
 Refonte complète de mon portfolio avec une approche moderne, TDD-driven et avec un pipeline CI/CD.
+
+> **🚧 Statut actuel** : Infrastructure CI/CD complète et domaine configuré. Le développement des composants portfolio commence en Phase 3 avec une approche TDD stricte.
 
 ## ✅ Phase 2 CI/CD - TERMINÉE
 
@@ -26,10 +28,10 @@ Refonte complète de mon portfolio avec une approche moderne, TDD-driven et avec
 
 ### 🌐 Architecture Déploiement
 
-- **Production**: Vercel optimisé Next.js
+- **Production**: Vercel optimisé Next.js avec domaine personnalisé
 - **Preview**: Déploiements automatiques sur PR
 - **Monitoring**: Analytics et performance tracking
-- **Domaine**: Configuration hybride (Vercel + domaine personnalisé)
+- **DNS**: Configuration hybride Vercel + domaine personnalisé
 
 ## 🎯 Objectifs
 
@@ -154,8 +156,8 @@ Format : `type: description`
 
 ## 🌐 Déploiement
 
-- **Production** : Vercel (performance optimisée)
-- **Domaine** : donovan-grout.com → redirection vers Vercel
+- **Production** : [donovan-grout.com](https://donovan-grout.com) (Vercel optimisé)
+- **Preview** : Déploiements automatiques sur chaque PR
 - **CI/CD** : GitHub Actions → Déploiement automatique
 - **Monitoring** : Lighthouse CI + Vercel Analytics
 

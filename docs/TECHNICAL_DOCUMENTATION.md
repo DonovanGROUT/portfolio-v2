@@ -396,19 +396,28 @@ main (production) ← Renommé de master
 - Métriques et monitoring
 - Optimisations futures
 
-### Étape 2.5 : Configuration Hybride Vercel + Domaine Personnalisé
+### Étape 2.5 : Configuration Domaine Personnalisé avec Vercel
 
-**Architecture de déploiement** :
+**Architecture de déploiement optimisée** :
 
 ```bash
-🌍 donovan-grout.com (PlanetHoster)
-├── 301 redirect → portfolio.vercel.app
-└── Configuration DNS CNAME (optionnel)
+🌍 donovan-grout.com (domaine principal)
+├── DNS A Record → Vercel Edge Network
+├── SSL automatique Let's Encrypt
+└── CDN mondial Vercel
 
-🚀 Vercel (hébergement principal)
-├── Production: main branch → portfolio.vercel.app
+🚀 Vercel (hébergement optimisé)
+├── Production: main branch → donovan-grout.com
 ├── Preview: PR branches → deploy-preview-xyz.vercel.app
 └── Analytics: Core Web Vitals automatiques
+```
+
+**Configuration DNS PlanetHoster** :
+
+```dns
+# Enregistrements DNS requis
+@ A [IP-Vercel-fournie]
+www CNAME cname.vercel-dns.com
 ```
 
 **Secrets GitHub configurés** :
@@ -416,6 +425,8 @@ main (production) ← Renommé de master
 - `VERCEL_TOKEN` - Token d'authentification Vercel
 - `VERCEL_ORG_ID` - ID organisation Vercel
 - `VERCEL_PROJECT_ID` - ID projet Vercel
+
+**Guide détaillé** : `docs/PLANETHOSTER_DNS_SETUP.md`
 
 ### Étape 2.6 : Historique détaillé des commits Phase 2
 
@@ -605,8 +616,36 @@ main (production) ← Renommé de master
 
 ### URLs de production
 
-- **Production** : `portfolio-v2-eight-tan.vercel.app` ✅ LIVE
-- **Domaine personnalisé** : `donovan-grout.com` (redirection à configurer)
+- **Production** : `donovan-grout.com` ✅ LIVE avec domaine personnalisé
+- **Redirection automatique** : `www.donovan-grout.com` → `donovan-grout.com`
 - **Preview branches** : Automatiques sur chaque PR
+- **SSL** : ✅ Certificat HTTPS Let's Encrypt automatique
 
-**🎉 La Phase 2 CI/CD hybride est maintenant entièrement terminée, documentée et déployée en production !**
+**🎉 La Phase 2 CI/CD hybride avec domaine personnalisé est maintenant entièrement terminée, documentée et déployée en production !**
+
+### Étape 2.8 : Configuration Domaine Personnalisé Finalisée
+
+**Date** : 11/06/2025  
+**Status** : ✅ **DOMAINE CONFIGURÉ AVEC SUCCÈS**
+
+**Configuration finale validée** :
+
+- ✅ Configuration domaine personnalisé `donovan-grout.com` sur Vercel
+- ✅ Configuration DNS automatique par Vercel (A Records + CNAME)
+- ✅ Redirection www automatique : `www.donovan-grout.com` → `donovan-grout.com`
+- ✅ Certificat SSL Let's Encrypt actif et renouvelé automatiquement
+- ✅ CDN Vercel Edge Network mondial pour performance optimale
+
+**Architecture de production finalisée** :
+
+```bash
+🌍 donovan-grout.com (domaine principal)
+├── ✅ Portfolio TDD Next.js 15 (portfolio-v2)
+├── ✅ SSL HTTPS automatique
+├── ✅ CDN Edge Network mondial
+└── ✅ www.donovan-grout.com → redirection automatique
+
+🔄 Preview Environment
+├── ✅ deploy-preview-[pr].vercel.app (branches PR)
+└── ✅ Core Web Vitals monitoring actif
+```

@@ -9,11 +9,13 @@
 ## 🎯 Résultat Final
 
 ✅ **Pipeline CI/CD opérationnel** : 4 jobs en < 5 minutes  
-✅ **Déploiement production** : [portfolio-v2-eight-tan.vercel.app](https://portfolio-v2-eight-tan.vercel.app)  
+✅ **Déploiement production** : [donovan-grout.com](https://donovan-grout.com) ✅ LIVE avec domaine personnalisé  
 ✅ **Tests qualité** : 12/12 passent (100%)  
 ✅ **Monitoring** : Lighthouse + Core Web Vitals actifs  
 ✅ **Sécurité** : 0 vulnérabilité critique  
-✅ **GitFlow** : Workflow professionnel feature → develop → main
+✅ **GitFlow** : Workflow professionnel feature → develop → main  
+✅ **SSL** : Certificat HTTPS automatique Let's Encrypt  
+✅ **CDN** : Edge Network Vercel mondial pour performance optimale
 
 ## 🌐 Configuration Hybride : Vercel + Domaine Personnalisé
 
