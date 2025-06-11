@@ -1,0 +1,170 @@
+# 🔧 Pipeline d'Intégration Continue (CI) - Portfolio
+# Ce workflow s'exécute automatiquement sur chaque push et pull request
+# Adapté pour un portfolio personnel avec déploiement sur PlanetHoster
+name: 🔧 CI Pipeline
+
+# Déclencheurs du pipeline
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch: # Déclenchement manuel
+
+# Variables d'environnement
+env:
+  NODE_VERSION: "18.x"
+
+jobs:
+  # ===================================================================
+  # JOB PRINCIPAL: Tests de Qualité et Build
+  # ===================================================================
+  quality:
+    name: 🧪 Quality & Testing
+    runs-on: ubuntu-latest
+
+    steps:
+      # Récupération du code source
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      # Installation Node.js avec cache
+      - name: 🟢 Setup Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+
+      # Installation des dépendances
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      # Vérification du formatage (Prettier)
+      - name: 🎨 Check code formatting
+        run: npm run format:check
+
+      # Analyse statique (ESLint strict)
+      - name: 🔍 Lint code (strict mode)
+        run: npm run lint:strict
+
+      # Vérification des types TypeScript
+      - name: 📝 Type checking
+        run: npx tsc --noEmit
+
+      # Build de production
+      - name: 🏗️ Build project
+        run: npm run build
+
+      # Tests unitaires
+      - name: 🧪 Run unit tests
+        run: npm run test:run
+
+      # Génération du rapport de couverture
+      - name: 📊 Generate coverage report
+        run: npm run test:coverage
+
+      # Archivage du build pour déploiement
+      - name: 📦 Archive build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifacts
+          path: |
+            .next/
+            public/
+            package.json
+          retention-days: 1
+
+  # ===================================================================
+  # JOB SÉCURITÉ: Audit des vulnérabilités
+  # ===================================================================
+  security:
+    name: 🔒 Security Audit
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      # Audit des vulnérabilités importantes et critiques
+      - name: 🛡️ Security vulnerability scan
+        run: npm audit --audit-level high
+
+      # Scan avancé avec audit-ci (plus strict)
+      - name: 🔍 Advanced security check
+        run: npx audit-ci --critical
+
+  # ===================================================================
+  # JOB PERFORMANCE: Tests Lighthouse
+  # ===================================================================
+  lighthouse:
+    name: 🚦 Performance Tests
+    runs-on: ubuntu-latest
+    needs: [quality] # Attend que le build soit prêt
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: 🏗️ Build for production
+        run: npm run build
+
+      - name: 🚀 Start server in background
+        run: npm start &
+
+      - name: ⏳ Wait for server to be ready
+        run: npx wait-on http://localhost:3000 --timeout 60000
+
+      - name: 🚦 Run Lighthouse audit
+        uses: treosh/lighthouse-ci-action@v10
+        with:
+          configPath: "./.lighthouserc.json"
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+
+  # ===================================================================
+  # JOB RÉSUMÉ: Statut global du pipeline
+  # ===================================================================
+  summary:
+    name: 📋 Pipeline Summary
+    runs-on: ubuntu-latest
+    needs: [quality, security, lighthouse]
+    if: always() # S'exécute même si certains jobs échouent
+
+    steps:
+      - name: 📊 Display pipeline results
+        run: |
+          echo "🎯 CI Pipeline Results:"
+          echo "─────────────────────────"
+          echo "✨ Quality & Tests: ${{ needs.quality.result }}"
+          echo "🔒 Security Audit: ${{ needs.security.result }}"
+          echo "🚦 Performance: ${{ needs.lighthouse.result }}"
+          echo "─────────────────────────"
+
+          # Détermine le statut global
+          if [[ "${{ needs.quality.result }}" == "success" &&
+                "${{ needs.security.result }}" == "success" ]]; then
+            echo "✅ Pipeline PASSED - Ready for deployment!"
+            echo "🚀 Code quality validated and secure"
+          else
+            echo "❌ Pipeline FAILED - Issues to resolve"
+            echo "🔧 Please check the failed jobs above"
+            exit 1
+          fi
