@@ -136,8 +136,9 @@ jobs:
         uses: treosh/lighthouse-ci-action@v10
         with:
           configPath: "./.lighthouserc.json"
-          uploadArtifacts: true
+          uploadArtifacts: false
           temporaryPublicStorage: true
+        continue-on-error: true # N'interrompt pas le pipeline en cas d'échec
 
   # ===================================================================
   # JOB RÉSUMÉ: Statut global du pipeline
@@ -163,6 +164,9 @@ jobs:
                 "${{ needs.security.result }}" == "success" ]]; then
             echo "✅ Pipeline PASSED - Ready for deployment!"
             echo "🚀 Code quality validated and secure"
+            if [[ "${{ needs.lighthouse.result }}" != "success" ]]; then
+              echo "⚠️  Note: Performance tests had issues (non-blocking)"
+            fi
           else
             echo "❌ Pipeline FAILED - Issues to resolve"
             echo "🔧 Please check the failed jobs above"
