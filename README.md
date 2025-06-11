@@ -1,42 +1,154 @@
 # Portfolio Donovan GROUT
 
 <!-- DEPLOY-LINK-START -->
-<!-- Pas encore déployé -->
+
+Pas encore déployé
+
 <!-- DEPLOY-LINK-END -->
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Refonte complète de mon portfolio avec une approche moderne, TDD-driven et avec un pipeline CI/CD.
 
-## Getting Started
+## ✅ Phase 2 CI/CD - TERMINÉE
 
-First, run the development server:
+**Date de completion**: 11 juin 2025
+**Statut**: ✅ TERMINÉE
+
+### 🚀 Pipeline Automatisé
+
+- ✅ **CI Tests**: 12/12 tests passent (100%)
+- ✅ **Quality Gates**: ESLint + Prettier + TypeScript
+- ✅ **Déploiement**: Vercel automatisé (optimisé Next.js)
+- ✅ **Performance**: Monitoring Lighthouse
+- ✅ **Sécurité**: Audit automatisé des vulnérabilités
+
+## 🎯 Objectifs
+
+- **Accessibilité** (WCAG 2.1 AA)
+- **Éco-conception** (Green IT)
+- **Sécurité** (XSS/CSRF/CSP)
+- **Performance** (Core Web Vitals)
+- **SEO optimisé**
+- **RGPD compliant**
+
+## 🛠️ Stack Technique
+
+- **Framework** : Next.js 15 (App Router)
+- **Langage** : TypeScript (strict mode)
+- **Styling** : Tailwind CSS 4
+- **Testing** : Vitest + Testing Library
+- **CI/CD** : GitHub Actions + Vercel
+- **Qualité** : ESLint + Prettier + Husky
+
+## 🚀 Démarrage Rapide
+
+### Prérequis
+
+- Node.js 18+
+- npm 9+
+
+### Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Cloner le projet
+git clone https://github.com/DonovanGROUT/portfolio-v2.git
+cd portfolio-v2
+
+# Installer les dépendances
+npm install
+
+# Configurer les hooks Git
+npm run prepare
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Développement
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# Démarrer le serveur de développement
+npm run dev
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Lancer les tests en mode watch
+npm run test
 
-## Learn More
+# Vérifier la qualité du code
+npm run check
 
-To learn more about Next.js, take a look at the following resources:
+# Corriger automatiquement le formatage
+npm run lint:fix
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🧪 Tests & Qualité
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Commandes de Test
 
-## Deploy on Vercel
+```bash
+npm run test           # Tests en mode watch
+npm run test:run       # Tests une seule fois
+npm run test:coverage  # Rapport de couverture
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Hooks Git Automatiques
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **pre-commit** : Format + Lint + Tests
+- **pre-push** : Vérifications complètes + Coverage
+
+### Standards
+
+- ✅ **Coverage** : 100% (Statements, Branches, Functions, Lines)
+- ✅ **Linting** : Zero warnings/errors
+- ✅ **Format** : Prettier strict
+- ✅ **Types** : TypeScript strict mode
+
+## 📁 Structure du Projet
+
+```bash
+src/
+├── app/              # Pages Next.js (App Router)
+├── components/       # Composants réutilisables
+├── lib/             # Utilitaires et configurations
+└── test/            # Configuration et utilitaires de test
+
+docs/                 # Documentation technique
+├── GLOSSARY.md              # Glossaire des termes techniques
+├── PHASE_1_TDD_SETUP.md     # Configuration TDD et environnement test
+├── PHASE_2_CI_CD_SETUP.md   # Pipeline CI/CD et déploiement
+└── TECHNICAL_DOCUMENTATION.md  # Documentation technique complète
+```
+
+## 📚 Documentation
+
+- [📋 Documentation Technique](docs/TECHNICAL_DOCUMENTATION.md)
+- [🧪 Configuration TDD](docs/PHASE_1_TDD_SETUP.md)
+- [🚀 Pipeline CI/CD](docs/PHASE_2_CI_CD_SETUP.md)
+- [📖 Glossaire](docs/GLOSSARY.md)
+
+### Workflow GitFlow
+
+```bash
+main          # Production
+└── develop   # Intégration
+    ├── feature/setup-environment    # ✅ Terminé - Phase 1
+    ├── feature/ci-cd-pipeline      # ✅ TERMINÉE - Phase 2
+    ├── feature/design-system       # ⏳ À venir - Phase 3
+    └── feature/content-sections    # ⏳ À venir - Phase 3
+```
+
+### Standards de Commit
+
+Format : `type: description`
+
+- `feat:` - Nouvelle fonctionnalité
+- `fix:` - Correction de bug
+- `docs:` - Documentation
+- `test:` - Tests
+- `config:` - Configuration
+
+## 🌐 Déploiement
+
+- **Production** : Vercel (performance optimisée)
+- **Domaine** : donovan-grout.com → redirection vers Vercel
+- **CI/CD** : GitHub Actions → Déploiement automatique
+- **Monitoring** : Lighthouse CI + Vercel Analytics
+
+---
+
+_Développé par [Donovan GROUT](https://github.com/DonovanGROUT)_
