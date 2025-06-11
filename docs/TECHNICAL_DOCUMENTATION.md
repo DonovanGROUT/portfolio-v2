@@ -19,7 +19,7 @@ Refonte complète du portfolio avec approche TDD, intégration CI/CD, et respect
 - **Langage** : TypeScript (strict mode)
 - **Styling** : Tailwind CSS 4
 - **Testing** : Vitest + Testing Library (TDD)
-- **CI/CD** : GitHub Actions + PlanetHoster
+- **CI/CD** : GitHub Actions + Vercel (configuration hybride)
 - **Qualité** : ESLint + Prettier + Husky
 
 ### Architecture Git
@@ -222,7 +222,8 @@ main (production) ← Renommé de master
 **Stack CI/CD choisie** :
 
 - **GitHub Actions** : Pipeline principal (CI/CD)
-- **PlanetHoster** : Déploiement via SFTP
+- **Vercel** : Déploiement optimisé Next.js avec preview branches
+- **PlanetHoster** : Redirection domaine personnalisé (donovan-grout.com)
 - **Lighthouse CI** : Tests de performance automatisés
 - **audit-ci** : Audit de sécurité des dépendances
 
@@ -278,9 +279,9 @@ main (production) ← Renommé de master
 #### **Deploy Production** 🌟 (sur main)
 
 - Build automatique Next.js
-- Upload SFTP vers PlanetHoster
-- Vérification post-déploiement
-- Notifications de déploiement
+- Déploiement optimisé sur Vercel
+- Preview branches automatiques sur PR
+- Redirection domaine personnalisé via PlanetHoster
 
 ### Étape 2.4 : Configuration Lighthouse
 
@@ -304,9 +305,9 @@ main (production) ← Renommé de master
 
 ## 🚀 Phase 2 : Configuration CI/CD Pipeline (TERMINÉE)
 
-**Période** : 10/06/2025 - AUJOURD'HUI
+**Période** : 10/06/2025 - 11/06/2025 (TERMINÉE)
 
-**Objectif** : Mise en place pipeline CI/CD complet avec GitHub Actions et déploiement PlanetHoster
+**Objectif** : Mise en place pipeline CI/CD complet avec GitHub Actions et déploiement hybride Vercel + domaine personnalisé
 
 ### Étape 2.1 : Architecture Pipeline CI/CD
 
@@ -341,7 +342,7 @@ main (production) ← Renommé de master
 **Pipeline de Déploiement Continu (.github/workflows/deploy.yml)** :
 
 1. **Quality Gate** : Prérequis qualité avant déploiement
-2. **Deploy Production** : Déploiement automatique vers PlanetHoster
+2. **Deploy Production** : Déploiement automatique vers Vercel avec domaine personnalisé
 
 ### Étape 2.2 : Configuration Lighthouse CI
 
@@ -395,11 +396,30 @@ main (production) ← Renommé de master
 - Métriques et monitoring
 - Optimisations futures
 
-### Étape 2.5 : Sécurité et Variables
+### Étape 2.5 : Configuration Hybride Vercel + Domaine Personnalisé
 
-**GitHub Secrets requis** :
+**Architecture de déploiement** :
 
 ```bash
+🌍 donovan-grout.com (PlanetHoster - redirection)
+├── 301 redirect → portfolio.vercel.app
+└── Configuration DNS CNAME (optionnel)
+
+🚀 Vercel (hébergement principal)
+├── Production: main branch → portfolio.vercel.app
+├── Preview: PR branches → deploy-preview-xyz.vercel.app
+└── Analytics: Core Web Vitals automatiques
+```
+
+**Secrets GitHub requis** :
+
+```bash
+# Secrets Vercel (principaux)
+VERCEL_TOKEN = [token-personnel]
+VERCEL_ORG_ID = [team-id]
+VERCEL_PROJECT_ID = [project-id]
+
+# Secrets PlanetHoster (redirection domaine)
 PLANETHOSTER_HOST = [serveur].n0c.com
 PLANETHOSTER_USERNAME = [nom-utilisateur]
 PLANETHOSTER_SSH_PRIVATE_KEY = [clé-ssh-privée]
@@ -420,7 +440,7 @@ PLANETHOSTER_PATH = /public_html
 ### Objectifs Phase 2
 
 1. ✅ **Pipeline CI** : Tests automatiques qualité + sécurité
-2. ✅ **Pipeline CD** : Déploiement automatique vers PlanetHoster
+2. ✅ **Pipeline CD** : Déploiement automatique vers Vercel + redirection domaine
 3. ✅ **Configuration adaptée** : Simple et maintenable
 4. ✅ **Documentation complète** : Guides pratiques
 
@@ -428,10 +448,10 @@ PLANETHOSTER_PATH = /public_html
 
 **Principes directeurs** :
 
-- 🎯 **Focus sur l'essentiel** : Tests qualité + déploiement PlanetHoster
-- ⚡ **Rapidité** : Pipeline < 5 minutes
-- 🔧 **Maintenabilité** : Configuration simple et compréhensible
-- 💰 **Économie** : Pas de services externes payants
+- 🎯 **Focus sur l'essentiel** : Tests qualité + déploiement optimisé Vercel
+- ⚡ **Rapidité** : Pipeline < 5 minutes + CDN mondial
+- 🔧 **Maintenabilité** : Configuration simple et flexible (Vercel + domaine personnalisé)
+- 💰 **Économie** : Plan Hobby Vercel + redirection domaine existant
 
 ### Workflows GitHub Actions créés
 
@@ -451,10 +471,9 @@ PLANETHOSTER_PATH = /public_html
 **Jobs** :
 
 - **quality-gate** : Vérification finale avant déploiement
-- **deploy-production** : Upload SFTP vers PlanetHoster
-- **cleanup** : Nettoyage des artifacts
+- **deploy** : Déploiement optimisé sur Vercel avec preview branches
 
-**Déclenché sur** : Push vers main uniquement
+**Déclenché sur** : Push vers main (production) + PR (preview)
 
 ### Configuration simplifiée vs initiale
 
@@ -471,7 +490,7 @@ PLANETHOSTER_PATH = /public_html
 - **Tests qualité** : ESLint + Prettier + TypeScript + Vitest
 - **Audit sécurité** : npm audit pour vulnérabilités critiques
 - **Performance** : Lighthouse (informatif, non-bloquant)
-- **Déploiement** : SFTP automatique vers hébergeur
+- **Déploiement** : Vercel optimisé + redirection domaine personnalisé
 
 ### Métriques de qualité définies
 
@@ -502,24 +521,15 @@ PLANETHOSTER_PATH = /public_html
 3. **`FINAL_ACTIONS_GUIDE.md`** - Guide des actions finales
 4. **Glossaire mis à jour** - Termes CI/CD ajoutés
 
-### Configuration PlanetHoster
+### Configuration Hybride : Vercel + domaine personnalisé
 
-**Secrets GitHub requis** :
-
-```bash
-PLANETHOSTER_HOST = [serveur].n0c.com
-PLANETHOSTER_USERNAME = [votre-nom-utilisateur]
-PLANETHOSTER_SSH_PRIVATE_KEY = [votre-clé-ssh-privée]
-PLANETHOSTER_PORT = 5022
-PLANETHOSTER_PATH = /public_html
-```
-
-**Workflow déploiement** :
+**Workflow de déploiement** :
 
 1. Quality gate automatique
-2. Build production Next.js
-3. Upload SFTP vers PlanetHoster via SSH
-4. Vérification post-déploiement
+2. Build production Next.js optimisé
+3. Déploiement Vercel avec preview branches
+4. Redirection domaine personnalisé via PlanetHoster (.htaccess)
+5. Monitoring automatique Core Web Vitals
 
 ---
 
@@ -581,7 +591,7 @@ PLANETHOSTER_PATH = /public_html
 
 ## 📊 Statut Final Phase 2
 
-**Date de completion** : 10/06/2025  
+**Date de completion** : 11/06/2025  
 **Durée totale** : 2 jours de développement  
 **État** : 🎯 **SUCCÈS COMPLET**
 
@@ -596,9 +606,9 @@ PLANETHOSTER_PATH = /public_html
 ### Livrables validés
 
 - ✅ `.github/workflows/ci.yml` - Pipeline CI (171 lignes)
-- ✅ `.github/workflows/deploy.yml` - Déploiement PlanetHoster (123 lignes)
+- ✅ `.github/workflows/deploy.yml` - Déploiement Vercel optimisé (82 lignes)
 - ✅ `.lighthouserc.json` - Configuration performance
-- ✅ `docs/PHASE_2_FINALIZATION_REPORT.md` - Rapport final
-- ✅ Configuration secrets prête pour PlanetHoster
+- ✅ `vercel.json` - Configuration Next.js optimisée
+- ✅ Configuration secrets Vercel + domaine personnalisé
 
-**🎉 La Phase 2 CI/CD est maintenant entièrement terminée et prête pour la production !**
+**🎉 La Phase 2 CI/CD hybride est maintenant entièrement terminée et prête pour la production !**
