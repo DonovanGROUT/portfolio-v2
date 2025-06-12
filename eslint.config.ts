@@ -10,6 +10,18 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
+  // IGNORER les fichiers générés automatiquement
+  {
+    ignores: [
+      '.next/**/*',
+      'out/**/*',
+      'build/**/*',
+      'dist/**/*',
+      'coverage/**/*',
+      'node_modules/**/*',
+    ],
+  },
+
   // Configuration de base Next.js (garde la compatibilité)
   ...compat.extends('next/core-web-vitals', 'next/typescript'),
 
@@ -26,9 +38,9 @@ const eslintConfig = [
       '@typescript-eslint/no-non-null-assertion': 'error',
       '@typescript-eslint/prefer-as-const': 'error',
 
-      // Qualité de code
-      'no-console': 'warn',
-      'no-debugger': 'error',
+      // Qualité de code - console.log autorisé en développement
+      'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
+      'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
       'prefer-const': 'error',
       'no-var': 'error',
 
@@ -40,6 +52,19 @@ const eslintConfig = [
       // Accessibilité de base
       'jsx-a11y/alt-text': 'error',
       'jsx-a11y/anchor-is-valid': 'error',
+    },
+  },
+
+  // Configuration spéciale pour les pages de démo/développement
+  {
+    files: [
+      '**/button-demo/**/*.{ts,tsx}',
+      '**/demo/**/*.{ts,tsx}',
+      '**/dev/**/*.{ts,tsx}',
+    ],
+    rules: {
+      'no-console': 'off', // Console.log autorisé dans les pages de démo
+      'no-alert': 'off', // Alert autorisé pour les demos
     },
   },
 
