@@ -21,14 +21,19 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@tailwindcss/typography": "^0.5.16",
+    "autoprefixer": "^10.4.21",
+    "clsx": "^2.1.1",
     "next": "15.3.3",
+    "postcss": "^8.5.5",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss": "^3.4.17"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@lhci/cli": "^0.15.0",
-    "@tailwindcss/postcss": "^4",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
@@ -52,7 +57,6 @@
     "husky": "^9.1.7",
     "jsdom": "^26.1.0",
     "prettier": "^3.5.3",
-    "tailwindcss": "^4",
     "typescript": "^5",
     "vitest": "^3.2.3",
     "wait-on": "^8.0.3"
