@@ -46,11 +46,16 @@ export default defineConfig({
         '.next/**',
         'next.config.js',
         'tailwind.config.js',
-        'postcss.config.ts',
+        'postcss.config.*', // Configuration PostCSS
         // Configuration files
         'eslint.config.ts',
         'next.config.ts',
         'vitest.config.ts',
+        // Scripts de documentation et debug
+        'docs/scripts/**',
+        // Pages de démo - exemples pour développement
+        'src/app/button-demo/**',
+        'src/app/simple-test/**',
         // Layout is difficult to test in isolation
         'src/app/layout.tsx',
         // Husky hooks are shell scripts
