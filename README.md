@@ -15,7 +15,8 @@ Refonte complète de mon portfolio avec une approche moderne, TDD-driven et avec
 
 **Date de début**: 12 juin 2025  
 **Statut**: 🚧 40% COMPLÉTÉ (Button ✅ Typography ✅ - 16 juin 2025)  
-**Méthode**: TDD strict (Red → Green → Refactor)
+**Méthode**: TDD strict (Red → Green → Refactor)  
+**Commits documentés**: Phase 3 complètement tracée dans TECHNICAL_DOCUMENTATION.md
 
 ### 🏆 Composants Terminés
 
@@ -163,10 +164,12 @@ docs/                 # Documentation technique
 
 ## 📚 Documentation
 
-- [📋 Documentation Technique](docs/TECHNICAL_DOCUMENTATION.md)
-- [🧪 Configuration TDD](docs/PHASE_1_TDD_SETUP.md)
-- [🚀 Pipeline CI/CD](docs/PHASE_2_CI_CD_SETUP.md)
-- [📖 Glossaire](docs/GLOSSARY.md)
+- [📋 Documentation Technique](docs/core/TECHNICAL_DOCUMENTATION.md)
+- [🔄 Template TDD Réutilisable](docs/templates/TDD_TEMPLATE_REUSABLE.md)
+- [🧪 Configuration TDD](docs/phases/PHASE_1_TDD_SETUP.md)
+- [🚀 Pipeline CI/CD](docs/phases/PHASE_2_CI_CD_SETUP.md)
+- [🔴🟢🔵 Phase 3 TDD](docs/phases/PHASE_3_TDD_DEVELOPMENT.md)
+- [📖 Glossaire](docs/reference/GLOSSARY.md)
 
 ### Workflow GitFlow
 
