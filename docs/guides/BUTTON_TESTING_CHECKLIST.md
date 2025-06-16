@@ -99,7 +99,7 @@
 
 **Standards Atteints :**
 
-- ✅ TDD Complet (22 tests unitaires)
+- ✅ TDD Complet (13 tests unitaires)
 - ✅ WCAG 2.1 AA (Score 96/100)
 - ✅ Performance Web (252ms DOMContentLoaded)
 - ✅ Mobile-First Responsive

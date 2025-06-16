@@ -55,6 +55,7 @@ export default defineConfig({
         'docs/scripts/**',
         // Pages de démo - exemples pour développement
         'src/app/button-demo/**',
+        'src/app/typography-demo/**',
         'src/app/simple-test/**',
         // Layout is difficult to test in isolation
         'src/app/layout.tsx',

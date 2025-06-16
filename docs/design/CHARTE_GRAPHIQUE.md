@@ -150,7 +150,10 @@ Inactive : Gris slate
 
 ## 🚀 PROCHAINES ÉTAPES
 
-1. **Mise à jour du système de couleurs** (`/src/lib/colors.ts`)
-2. **Customisation des boutons** avec la nouvelle palette
-3. **Développement Typography** avec Inter
-4. **Tests de contraste** et validation WCAG
+1. ✅ **Mise à jour du système de couleurs** (`/src/lib/colors.ts`)
+2. ✅ **Customisation des boutons** avec la nouvelle palette (TERMINÉ)
+3. ✅ **Développement Typography** avec Inter (TERMINÉ)
+4. ✅ **Tests de contraste** et validation WCAG (TERMINÉ)
+5. **Développement Card Component** avec thème "Tech & Nature"
+6. **Finalisation Navigation** responsive
+7. **Intégration Portfolio Sections**

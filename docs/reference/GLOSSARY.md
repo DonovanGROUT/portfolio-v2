@@ -63,6 +63,9 @@ Attaque où un site malveillant exécute des actions sur un autre site où l'uti
 
 ### D
 
+**Design System**
+Ensemble cohérent de composants, styles, et guidelines réutilisables pour construire des interfaces utilisateur consistantes.
+
 **DOM (Document Object Model)**
 Représentation en mémoire de la structure HTML d'une page web.
 
@@ -194,6 +197,9 @@ Action de revenir à une version précédente stable en cas de problème après 
 **Secret (GitHub)**
 Variable chiffrée stockée de manière sécurisée pour les tokens d'API, mots de passe, etc.
 
+**Semantic HTML**
+Utilisation des balises HTML selon leur signification sémantique (h1-h6 pour hiérarchie, p pour paragraphes, etc.) pour améliorer l'accessibilité et le SEO.
+
 **Snapshot Testing**
 Test qui compare le rendu actuel d'un composant avec une "photo" sauvegardée.
 
@@ -222,6 +228,9 @@ Groupe de tests liés, généralement organisés dans un bloc `describe()`.
 
 **Testing Library**
 Ensemble d'utilitaires pour tester les composants React de manière proche de l'utilisation réelle.
+
+**Typography**
+Système de styles et de hiérarchie typographique pour organiser le contenu textuel de manière cohérente et accessible.
 
 **TypeScript**
 Sur-ensemble de JavaScript qui ajoute le typage statique pour détecter les erreurs avant l'exécution.

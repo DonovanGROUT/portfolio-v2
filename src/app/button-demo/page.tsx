@@ -1,26 +1,31 @@
 'use client';
 
-// Page de démonstration pour tester le composant Button
-// Affiche tous les variants, tailles et états pour validation visuelle
 import { Button } from '@/components/design-system/Button/Button';
+import { Typography } from '@/components/design-system/Typography/Typography';
 
-export default function ButtonDemo() {
+/**
+ * Page de démonstration Button Component
+ * Pour tester le script DEVTOOLS_TEST_SCRIPT.js dans la console DevTools
+ */
+export default function ButtonDemoPage() {
   return (
     <div className="min-h-screen bg-gray-50 p-8">
       <div className="max-w-4xl mx-auto space-y-12">
         {/* Header */}
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          <Typography variant="h1" color="primary">
             Design System - Composant Button
-          </h1>
-          <p className="text-gray-600">
+          </Typography>
+          <Typography variant="body" color="muted">
             Test visuel de tous les variants, tailles et états
-          </p>
+          </Typography>
         </div>
 
         {/* Variants */}
         <section className="space-y-6">
-          <h2 className="text-2xl font-semibold text-gray-800">Variants</h2>
+          <Typography variant="h2" color="secondary">
+            Variants
+          </Typography>
           <div className="flex flex-wrap gap-4">
             <Button variant="primary">Primary Button</Button>
             <Button variant="secondary">Secondary Button</Button>
@@ -30,7 +35,9 @@ export default function ButtonDemo() {
 
         {/* Tailles */}
         <section className="space-y-6">
-          <h2 className="text-2xl font-semibold text-gray-800">Tailles</h2>
+          <Typography variant="h2" color="secondary">
+            Tailles
+          </Typography>
           <div className="flex flex-wrap items-center gap-4">
             <Button size="small">Small</Button>
             <Button size="medium">Medium</Button>
@@ -40,7 +47,9 @@ export default function ButtonDemo() {
 
         {/* États */}
         <section className="space-y-6">
-          <h2 className="text-2xl font-semibold text-gray-800">États</h2>
+          <Typography variant="h2" color="secondary">
+            États
+          </Typography>
           <div className="flex flex-wrap gap-4">
             <Button>Normal</Button>
             <Button disabled>Disabled</Button>
@@ -50,11 +59,15 @@ export default function ButtonDemo() {
 
         {/* Combinaisons */}
         <section className="space-y-6">
-          <h2 className="text-2xl font-semibold text-gray-800">Combinaisons</h2>
+          <Typography variant="h2" color="secondary">
+            Combinaisons
+          </Typography>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Primary variants */}
             <div className="space-y-3">
-              <h3 className="font-medium text-gray-700">Primary</h3>
+              <Typography variant="h3" color="neutral">
+                Primary
+              </Typography>
               <div className="space-y-2">
                 <Button variant="primary" size="small">
                   Small Primary
@@ -76,7 +89,9 @@ export default function ButtonDemo() {
 
             {/* Secondary variants */}
             <div className="space-y-3">
-              <h3 className="font-medium text-gray-700">Secondary</h3>
+              <Typography variant="h3" color="neutral">
+                Secondary
+              </Typography>
               <div className="space-y-2">
                 <Button variant="secondary" size="small">
                   Small Secondary
@@ -98,7 +113,9 @@ export default function ButtonDemo() {
 
             {/* Outline variants */}
             <div className="space-y-3">
-              <h3 className="font-medium text-gray-700">Outline</h3>
+              <Typography variant="h3" color="neutral">
+                Outline
+              </Typography>
               <div className="space-y-2">
                 <Button variant="outline" size="small">
                   Small Outline
@@ -122,9 +139,9 @@ export default function ButtonDemo() {
 
         {/* Tests d'interaction */}
         <section className="space-y-6">
-          <h2 className="text-2xl font-semibold text-gray-800">
+          <Typography variant="h2" color="secondary">
             Tests d&apos;interaction
-          </h2>
+          </Typography>
           <div className="flex flex-wrap gap-4">
             <Button onClick={() => alert('Bouton cliqué !')}>
               Test onClick
@@ -140,16 +157,16 @@ export default function ButtonDemo() {
 
         {/* Accessibilité */}
         <section className="space-y-6">
-          <h2 className="text-2xl font-semibold text-gray-800">
+          <Typography variant="h2" color="secondary">
             Accessibilité
-          </h2>
+          </Typography>
           <div className="bg-white p-6 rounded-lg border">
-            <p className="text-sm text-gray-600 mb-4">
+            <Typography variant="body" color="neutral" className="mb-4">
               • Testez la navigation au clavier (Tab, Enter, Space)
               <br />
               • Vérifiez les contrastes et focus rings
               <br />• Touch targets minimum 44px (Mobile-friendly)
-            </p>
+            </Typography>
             <div className="flex flex-wrap gap-4">
               <Button>Navigation clavier</Button>
               <Button variant="outline" tabIndex={0}>
@@ -161,9 +178,11 @@ export default function ButtonDemo() {
 
         {/* Performance note */}
         <section className="bg-blue-50 p-6 rounded-lg">
-          <h3 className="font-medium text-blue-900 mb-2">📊 Métriques TDD</h3>
+          <Typography variant="h3" color="primary" className="mb-2">
+            📊 Métriques TDD
+          </Typography>
           <ul className="text-sm text-blue-800 space-y-1">
-            <li>✅ 22 tests unitaires passants</li>
+            <li>✅ 13 tests unitaires passants</li>
             <li>✅ Accessibilité WCAG 2.1 AA</li>
             <li>✅ Protection XSS intégrée</li>
             <li>✅ Touch targets 44px minimum</li>
