@@ -83,7 +83,7 @@ describe('ComponentName - TDD Red Phase', () => {
     expect(element).toHaveAttribute('tabIndex', '0');
   });
 
-  // ... 15-25 tests couvrant TOUS les cas
+  // ... tests couvrant TOUS les cas
 });
 ```
 

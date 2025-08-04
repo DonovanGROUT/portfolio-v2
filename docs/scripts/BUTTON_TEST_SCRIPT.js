@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-// Test automatique des classes CSS générées
+// BUTTON COMPONENT - Test DevTools automatisé
 // Ouvrir la console DevTools (F12 > Console) et coller ce code :
 
 // 1. Vérifier les classes Tailwind

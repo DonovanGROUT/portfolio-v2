@@ -55,6 +55,9 @@ Métrique indiquant le pourcentage de code exécuté par les tests :
 **Component Testing**
 Tests qui vérifient le comportement d'un composant React isolé.
 
+**Card Component**
+Composant d'interface utilisateur conteneur qui organise et présente du contenu de manière structurée. Généralement constitué d'un header, body et footer, les cards permettent de regrouper des informations liées (titre, description, image, actions) dans un format visuel cohérent et réutilisable.
+
 **CSP (Content Security Policy)**
 Mécanisme de sécurité empêchant l'exécution de scripts malveillants (protection XSS).
 

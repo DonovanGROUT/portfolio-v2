@@ -94,7 +94,7 @@ Inspiration :
 
 - ✅ Bleu principal (#0369a1) sur blanc : 8.2:1
 - ✅ Gris texte (#374151) sur blanc : 10.7:1
-- ✅ Vert éco (#047857) sur blanc : 6.1:1 **AMÉLIORÉ**
+- ✅ Vert éco (#047857) sur blanc : 6.1:1
 
 ### Touch Targets
 
@@ -154,6 +154,6 @@ Inactive : Gris slate
 2. ✅ **Customisation des boutons** avec la nouvelle palette (TERMINÉ)
 3. ✅ **Développement Typography** avec Inter (TERMINÉ)
 4. ✅ **Tests de contraste** et validation WCAG (TERMINÉ)
-5. **Développement Card Component** avec thème "Tech & Nature"
+5. ✅ **Développement Card Component** avec thème "Tech & Nature" (TERMINÉ)
 6. **Finalisation Navigation** responsive
 7. **Intégration Portfolio Sections**

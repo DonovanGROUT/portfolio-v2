@@ -1,30 +1,69 @@
 /* eslint-disable no-console */
-// Test ARIA - Coller dans Console DevTools
-// Vérification des attributs d'accessibilité
+// SCRIPT GLOBAL ACCESSIBILITÉ - Coller dans Console DevTools
+// Vérifie les attributs d'accessibilité sur tous les éléments interactifs
 
-const buttons = document.querySelectorAll('button');
-console.log('🔍 Test ARIA Attributes:');
+const nativeButtons = Array.from(document.querySelectorAll('button'));
+const customButtons = Array.from(
+  document.querySelectorAll('[role="button"], [tabindex]')
+).filter(
+  el =>
+    // Exclure les boutons natifs déjà pris
+    el.tagName.toLowerCase() !== 'button' &&
+    // Focusable
+    (el.tabIndex >= 0 || el.getAttribute('role') === 'button')
+);
+const links = Array.from(document.querySelectorAll('a[href], [role="link"]'));
 
-buttons.forEach((btn, index) => {
-  const isDisabled = btn.disabled;
-  const isLoading = btn.querySelector('[aria-hidden="true"]'); // spinner
+const allInteractive = [...nativeButtons, ...customButtons, ...links];
 
-  console.log(`Button ${index + 1}:`, {
-    'aria-disabled': btn.getAttribute('aria-disabled'),
-    'aria-busy': btn.getAttribute('aria-busy'),
-    tabIndex: btn.tabIndex,
-    role: btn.getAttribute('role') || 'button (implicit)',
-    disabled: isDisabled,
-    hasSpinner: !!isLoading,
+if (allInteractive.length === 0) {
+  console.warn(
+    'Aucun élément interactif (bouton, card, lien) trouvé sur cette page.'
+  );
+} else {
+  console.log(
+    '🔍 Test ARIA Attributes sur',
+    allInteractive.length,
+    'éléments interactifs :'
+  );
+  allInteractive.forEach((el, index) => {
+    const tag = el.tagName.toLowerCase();
+    const role =
+      el.getAttribute('role') ||
+      (tag === 'button'
+        ? 'button (implicit)'
+        : tag === 'a'
+          ? 'link (implicit)'
+          : '');
+    const isDisabled =
+      el.disabled !== undefined
+        ? el.disabled
+        : el.getAttribute('aria-disabled') === 'true';
+    const isLoading =
+      el.querySelector && el.querySelector('[aria-hidden="true"]');
+    const tabIndex = el.tabIndex;
+    const ariaBusy = el.getAttribute('aria-busy');
+    const ariaDisabled = el.getAttribute('aria-disabled');
+    const id = el.id ? `#${el.id}` : '';
+    console.log(`Élément ${index + 1} : <${tag}${id}>`, {
+      role,
+      tabIndex,
+      'aria-disabled': ariaDisabled,
+      'aria-busy': ariaBusy,
+      disabled: isDisabled,
+      hasSpinner: !!isLoading,
+      focusable: tabIndex >= 0,
+    });
   });
-});
 
-// Test focus management
-const focusableButtons = Array.from(buttons).filter(
-  btn => !btn.disabled && btn.tabIndex !== -1
-);
-console.log('✅ Focusable buttons:', focusableButtons.length);
-console.log(
-  '❌ Non-focusable buttons:',
-  buttons.length - focusableButtons.length
-);
+  // Test focus management
+  const focusable = allInteractive.filter(
+    el =>
+      !(
+        (el.disabled !== undefined && el.disabled) ||
+        el.getAttribute('aria-disabled') === 'true'
+      ) && el.tabIndex >= 0
+  );
+  console.log('✅ Éléments focusables:', focusable.length);
+  console.log('❌ Non-focusables:', allInteractive.length - focusable.length);
+}

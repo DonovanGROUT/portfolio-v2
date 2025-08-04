@@ -27,6 +27,7 @@
 
 - **[✅ BUTTON_TESTING_CHECKLIST.md](./guides/BUTTON_TESTING_CHECKLIST.md)** → Validation Button Component
 - **[✅ TYPOGRAPHY_TESTING_CHECKLIST.md](./guides/TYPOGRAPHY_TESTING_CHECKLIST.md)** → Validation Typography Component
+- **[✅ CARD_TESTING_CHECKLIST.md](./guides/CARD_TESTING_CHECKLIST.md)** → Validation Card Component
 - **[🧪 ADVANCED_TESTING_GUIDE.md](./guides/ADVANCED_TESTING_GUIDE.md)** → Guide tests approfondis
 
 ---
@@ -38,8 +39,9 @@
 #### À coller dans F12 > Console pour validation manuelle
 
 - **[🔍 ARIA_TEST_SCRIPT.js](./scripts/ARIA_TEST_SCRIPT.js)** → Tests accessibilité ARIA
-- **[⚙️ DEVTOOLS_TEST_SCRIPT.js](./scripts/DEVTOOLS_TEST_SCRIPT.js)** → Validation Button classes CSS et métriques
+- **[⚙️ BUTTON_TEST_SCRIPT.js](./scripts/BUTTON_TEST_SCRIPT.js)** → Validation Button classes CSS et métriques
 - **[🔤 TYPOGRAPHY_TEST_SCRIPT.js](./scripts/TYPOGRAPHY_TEST_SCRIPT.js)** → Validation Typography hiérarchie et styles
+- **[🔤 CARD_TEST_SCRIPT.js](./scripts/CARD_TEST_SCRIPT.js)** → Validation Card présence, structure modulaire, accessibilité, XSS et touch targets
 - **[🎭 ANIMATION_TEST_SCRIPT.js](./scripts/ANIMATION_TEST_SCRIPT.js)** → Tests animations et états
 
 ---
@@ -68,13 +70,17 @@
 ### **🎨 Designer/UX**
 
 1. **[🎨 CHARTE_GRAPHIQUE.md](./design/CHARTE_GRAPHIQUE.md)** → Design System complet
-2. **[✅ BUTTON_TESTING_CHECKLIST.md](./guides/BUTTON_TESTING_CHECKLIST.md)** → Validation visuelle
+2. **[✅ BUTTON_TESTING_CHECKLIST.md](./guides/BUTTON_TESTING_CHECKLIST.md)** → Validation visuelle Button
+3. **[✅ TYPOGRAPHY_TESTING_CHECKLIST.md](./guides/TYPOGRAPHY_TESTING_CHECKLIST.md)** → Validation visuelle Typography
+4. **[✅ CARD_TESTING_CHECKLIST.md](./guides/CARD_TESTING_CHECKLIST.md)** → Validation visuelle Card
 
 ### **🧪 QA/Testeur**
 
 1. **[🧪 ADVANCED_TESTING_GUIDE.md](./guides/ADVANCED_TESTING_GUIDE.md)** → Guide tests complets
 2. **[🔍 ARIA_TEST_SCRIPT.js](./scripts/ARIA_TEST_SCRIPT.js)** → Tests accessibilité
-3. **[⚙️ DEVTOOLS_TEST_SCRIPT.js](./scripts/DEVTOOLS_TEST_SCRIPT.js)** → Tests techniques
+3. **[⚙️ BUTTON_TEST_SCRIPT.js](./scripts/BUTTON_TEST_SCRIPT.js)** → Tests techniques Button
+4. **[🔤 TYPOGRAPHY_TEST_SCRIPT.js](./scripts/TYPOGRAPHY_TEST_SCRIPT.js)** → Tests techniques Typography
+5. **[📋 CARD_TEST_SCRIPT.js](./scripts/CARD_TEST_SCRIPT.js)** → Tests techniques Card
 
 ### **🚀 DevOps/CI-CD**
 
@@ -94,22 +100,19 @@
 
 ---
 
-## 📊 **STATUS GLOBAL DU PROJET**
+## 📊 **STATUT GLOBAL DU PROJET**
 
 ### ✅ **Phases Terminées (100%)**
 
 - **Phase 1** : Setup environnement ✅
 - **Phase 2** : Pipeline CI/CD ✅
-- **Phase 3** : Button Component TDD ✅
-- **Phase 3** : Typography Component TDD ✅
 
 ### 🚧 **Phase En Cours**
 
-- **Phase 3** : Card Component (prochaine étape) 🔄
+- **Phase 3** : Design System TDD (50% - Button, Typography, Card terminés) 🔄
 
 ### ⏳ **Phases À Venir**
 
-- **Phase 3** : Navigation + Form Components ⏳
 - **Phase 4** : Portfolio Sections ⏳
 
 ---
@@ -154,16 +157,17 @@
 ### **Structure Logique Optimisée :**
 
 ```bash
+
 /docs/
 ├── 📋 README.md              → INDEX PRINCIPAL (point d'entrée)
 ├── 📁 core/                  → Documents centraux techniques
 │   └── 📖 TECHNICAL_DOCUMENTATION.md
-├── 📁 reference/             → Références & contenus (GLOSSARY, PORTFOLIO_CONTENT)
-├── 📁 templates/             → Templates réutilisables (TDD, DNS)
 ├── 📁 design/                → Charte graphique & Design System
 ├── 📁 guides/                → Tests & validation qualité
 ├── 📁 phases/                → Historique développement par phases
+├── 📁 reference/             → Références & contenus (GLOSSARY, PORTFOLIO_CONTENT)
 └── 📁 scripts/               → Outils tests console DevTools
+├── 📁 templates/             → Templates réutilisables (TDD, DNS)
 ```
 
 ### **Avantages :**
