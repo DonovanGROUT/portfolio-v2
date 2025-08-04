@@ -1,3 +1,9 @@
+// ===================================================================
+// OUTILS DE TESTS PERSONNALISÉS - DESIGN SYSTEM PORTFOLIO
+// ===================================================================
+// Fournit des helpers pour le rendu, les mocks et les providers de tests
+// ===================================================================
+
 import { render, RenderOptions } from '@testing-library/react';
 import { ReactElement } from 'react';
 import { vi } from 'vitest';

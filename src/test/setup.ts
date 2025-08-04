@@ -1,6 +1,11 @@
+// ===================================================================
+// SETUP GLOBAL POUR LES TESTS - DESIGN SYSTEM PORTFOLIO
+// ===================================================================
+// Configure les mocks et l'état global avant chaque test
+// ===================================================================
+
 import '@testing-library/jest-dom';
 
-// Configuration globale pour tous les tests
 beforeEach(() => {
   // Reset de l'état global avant chaque test
   document.body.innerHTML = '';

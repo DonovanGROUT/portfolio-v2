@@ -1,13 +1,16 @@
 'use client';
 
-// Composant Button - Design System Portfolio
-// Accessible, responsive, sécurisé avec variants et états
-import { ButtonHTMLAttributes, forwardRef } from 'react';
-import { cn } from '@/lib/utils';
+// ===================================================================
+// COMPOSANT BUTTON - DESIGN SYSTEM PORTFOLIO
+// ===================================================================
+// Accessible, responsive, sécurisé, variants, tailles, états, WCAG 2.1 AA
+// ===================================================================
 
-// ===================================================================
+import { ButtonHTMLAttributes, forwardRef } from 'react';
+
+// -------------------------------------------------------------------
 // TYPES & INTERFACES
-// ===================================================================
+// -------------------------------------------------------------------
 
 /**
  * Variants disponibles pour le bouton
@@ -35,75 +38,9 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
 }
 
-// ===================================================================
-// VARIANTES DE STYLES (CSS Classes)
-// ===================================================================
-
-const buttonVariants = {
-  // Styles de base communs - Design System Donovan GROUT
-  base: [
-    // Layout et dimensionnement
-    'inline-flex items-center justify-center',
-    'border border-solid rounded-lg', // radius moderne (8px)
-    'font-medium text-center whitespace-nowrap',
-    'transition-all duration-200 ease-in-out', // transition plus fluide
-
-    // Accessibilité et UX améliorée
-    'focus:outline-none focus:ring-2 focus:ring-offset-2',
-    'disabled:cursor-not-allowed disabled:opacity-50',
-    'active:scale-[0.98]', // Micro feedback au clic (dynamisme sportif)
-
-    // Touch targets (minimum 44px pour mobile)
-    'min-h-[44px] min-w-[44px]',
-
-    // États hover et focus optimisés
-    'transform-gpu', // Optimisation performances
-  ].join(' '),
-
-  // Variants visuels - Palette "Tech & Nature"
-  variants: {
-    primary: [
-      // Couleur principale - Bleu océan normand
-      'bg-sky-700 border-sky-700 text-white',
-      'hover:bg-sky-800 hover:border-sky-800 hover:shadow-md',
-      'focus:ring-sky-500',
-      'active:bg-sky-900',
-      'disabled:bg-sky-300 disabled:border-sky-300',
-      'shadow-sm', // Ombrage subtil pour profondeur
-    ].join(' '),
-
-    secondary: [
-      // Couleur secondaire - Vert éco-conception (WCAG AA compliant)
-      'bg-emerald-700 border-emerald-700 text-white',
-      'hover:bg-emerald-800 hover:border-emerald-800 hover:shadow-md',
-      'focus:ring-emerald-500',
-      'active:bg-emerald-900',
-      'disabled:bg-emerald-300 disabled:border-emerald-300',
-      'shadow-sm',
-    ].join(' '),
-
-    outline: [
-      // Variante outline - Moderne et épurée
-      'bg-transparent border-sky-700 text-sky-700',
-      'hover:bg-sky-50 hover:border-sky-800 hover:text-sky-800',
-      'focus:ring-sky-500',
-      'active:bg-sky-100',
-      'disabled:bg-transparent disabled:border-slate-300 disabled:text-slate-400',
-      // Pas d'ombre pour style épuré
-    ].join(' '),
-  },
-
-  // Tailles optimisées pour l'accessibilité
-  sizes: {
-    small: 'px-3 py-1.5 text-sm leading-5', // Compact mais accessible
-    medium: 'px-4 py-2 text-base leading-6', // Taille standard confortable
-    large: 'px-6 py-3 text-lg leading-7', // Prominente et impactante
-  },
-};
-
-// ===================================================================
-// COMPOSANT BUTTON
-// ===================================================================
+// -------------------------------------------------------------------
+// COMPOSANT PRINCIPAL BUTTON
+// -------------------------------------------------------------------
 
 /**
  * Composant Button accessible et responsive
@@ -115,6 +52,7 @@ const buttonVariants = {
  * - Accessibilité complète (WCAG 2.1 AA)
  * - Touch-friendly (44px minimum)
  * - Sécurité XSS (échappement automatique)
+ * - Performance optimisée (classes CSS statiques)
  */
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
@@ -163,31 +101,38 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     };
 
     // ===================================================================
-    // CONSTRUCTION DES CLASSES CSS
+    // CONSTRUCTION DES CLASSES CSS - OPTIMISÉE PERFORMANCE
     // ===================================================================
 
-    const buttonClasses = cn(
-      // Classes de base
-      'btn',
-      buttonVariants.base,
+    // Classes de base selon l'approche optimisée Card
+    const variantClasses: Record<string, string> = {
+      primary:
+        'bg-sky-700 border-sky-700 text-white hover:bg-sky-800 hover:border-sky-800 hover:shadow-md focus:ring-sky-500 active:bg-sky-900 disabled:bg-sky-300 disabled:border-sky-300 shadow-sm',
+      secondary:
+        'bg-emerald-700 border-emerald-700 text-white hover:bg-emerald-800 hover:border-emerald-800 hover:shadow-md focus:ring-emerald-500 active:bg-emerald-900 disabled:bg-emerald-300 disabled:border-emerald-300 shadow-sm',
+      outline:
+        'bg-transparent border-sky-700 text-sky-700 hover:bg-sky-50 hover:border-sky-800 hover:text-sky-800 focus:ring-sky-500 active:bg-sky-100 disabled:bg-transparent disabled:border-slate-300 disabled:text-slate-400',
+    };
 
-      // Variant principal
-      `btn-${variant}`,
-      buttonVariants.variants[variant],
+    const sizeClasses: Record<string, string> = {
+      small: 'px-3 py-1.5 text-sm leading-5',
+      medium: 'px-4 py-2 text-base leading-6',
+      large: 'px-6 py-3 text-lg leading-7',
+    };
 
-      // Taille
-      `btn-${size}`,
-      buttonVariants.sizes[size],
+    const disabledClass = isDisabled ? 'cursor-not-allowed opacity-50' : '';
+    const loadingClass = loading ? 'cursor-wait' : '';
 
-      // États conditionnels
-      {
-        'btn-disabled': isDisabled,
-        'btn-loading': loading,
-      },
-
-      // Classes personnalisées
-      className
-    );
+    const classes = [
+      'inline-flex items-center justify-center border border-solid rounded-lg font-medium text-center whitespace-nowrap transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-[0.98] min-h-[44px] min-w-[44px] transform-gpu',
+      variantClasses[variant],
+      sizeClasses[size],
+      disabledClass,
+      loadingClass,
+      className,
+    ]
+      .filter(Boolean)
+      .join(' ');
 
     // ===================================================================
     // RENDU DU COMPOSANT
@@ -197,7 +142,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={ref}
         type="button"
-        className={buttonClasses}
+        className={classes}
         disabled={isDisabled}
         onClick={handleClick}
         onKeyDown={handleKeyDown}

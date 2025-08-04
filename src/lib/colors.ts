@@ -1,11 +1,16 @@
-// Charte graphique Donovan GROUT - Tech & Nature
-// Système de couleurs inspiré des côtes normandes et de l'éco-conception
+// ===================================================================
+// SYSTÈME DE COULEURS - DESIGN SYSTEM PORTFOLIO
+// ===================================================================
+// Charte graphique Tech & Nature, inspirée des côtes normandes et de l'éco-conception
 // Respecte les standards WCAG 2.1 AA pour l'accessibilité
+// ===================================================================
 
 /**
- * Palette de couleurs du Design System Portfolio Donovan GROUT
- * Inspiration : Côtes normandes, éco-conception, dynamisme sportif
- * Respecte les standards WCAG 2.1 AA pour l'accessibilité
+ * Palette de couleurs principale du Design System Portfolio
+ *
+ * - Couleurs principales (bleu océan, vert éco)
+ * - Couleurs neutres, accent, sémantiques (succès, erreur, warning, info)
+ * - Respecte WCAG 2.1 AA
  */
 export const colors = {
   // ===== COULEURS PRINCIPALES - BLEU OCÉAN NORMAND =====
@@ -95,7 +100,10 @@ export const colors = {
 
 /**
  * Configuration d'accessibilité WCAG 2.1 AA
- * Ratios de contraste validés pour l'accessibilité
+ *
+ * - Contrastes texte/fond validés
+ * - Couleurs d'état accessibles
+ * - Focus rings
  */
 export const accessibilityConfig = {
   // Contrastes validés ✅
@@ -129,7 +137,9 @@ export const tailwindColors = {
 } as const;
 
 /**
- * Couleurs thématiques pour les sections portfolio
+ * Couleurs thématiques pour les sections du portfolio
+ *
+ * - tech, eco, creative, etc.
  */
 export const themeColors = {
   // Tech & Innovation
