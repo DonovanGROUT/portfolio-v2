@@ -1,4 +1,8 @@
-// Tests unitaires pour la bibliothèque de couleurs du Design System
+// ===================================================================
+// TESTS UNITAIRES POUR LA BIBLIOTHÈQUE DE COULEURS - DESIGN SYSTEM PORTFOLIO
+// ===================================================================
+// Tests de couleurs primaires, secondaires, sémantiques, accessibilité, mapping Tailwind, thèmes
+// ===================================================================
 import { describe, it, expect } from 'vitest';
 import {
   colors,

@@ -57,6 +57,7 @@ export default defineConfig({
         'src/app/button-demo/**',
         'src/app/typography-demo/**',
         'src/app/simple-test/**',
+        'src/app/card-demo/**',
         // Layout is difficult to test in isolation
         'src/app/layout.tsx',
         // Husky hooks are shell scripts

@@ -1,5 +1,8 @@
-// Utilitaires généraux du portfolio - Design System
-// Fonctions d'aide pour CSS, validation et sécurité
+// ===================================================================
+// UTILITAIRES GÉNÉRAUX - DESIGN SYSTEM PORTFOLIO
+// ===================================================================
+// Fonctions d'aide pour CSS, validation, sécurité, formatage, tokens
+// ===================================================================
 
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';

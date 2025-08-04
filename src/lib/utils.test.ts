@@ -1,4 +1,8 @@
-// Tests unitaires pour les utilitaires du portfolio
+// ===================================================================
+// TESTS UNITAIRES POUR LES UTILITAIRES DU PORTFOLIO
+// ===================================================================
+// Tests de classnames, sanitization, validation email/téléphone, formatage, CSRF
+// ===================================================================
 import { describe, it, expect } from 'vitest';
 import {
   cn,
