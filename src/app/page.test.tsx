@@ -1,5 +1,8 @@
-// Tests unitaires pour la page d'accueil du portfolio
-// Vérifie le rendu, l'interaction et la responsivité
+// ===================================================================
+// TESTS UNITAIRES POUR LA PAGE D'ACCUEIL DU PORTFOLIO
+// ===================================================================
+// Tests de rendu, interaction, responsivité, sécurité, mocks
+// ===================================================================
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import {
   render,
@@ -23,14 +26,10 @@ describe("Page d'accueil", () => {
 
     // Tests groupés pour éviter plusieurs renders
     const logo = screen.getByAltText('Next.js logo');
-    const gettingStartedText = screen.getByText(/Get started by editing/i);
-    const filePath = screen.getByText('src/app/page.tsx');
     const deployButton = screen.getByRole('link', { name: /Deploy now/i });
     const main = screen.getByRole('main');
 
     expect(logo).toBeInTheDocument();
-    expect(gettingStartedText).toBeInTheDocument();
-    expect(filePath).toBeInTheDocument();
     expect(deployButton).toBeInTheDocument();
     expect(deployButton).toHaveAttribute(
       'href',

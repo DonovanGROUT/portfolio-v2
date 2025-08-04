@@ -1,5 +1,8 @@
-// Layout racine de l'application portfolio
-// Définit la structure HTML globale, fonts et métadonnées
+// ===================================================================
+// LAYOUT RACINE DE L'APPLICATION PORTFOLIO
+// ===================================================================
+// Définit la structure HTML globale, polices, métadonnées SEO
+// ===================================================================
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';

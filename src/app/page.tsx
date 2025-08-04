@@ -1,6 +1,12 @@
-// Page d'accueil du portfolio - Composant principal Next.js
+// ===================================================================
+// PAGE D'ACCUEIL DU PORTFOLIO - COMPOSANT PRINCIPAL
+// ===================================================================
 // Layout responsive avec CSS Grid et Tailwind CSS
+// Affiche la démo du design system et les liens principaux
+// ===================================================================
 import Image from 'next/image';
+
+import { Card } from '../components/design-system/Card/Card';
 
 export default function Home() {
   return (
@@ -17,19 +23,18 @@ export default function Home() {
           priority
         />
 
-        {/* Instructions de démarrage avec design responsive */}
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{' '}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+        {/* Démo Card Design System */}
+        <div className="w-full max-w-md">
+          <Card variant="project" size="md" hover>
+            <Card.Header>Démo Card</Card.Header>
+            <Card.Image src="/next.svg" alt="Image de démo" />
+            <Card.Body>
+              Ceci est un exemple de composant Card du design system, avec
+              header, image, body et footer.
+            </Card.Body>
+            <Card.Footer>Pied de page</Card.Footer>
+          </Card>
+        </div>
 
         {/* Boutons d'action principaux */}
         <div className="flex gap-4 items-center flex-col sm:flex-row">
