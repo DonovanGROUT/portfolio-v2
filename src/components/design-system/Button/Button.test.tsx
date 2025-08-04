@@ -1,5 +1,8 @@
-// Test unitaires pour le composant Button - Design System Portfolio
-// Tests d'accessibilité, variants, états et sécurité
+// ===================================================================
+// TESTS UNITAIRES POUR LE COMPOSANT BUTTON - DESIGN SYSTEM PORTFOLIO
+// ===================================================================
+// Tests d'accessibilité, variants, états, sécurité, interactions, validation
+// ===================================================================
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import { Button } from './Button';
@@ -21,8 +24,8 @@ describe('Button Component - Design System', () => {
     render(<Button>Test</Button>);
 
     const button = screen.getByRole('button');
-    expect(button).toHaveClass('btn');
-    expect(button).toHaveClass('btn-primary'); // variant par défaut
+    expect(button).toHaveClass('inline-flex'); // classe de base optimisée
+    expect(button).toHaveClass('bg-sky-700'); // variant primary par défaut
   });
 
   // ===================================================================
@@ -33,30 +36,30 @@ describe('Button Component - Design System', () => {
     // Test tous les variants en une fois
     const { rerender } = render(<Button variant="primary">Primary</Button>);
     let button = screen.getByRole('button');
-    expect(button).toHaveClass('btn-primary');
+    expect(button).toHaveClass('bg-sky-700'); // primary optimisé
 
     rerender(<Button variant="secondary">Secondary</Button>);
     button = screen.getByRole('button');
-    expect(button).toHaveClass('btn-secondary');
+    expect(button).toHaveClass('bg-emerald-700'); // secondary optimisé
 
     rerender(<Button variant="outline">Outline</Button>);
     button = screen.getByRole('button');
-    expect(button).toHaveClass('btn-outline');
+    expect(button).toHaveClass('bg-transparent'); // outline optimisé
   });
 
   it('devrait supporter toutes les tailles', () => {
     // Test toutes les tailles en une fois
     const { rerender } = render(<Button size="small">Small</Button>);
     let button = screen.getByRole('button');
-    expect(button).toHaveClass('btn-small');
+    expect(button).toHaveClass('px-3'); // small optimisé
 
     rerender(<Button size="medium">Medium</Button>);
     button = screen.getByRole('button');
-    expect(button).toHaveClass('btn-medium');
+    expect(button).toHaveClass('px-4'); // medium optimisé
 
     rerender(<Button size="large">Large</Button>);
     button = screen.getByRole('button');
-    expect(button).toHaveClass('btn-large');
+    expect(button).toHaveClass('px-6'); // large optimisé
   });
 
   // ===================================================================
@@ -68,7 +71,7 @@ describe('Button Component - Design System', () => {
 
     const button = screen.getByRole('button');
     expect(button).toBeDisabled();
-    expect(button).toHaveClass('btn-disabled');
+    expect(button).toHaveClass('cursor-not-allowed'); // disabled optimisé
     expect(button).toHaveAttribute('aria-disabled', 'true');
   });
 
@@ -77,7 +80,7 @@ describe('Button Component - Design System', () => {
 
     const button = screen.getByRole('button');
     expect(button).toBeDisabled();
-    expect(button).toHaveClass('btn-loading');
+    expect(button).toHaveClass('cursor-wait'); // loading optimisé
     expect(button).toHaveAttribute('aria-busy', 'true');
     expect(button).toHaveAttribute('aria-disabled', 'true');
   });
@@ -192,7 +195,7 @@ describe('Button Component - Design System', () => {
     );
 
     const button = screen.getByRole('button');
-    expect(button).toHaveClass('btn');
+    expect(button).toHaveClass('inline-flex'); // classe de base optimisée
     expect(button).toHaveClass('custom-class');
     expect(button).toHaveAttribute('id', 'test-button');
     expect(button).toHaveAttribute('data-testid', 'button-component');
@@ -222,6 +225,7 @@ describe('Button Component - Design System', () => {
   });
 
   // Test spécifique pour couvrir la prévention clavier sur disabled
+
   it('ne devrait pas déclencher onClick via clavier quand disabled', () => {
     const handleClick = vi.fn();
     render(
@@ -235,5 +239,40 @@ describe('Button Component - Design System', () => {
     fireEvent.keyDown(button, { key: ' ' });
 
     expect(handleClick).not.toHaveBeenCalled();
+  });
+
+  it('couvre le bloc preventDefault/return clavier sur loading', () => {
+    const handleClick = vi.fn();
+    render(
+      <Button loading onClick={handleClick}>
+        Loading Keyboard
+      </Button>
+    );
+    const button = screen.getByRole('button');
+    fireEvent.keyDown(button, { key: 'Enter' });
+    fireEvent.keyDown(button, { key: ' ' });
+    expect(handleClick).not.toHaveBeenCalled();
+  });
+
+  it('ne doit pas appeler onClick si disabled', () => {
+    const onClick = vi.fn();
+    render(
+      <Button disabled onClick={onClick}>
+        Test
+      </Button>
+    );
+    fireEvent.click(screen.getByRole('button'));
+    expect(onClick).not.toHaveBeenCalled();
+  });
+
+  it('ne doit pas appeler onClick si loading', () => {
+    const onClick = vi.fn();
+    render(
+      <Button loading onClick={onClick}>
+        Test
+      </Button>
+    );
+    fireEvent.click(screen.getByRole('button'));
+    expect(onClick).not.toHaveBeenCalled();
   });
 });

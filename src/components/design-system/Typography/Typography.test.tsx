@@ -1,5 +1,8 @@
-// Test unitaires pour le composant Typography - Design System Portfolio
-// Tests d'accessibilité, variants, responsive et sécurité
+// ===================================================================
+// TESTS UNITAIRES POUR LE COMPOSANT TYPOGRAPHY - DESIGN SYSTEM PORTFOLIO
+// ===================================================================
+// Tests d'accessibilité, variants, responsive, sécurité, performance
+// ===================================================================
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
 import { Typography } from './Typography';

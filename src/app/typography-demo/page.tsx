@@ -1,9 +1,12 @@
+// ===================================================================
+// PAGE DE DÉMONSTRATION TYPOGRAPHY COMPONENT
+// ===================================================================
+// Démo visuelle de toutes les fonctionnalités du composant Typography
+// Pour tests DevTools : voir docs/scripts/TYPOGRAPHY_TEST_SCRIPT.js
+// Pour valider l'accessibilité : voir docs/scripts/ARIA_TEST_SCRIPT.js
+// ===================================================================
 import { Typography } from '@/components/design-system/Typography/Typography';
 
-/**
- * Page de démonstration Typography Component
- * Pour tester le script TYPOGRAPHY_TEST_SCRIPT.js dans la console DevTools
- */
 export default function TypographyDemoPage() {
   return (
     <div className="min-h-screen bg-gray-50 p-8">
@@ -63,7 +66,7 @@ export default function TypographyDemoPage() {
           </Typography>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Typography variant="h4" color="primary">
+              <Typography variant="h3" color="primary">
                 Primary (Sky-700)
               </Typography>
               <Typography variant="body" color="primary">
@@ -72,7 +75,7 @@ export default function TypographyDemoPage() {
             </div>
 
             <div className="space-y-2">
-              <Typography variant="h4" color="secondary">
+              <Typography variant="h3" color="secondary">
                 Secondary (Emerald-700)
               </Typography>
               <Typography variant="body" color="secondary">
@@ -81,7 +84,7 @@ export default function TypographyDemoPage() {
             </div>
 
             <div className="space-y-2">
-              <Typography variant="h4" color="neutral">
+              <Typography variant="h3" color="neutral">
                 Neutral (Slate-700)
               </Typography>
               <Typography variant="body" color="neutral">
@@ -90,7 +93,7 @@ export default function TypographyDemoPage() {
             </div>
 
             <div className="space-y-2">
-              <Typography variant="h4" color="muted">
+              <Typography variant="h3" color="muted">
                 Muted (Slate-500)
               </Typography>
               <Typography variant="body" color="muted">

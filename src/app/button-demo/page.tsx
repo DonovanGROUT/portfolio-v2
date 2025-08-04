@@ -1,12 +1,17 @@
 'use client';
 
+// ===================================================================
+// PAGE DE DÉMONSTRATION BUTTON COMPONENT
+// ===================================================================
+// Démo visuelle de toutes les fonctionnalités du composant Button
+// Pour tests DevTools : voir docs/scripts/BUTTON_TEST_SCRIPT.js
+// Pour valider l'accessibilité : voir docs/scripts/ARIA_TEST_SCRIPT.js
+// Pour valider les animations de loading : voir docs/scripts/ANIMATION_TEST_SCRIPT.js
+// ===================================================================
+
 import { Button } from '@/components/design-system/Button/Button';
 import { Typography } from '@/components/design-system/Typography/Typography';
 
-/**
- * Page de démonstration Button Component
- * Pour tester le script DEVTOOLS_TEST_SCRIPT.js dans la console DevTools
- */
 export default function ButtonDemoPage() {
   return (
     <div className="min-h-screen bg-gray-50 p-8">

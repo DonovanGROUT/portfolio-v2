@@ -1,11 +1,13 @@
-// Composant Typography - Design System Portfolio
-// Système typographique accessible avec variants, couleurs et responsive
+// ===================================================================
+// COMPOSANT TYPOGRAPHY - DESIGN SYSTEM PORTFOLIO
+// ===================================================================
+// Système typographique accessible, variants, couleurs, responsive, alignements, WCAG 2.1 AA
+// ===================================================================
 import React from 'react';
-import { cn } from '../../../lib/utils';
 
-// ===================================================================
-// TYPES TYPESCRIPT
-// ===================================================================
+// -------------------------------------------------------------------
+// TYPES & INTERFACES
+// -------------------------------------------------------------------
 
 type TypographyVariant =
   | 'h1'
@@ -58,9 +60,9 @@ export interface TypographyProps {
   role?: string;
 }
 
-// ===================================================================
+// -------------------------------------------------------------------
 // CONFIGURATION DES VARIANTS
-// ===================================================================
+// -------------------------------------------------------------------
 
 const variantConfig = {
   h1: {
@@ -115,9 +117,9 @@ const alignConfig = {
   justify: 'text-justify',
 } as const;
 
-// ===================================================================
-// COMPOSANT TYPOGRAPHY
-// ===================================================================
+// -------------------------------------------------------------------
+// COMPOSANT PRINCIPAL TYPOGRAPHY
+// -------------------------------------------------------------------
 
 export const Typography = React.forwardRef<HTMLElement, TypographyProps>(
   (
@@ -140,29 +142,29 @@ export const Typography = React.forwardRef<HTMLElement, TypographyProps>(
     // Configuration du variant
     const config = variantConfig[variant];
 
-    // Construction des classes CSS
-    const typographyClasses = cn(
-      // Classes de base du variant
-      responsive ? config.responsiveClasses : config.baseClasses,
+    // Construction des classes CSS - OPTIMISÉE PERFORMANCE
+    const baseClasses = responsive
+      ? config.responsiveClasses
+      : config.baseClasses;
+    const colorClass = colorConfig[color];
+    const alignClass = align ? alignConfig[align] : '';
+    const truncateClass = truncate ? 'truncate' : '';
 
-      // Couleur
-      colorConfig[color],
-
-      // Alignement
-      align && alignConfig[align],
-
-      // Truncate
-      truncate && 'truncate',
-
-      // Classes personnalisées
-      className
-    );
+    const classes = [
+      baseClasses,
+      colorClass,
+      alignClass,
+      truncateClass,
+      className,
+    ]
+      .filter(Boolean)
+      .join(' ');
 
     return React.createElement(
       Element,
       {
         ref,
-        className: typographyClasses,
+        className: classes,
         ...props,
       },
       children
