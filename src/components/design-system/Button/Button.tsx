@@ -7,6 +7,7 @@
 // ===================================================================
 
 import { ButtonHTMLAttributes, forwardRef } from 'react';
+import { colors } from '../../../lib/colors';
 
 // -------------------------------------------------------------------
 // TYPES & INTERFACES
@@ -101,18 +102,87 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     };
 
     // ===================================================================
-    // CONSTRUCTION DES CLASSES CSS - OPTIMISÉE PERFORMANCE
+    // CONSTRUCTION DES STYLES INLINE - SYSTÈME COLORS.TS
     // ===================================================================
 
-    // Classes de base selon l'approche optimisée Card
-    const variantClasses: Record<string, string> = {
-      primary:
-        'bg-sky-700 border-sky-700 text-white hover:bg-sky-800 hover:border-sky-800 hover:shadow-md focus:ring-sky-500 active:bg-sky-900 disabled:bg-sky-300 disabled:border-sky-300 shadow-sm',
-      secondary:
-        'bg-emerald-700 border-emerald-700 text-white hover:bg-emerald-800 hover:border-emerald-800 hover:shadow-md focus:ring-emerald-500 active:bg-emerald-900 disabled:bg-emerald-300 disabled:border-emerald-300 shadow-sm',
-      outline:
-        'bg-transparent border-sky-700 text-sky-700 hover:bg-sky-50 hover:border-sky-800 hover:text-sky-800 focus:ring-sky-500 active:bg-sky-100 disabled:bg-transparent disabled:border-slate-300 disabled:text-slate-400',
+    // Styles de base selon les variants
+    const getVariantStyles = () => {
+      switch (variant) {
+        case 'primary':
+          return {
+            backgroundColor: colors.primary[700],
+            borderColor: colors.primary[700],
+            color: '#ffffff',
+          };
+        case 'secondary':
+          return {
+            backgroundColor: colors.secondary[600],
+            borderColor: colors.secondary[600],
+            color: '#ffffff',
+          };
+        case 'outline':
+          return {
+            backgroundColor: 'rgba(0, 0, 0, 0)',
+            borderColor: colors.primary[700],
+            color: colors.primary[700],
+          };
+        default:
+          return {
+            backgroundColor: colors.primary[700],
+            borderColor: colors.primary[700],
+            color: '#ffffff',
+          };
+      }
     };
+
+    // Gestion des états hover et focus
+    const handleMouseEnter = (event: React.MouseEvent<HTMLButtonElement>) => {
+      if (isDisabled) return;
+
+      const button = event.currentTarget;
+      switch (variant) {
+        case 'primary':
+          button.style.backgroundColor = colors.primary[800];
+          button.style.borderColor = colors.primary[800];
+          break;
+        case 'secondary':
+          button.style.backgroundColor = colors.secondary[700];
+          button.style.borderColor = colors.secondary[700];
+          break;
+        case 'outline':
+          button.style.backgroundColor = colors.primary[50];
+          button.style.color = colors.primary[800];
+          break;
+      }
+    };
+
+    const handleMouseLeave = (event: React.MouseEvent<HTMLButtonElement>) => {
+      if (isDisabled) return;
+
+      const button = event.currentTarget;
+      const baseStyles = getVariantStyles();
+      button.style.backgroundColor = baseStyles.backgroundColor;
+      button.style.borderColor = baseStyles.borderColor;
+      button.style.color = baseStyles.color;
+    };
+
+    const handleFocus = (event: React.FocusEvent<HTMLButtonElement>) => {
+      const button = event.currentTarget;
+      button.style.boxShadow = `0 0 0 2px ${colors.primary[500]}40`;
+    };
+
+    const handleBlur = (event: React.FocusEvent<HTMLButtonElement>) => {
+      const button = event.currentTarget;
+      button.style.boxShadow = 'none';
+    };
+
+    const baseStyles: React.CSSProperties = getVariantStyles();
+
+    // Styles disabled
+    if (isDisabled) {
+      baseStyles.opacity = '0.5';
+      baseStyles.cursor = 'not-allowed';
+    }
 
     const sizeClasses: Record<string, string> = {
       small: 'px-3 py-1.5 text-sm leading-5',
@@ -120,15 +190,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       large: 'px-6 py-3 text-lg leading-7',
     };
 
-    const disabledClass = isDisabled ? 'cursor-not-allowed opacity-50' : '';
-    const loadingClass = loading ? 'cursor-wait' : '';
-
     const classes = [
-      'inline-flex items-center justify-center border border-solid rounded-lg font-medium text-center whitespace-nowrap transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-[0.98] min-h-[44px] min-w-[44px] transform-gpu',
-      variantClasses[variant],
+      'inline-flex items-center justify-center border border-solid rounded-lg font-medium text-center whitespace-nowrap transition-all duration-200 ease-in-out focus:outline-none active:scale-[0.98] min-h-[44px] min-w-[44px] transform-gpu',
       sizeClasses[size],
-      disabledClass,
-      loadingClass,
       className,
     ]
       .filter(Boolean)
@@ -143,9 +207,14 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         type="button"
         className={classes}
+        style={baseStyles}
         disabled={isDisabled}
         onClick={handleClick}
         onKeyDown={handleKeyDown}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
         // Accessibilité ARIA
         aria-disabled={isDisabled}
         aria-busy={loading}

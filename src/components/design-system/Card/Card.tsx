@@ -1,3 +1,5 @@
+'use client';
+
 // ===================================================================
 // TYPES & INTERFACES
 // ===================================================================
@@ -14,6 +16,8 @@
 
 import React from 'react';
 import Image, { ImageProps } from 'next/image';
+import { colors } from '../../../lib/colors';
+import { Typography } from '../Typography/Typography';
 
 /**
  * Props du composant Card principal
@@ -54,10 +58,12 @@ function CardHeader({
 }: React.HTMLAttributes<HTMLElement>) {
   return (
     <header
-      className={`border-b border-slate-200 px-6 py-4 font-semibold ${className}`}
+      className={`border-b border-slate-200 px-6 py-4 ${className}`}
       {...props}
     >
-      {children}
+      <Typography variant="h3" color="neutral" as="span">
+        {children}
+      </Typography>
     </header>
   );
 }
@@ -75,7 +81,9 @@ function CardBody({
 }: React.HTMLAttributes<HTMLElement>) {
   return (
     <section className={`px-6 py-4 ${className}`} {...props}>
-      {children}
+      <Typography variant="body" color="neutral" as="div">
+        {children}
+      </Typography>
     </section>
   );
 }
@@ -93,10 +101,12 @@ function CardFooter({
 }: React.HTMLAttributes<HTMLElement>) {
   return (
     <footer
-      className={`border-t border-slate-200 px-6 py-4 text-sm text-slate-500 ${className}`}
+      className={`border-t border-slate-200 px-6 py-4 ${className}`}
       {...props}
     >
-      {children}
+      <Typography variant="caption" color="muted" as="span">
+        {children}
+      </Typography>
     </footer>
   );
 }
@@ -124,6 +134,7 @@ function CardImage({
       className={`h-48 object-cover ${className}`}
       width={600}
       height={192}
+      style={{ width: 'auto', height: 'auto' }}
       {...props}
     />
   );
@@ -196,16 +207,82 @@ function CardBase({
   'aria-describedby': ariaDescribedby,
   ...rest
 }: CardProps) {
-  // Classes de base selon la charte graphique
-  const variantClasses: Record<string, string> = {
-    default: 'bg-white border-slate-200',
-    project:
-      'bg-gradient-to-br from-sky-50 to-emerald-50 border-sky-200 hover:border-sky-300',
-    skill: 'bg-emerald-50 border-emerald-200 hover:border-emerald-300',
-    experience: 'bg-slate-50 border-slate-300 hover:border-slate-400',
-    testimonial:
-      'bg-gradient-to-r from-emerald-50 to-sky-50 border-sky-200 hover:border-emerald-300',
+  // ===================================================================
+  // STYLES AVEC SYSTÈME COLORS.TS
+  // ===================================================================
+
+  // Fonction pour obtenir les styles selon la variante
+  const getVariantStyles = (): React.CSSProperties => {
+    switch (variant) {
+      case 'default':
+        return {
+          backgroundColor: '#ffffff',
+          borderColor: colors.neutral[200],
+        };
+      case 'project':
+        return {
+          background: `linear-gradient(to bottom right, ${colors.primary[50]}, ${colors.secondary[50]})`,
+          borderColor: colors.primary[200],
+        };
+      case 'skill':
+        return {
+          backgroundColor: colors.secondary[50],
+          borderColor: colors.secondary[200],
+        };
+      case 'experience':
+        return {
+          backgroundColor: colors.neutral[50],
+          borderColor: colors.neutral[300],
+        };
+      case 'testimonial':
+        return {
+          background: `linear-gradient(to right, ${colors.secondary[50]}, ${colors.primary[50]})`,
+          borderColor: colors.primary[200],
+        };
+      default:
+        return {
+          backgroundColor: '#ffffff',
+          borderColor: colors.neutral[200],
+        };
+    }
   };
+
+  // Gestion des événements hover
+  const handleMouseEnter = (event: React.MouseEvent<HTMLElement>) => {
+    if (!hover || disabled) return;
+
+    const element = event.currentTarget;
+    switch (variant) {
+      case 'project':
+        element.style.borderColor = colors.primary[300];
+        break;
+      case 'skill':
+        element.style.borderColor = colors.secondary[300];
+        break;
+      case 'experience':
+        element.style.borderColor = colors.neutral[400];
+        break;
+      case 'testimonial':
+        element.style.borderColor = colors.secondary[300];
+        break;
+    }
+  };
+
+  const handleMouseLeave = (event: React.MouseEvent<HTMLElement>) => {
+    if (!hover || disabled) return;
+
+    const element = event.currentTarget;
+    const baseStyles = getVariantStyles();
+    element.style.borderColor = baseStyles.borderColor as string;
+  };
+
+  const baseStyles = getVariantStyles();
+
+  // Styles disabled
+  if (disabled) {
+    baseStyles.opacity = '0.5';
+    baseStyles.cursor = 'not-allowed';
+  }
   // Padding responsive pour toutes les tailles
   const paddingResponsive = 'p-4 md:p-6 lg:p-8';
   const sizeClasses: Record<string, string> = {
@@ -218,8 +295,7 @@ function CardBase({
     clickable
       ? 'cursor-pointer transition-transform hover:scale-102 active:scale-98'
       : '',
-    disabled ? 'opacity-50 cursor-not-allowed pointer-events-none' : '',
-    loading ? 'bg-slate-200 text-slate-800 cursor-wait' : '',
+    loading ? 'cursor-wait' : '',
   ]
     .filter(Boolean)
     .join(' ');
@@ -229,7 +305,6 @@ function CardBase({
 
   const classes = [
     'border',
-    variantClasses[variant],
     paddingResponsive,
     sizeClasses[size],
     interactiveClasses,
@@ -262,6 +337,9 @@ function CardBase({
   return (
     <article
       className={classes}
+      style={baseStyles}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       role={role}
       tabIndex={isInteractive ? 0 : undefined}
       aria-label={ariaLabel}

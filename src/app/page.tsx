@@ -4,8 +4,9 @@
 // Layout responsive avec CSS Grid et Tailwind CSS
 // Affiche la démo du design system et les liens principaux
 // ===================================================================
-import Image from 'next/image';
+'use client';
 
+import Image from 'next/image';
 import { Card } from '../components/design-system/Card/Card';
 
 export default function Home() {
