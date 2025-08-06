@@ -186,11 +186,14 @@ Développeur web full-stack, basé à Caen, je viens de passer mon titre profess
 
 ## 🎨 **Notes sur le Design**
 
-### **Palette de couleurs** (à partir du portfolio actuel)
+### **Palette de couleurs** (Design System "Tech & Nature" actuel)
 
-- **Couleur primaire :** #FF8552 (orange)
-- **Couleur secondaire :** Complémentaire à définir
+- **Couleur primaire :** #0369a1 (bleu océan - sky-700)
+- **Couleur secondaire :** #047857 (vert éco - emerald-700)
+- **Couleurs neutres :** #334155 (slate-700), #64748b (slate-500)
 - **Dark mode :** Support prévu
+
+> **Note :** Migration de l'orange #FF8552 (ancien portfolio) vers la charte "Tech & Nature" pour cohérence avec l'identité normande et éco-responsable.
 
 ### **Typographie**
 

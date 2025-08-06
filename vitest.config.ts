@@ -56,8 +56,13 @@ export default defineConfig({
         // Pages de démo - exemples pour développement
         'src/app/button-demo/**',
         'src/app/typography-demo/**',
+        'src/app/navigation-demo/**',
         'src/app/simple-test/**',
         'src/app/card-demo/**',
+        // Pages temporaires - simples placeholders sans logique à tester
+        'src/app/about/page.tsx',
+        'src/app/projects/page.tsx',
+        'src/app/contact/page.tsx',
         // Layout is difficult to test in isolation
         'src/app/layout.tsx',
         // Husky hooks are shell scripts

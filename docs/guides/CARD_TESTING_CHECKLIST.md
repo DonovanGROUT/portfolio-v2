@@ -11,7 +11,7 @@ Validation complète du composant Card avec méthodologie TDD stricte, couvertur
 - ✅ **Tests unitaires** : 32/32 (100%)
 - ✅ **Couverture excellente** : **100%** statements, **96.87%** branches, **100%** functions, **100%** lines
 - ✅ **Performance tests** : 438ms (optimisé vs target 500ms)
-- ✅ **Lighthouse Score (prod - http://localhost:3000/card-demo)** : **95/100** - Problèmes contraste et ARIA à corriger
+- ✅ **Lighthouse Score (mobile)** → 94/100 Performances, 100/100 Accessibilité, SEO, Bonnes pratiques. **100/100 sur desktop** partout.
 - ✅ **Bundle size** : 2.86kB (page) / 117kB (JS)
 - ✅ **Build production** : Success en 4.0s
 - ✅ **Standards WCAG 2.1 AA** : [Référence officielle](https://www.w3.org/WAI/WCAG21/quickref/) – ARIA compliant, semantic HTML
@@ -63,7 +63,7 @@ Validation complète du composant Card avec méthodologie TDD stricte, couvertur
 
 ## ♿ **TESTS ACCESSIBILITÉ ✅ PASSÉS**
 
-- [x] Lighthouse Score Accessibility : **95/100** - Problèmes contraste et ARIA
+- [x] Lighthouse Score Accessibility : **100/100**
 - [x] Structure sémantique (article, section, header)
 - [x] ARIA labels et descriptions
 - [x] Contraste couleurs respecté
@@ -86,7 +86,7 @@ Validation complète du composant Card avec méthodologie TDD stricte, couvertur
 
 ## 📊 **MÉTRIQUES PERFORMANCE ✅ EXCELLENTES**
 
-- [x] **Lighthouse Score (prod)** : À auditer sur /card-demo
+- [x] **Lighthouse Score (mobile)** → 94/100 Performances, 100/100 Accessibilité, SEO, Bonnes pratiques. **100/100 sur desktop** partout.
 - [x] **Bundle size** : 2.86kB (page) / 117kB (JS)
 - [x] **Render performance** : Optimisé
 - [x] **Memory usage** : Sous contrôle
@@ -123,7 +123,7 @@ Validation complète du composant Card avec méthodologie TDD stricte, couvertur
 
 - TDD Complet (32 tests unitaires)
 - WCAG 2.1 AA ([Référence officielle](https://www.w3.org/WAI/WCAG21/quickref/))
-- Lighthouse Accessibility Score : **95/100** - Problèmes contraste et ARIA à corriger
+- Lighthouse Accessibility Score : **100/100**
 - Performance Web (438ms tests, composant optimisé)
 - Bundle size : 2.86kB (page) / 117kB (JS)
 - Build production : Success en 4.0s

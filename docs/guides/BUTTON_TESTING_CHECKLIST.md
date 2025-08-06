@@ -64,7 +64,7 @@
 
 ## 📊 MÉTRIQUES PERFORMANCE ✅ EXCELLENTES
 
-- [x] Lighthouse Score → 100/100 Accessibility
+- [x] Lighthouse Score (mobile) → 98/100 Performances, 100/100 Accessibilité, SEO, Bonnes pratiques. 100/100 sur desktop partout.
 - [x] First Paint → 264ms (excellent)
 - [x] Bundle size → 2.48kB (page) / 111kB (JS)
 - [x] Total Load → 1.26s finish time

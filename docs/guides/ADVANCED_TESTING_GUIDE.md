@@ -10,9 +10,9 @@
 
 ## 🔧 TESTS DEVTOOLS TECHNIQUES
 
-- [x] **Console Test**: Coller scripts globaux (BUTTON_TEST_SCRIPT.js, CARD_TEST_SCRIPT.js, TYPOGRAPHY_TEST_SCRIPT.js)
+- [x] **Console Test**: Coller scripts globaux (BUTTON_TEST_SCRIPT.js, TYPOGRAPHY_TEST_SCRIPT.js, CARD_TEST_SCRIPT.js, NAVIGATION_TEST_SCRIPT.js)
 - [x] **Network Tab**: F12 > Network > Reload → CSS status 200, no 404s
-- [x] **Bundle Size**: Build réussi (Button: 2.48kB, Card: 2.86kB, Typography: 135B)
+- [x] **Bundle Size**: Build réussi (Button: 2.48kB, Typography: 135B, Card: 2.86kB, Navigation: optimisé)
 - [x] **Performance**: First Load < 120kB par page
 - [x] **Memory**: DevTools > Memory > Heap snapshots pour fuites
 
@@ -54,7 +54,7 @@
 # Dans Console DevTools, coller ces scripts:
 
 # 1. Test général
-BUTTON_TEST_SCRIPT.js
+BUTTON_TEST_SCRIPT.js, TYPOGRAPHY_TEST_SCRIPT.js, CARD_TEST_SCRIPT.js, NAVIGATION_TEST_SCRIPT.js
 
 # 2. Test ARIA
 ARIA_TEST_SCRIPT.js
