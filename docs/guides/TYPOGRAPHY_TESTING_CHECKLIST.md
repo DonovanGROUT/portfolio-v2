@@ -11,8 +11,8 @@ Validation complète du composant Typography avec méthodologie TDD stricte, cou
 - ✅ **Tests unitaires** : 17/17 (100%)
 - ✅ **Couverture parfaite** : **100%** statements, branches, functions
 - ✅ **Performance tests** : 307ms (optimisé vs target 450ms)
-- ✅ **Lighthouse Score (prod - http://localhost:3000/typography-demo)** :
-  - Mobile : 94 Performance, 100 Accessibilité, 100 Bonnes pratiques, 100 SEO
+- ✅ **Lighthouse Score** :
+  - Mobile : 98 Performance, 100 Accessibilité, 100 Bonnes pratiques, 100 SEO
   - Desktop : 100 Performance, 100 Accessibilité, 100 Bonnes pratiques, 100 SEO
 - ✅ **Bundle size** : 135 B (page) / 101 kB (JS)
 - ✅ **Build production** : Success en 4.0s
