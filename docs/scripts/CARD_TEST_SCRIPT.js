@@ -4,13 +4,27 @@
 
 console.log('🃏 CARD COMPONENT - VALIDATION AUTOMATIQUE');
 
-// 1. Vérifier les éléments Card présents
+// 1. Vérifier les éléments Card présents avec styles inline
 const cards = document.querySelectorAll('[role="article"]');
 console.log('📝 Cards trouvées:', cards.length);
 cards.forEach((card, index) => {
+  const styles = getComputedStyle(card);
   console.log(`Card ${index + 1}:`, {
     classes: card.className,
-    variant: card.className.match(/bg-(gradient|white|emerald|slate)/)?.[0],
+    backgroundColor: styles.backgroundColor,
+    borderColor: styles.borderColor,
+    variant:
+      card.style.backgroundColor === '#ffffff'
+        ? 'default'
+        : card.style.background?.includes('gradient')
+          ? 'project'
+          : card.style.backgroundColor.includes('rgb(4, 120, 87)')
+            ? 'skill'
+            : card.style.backgroundColor.includes('rgb(71, 85, 105)')
+              ? 'experience'
+              : card.style.backgroundColor.includes('rgb(248, 250, 252)')
+                ? 'testimonial'
+                : 'unknown',
     size: card.className.match(/rounded-(lg|xl|2xl)/)?.[0],
     interactive:
       card.className.includes('hover') ||
