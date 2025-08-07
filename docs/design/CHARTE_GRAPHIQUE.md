@@ -155,5 +155,7 @@ Inactive : Gris slate
 3. ✅ **Développement Typography** avec Inter (TERMINÉ)
 4. ✅ **Tests de contraste** et validation WCAG (TERMINÉ)
 5. ✅ **Développement Card Component** avec thème "Tech & Nature" (TERMINÉ)
-6. **Finalisation Navigation** responsive
-7. **Intégration Portfolio Sections**
+6. ✅ **Finalisation Navigation** responsive (TERMINÉ)
+7. ✅ **Développement Modal Component** avec overlay et focus trap (TERMINÉ)
+8. ⏳ **Form Controls** : Inputs, validation, formulaires
+9. ⏳ **Intégration Portfolio Sections**
