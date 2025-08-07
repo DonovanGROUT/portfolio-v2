@@ -10,7 +10,7 @@
 
 ## 🔧 TESTS DEVTOOLS TECHNIQUES
 
-- [x] **Console Test**: Coller scripts globaux (BUTTON_TEST_SCRIPT.js, TYPOGRAPHY_TEST_SCRIPT.js, CARD_TEST_SCRIPT.js, NAVIGATION_TEST_SCRIPT.js)
+- [x] **Console Test**: Coller scripts globaux (BUTTON_TEST_SCRIPT.js, TYPOGRAPHY_TEST_SCRIPT.js, CARD_TEST_SCRIPT.js, NAVIGATION_TEST_SCRIPT.js, MODAL_TEST_SCRIPT.js)
 - [x] **Network Tab**: F12 > Network > Reload → CSS status 200, no 404s
 - [x] **Bundle Size**: Build réussi (Button: 2.48kB, Typography: 135B, Card: 2.86kB, Navigation: optimisé)
 - [x] **Performance**: First Load < 120kB par page
@@ -54,7 +54,7 @@
 # Dans Console DevTools, coller ces scripts:
 
 # 1. Test général
-BUTTON_TEST_SCRIPT.js, TYPOGRAPHY_TEST_SCRIPT.js, CARD_TEST_SCRIPT.js, NAVIGATION_TEST_SCRIPT.js
+BUTTON_TEST_SCRIPT.js, TYPOGRAPHY_TEST_SCRIPT.js, CARD_TEST_SCRIPT.js, NAVIGATION_TEST_SCRIPT.js, MODAL_TEST_SCRIPT.js
 
 # 2. Test ARIA
 ARIA_TEST_SCRIPT.js
@@ -69,6 +69,8 @@ ANIMATION_TEST_SCRIPT.js
 
 **Composants Certifiés :**
 
-- ✅ Button Component (16 tests - 100% couverture)
-- ✅ Typography Component (17 tests - 100% couverture)
-- ✅ Card Component (32 tests - 96.87% branches)
+- ✅ Button Component (16 tests – 100% couverture)
+- ✅ Typography Component (17 tests – 100% couverture)
+- ✅ Card Component (32 tests – 100% statements, 96.87% branches)
+- ✅ Navigation Component (39 tests – 100% couverture)
+- ✅ Modal Component (29 tests – 96.62% statements, 100% functions, Lighthouse 100/100 desktop, 95/100 mobile)
