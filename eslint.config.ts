@@ -76,6 +76,14 @@ const eslintConfig = [
       'no-console': 'off',
     },
   },
+
+  // Configuration spéciale pour les pages de démo
+  {
+    files: ['src/app/*-demo/**/*.tsx'],
+    rules: {
+      'react/no-unescaped-entities': 'off',
+    },
+  },
 ];
 
 export default eslintConfig;

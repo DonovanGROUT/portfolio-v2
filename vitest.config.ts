@@ -57,8 +57,9 @@ export default defineConfig({
         'src/app/button-demo/**',
         'src/app/typography-demo/**',
         'src/app/navigation-demo/**',
-        'src/app/simple-test/**',
         'src/app/card-demo/**',
+        'src/app/modal-demo/**',
+        'src/app/simple-test/**',
         // Pages temporaires - simples placeholders sans logique à tester
         'src/app/about/page.tsx',
         'src/app/projects/page.tsx',
