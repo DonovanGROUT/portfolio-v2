@@ -1,11 +1,16 @@
-// Charte graphique Donovan GROUT - Tech & Nature
-// Système de couleurs inspiré des côtes normandes et de l'éco-conception
+// ===================================================================
+// SYSTÈME DE COULEURS - DESIGN SYSTEM PORTFOLIO
+// ===================================================================
+// Charte graphique Tech & Nature, inspirée des côtes normandes et de l'éco-conception
 // Respecte les standards WCAG 2.1 AA pour l'accessibilité
+// ===================================================================
 
 /**
- * Palette de couleurs du Design System Portfolio Donovan GROUT
- * Inspiration : Côtes normandes, éco-conception, dynamisme sportif
- * Respecte les standards WCAG 2.1 AA pour l'accessibilité
+ * Palette de couleurs principale du Design System Portfolio
+ *
+ * - Couleurs principales (bleu océan, vert éco)
+ * - Couleurs neutres, accent, sémantiques (succès, erreur, warning, info)
+ * - Respecte WCAG 2.1 AA
  */
 export const colors = {
   // ===== COULEURS PRINCIPALES - BLEU OCÉAN NORMAND =====
@@ -95,7 +100,10 @@ export const colors = {
 
 /**
  * Configuration d'accessibilité WCAG 2.1 AA
- * Ratios de contraste validés pour l'accessibilité
+ *
+ * - Contrastes texte/fond validés
+ * - Couleurs d'état accessibles
+ * - Focus rings
  */
 export const accessibilityConfig = {
   // Contrastes validés ✅
@@ -129,7 +137,9 @@ export const tailwindColors = {
 } as const;
 
 /**
- * Couleurs thématiques pour les sections portfolio
+ * Couleurs thématiques pour les sections du portfolio
+ *
+ * - tech, eco, creative, etc.
  */
 export const themeColors = {
   // Tech & Innovation
@@ -147,4 +157,36 @@ export const themeColors = {
   // Sport & Dynamisme
   dynamic: colors.primary[500], // Bleu dynamique
   energy: colors.secondary[500], // Vert énergie
+} as const;
+
+/**
+ * Couleurs spécifiques au composant Modal
+ * Palette adaptée pour les interfaces modales
+ */
+export const modalColors = {
+  // Overlay semi-transparent
+  overlay: 'rgba(0, 0, 0, 0.5)',
+
+  // Arrière-plan du modal
+  background: colors.neutral[50], // Blanc cassé
+
+  // Bordures
+  border: colors.neutral[200], // Gris clair
+  borderRadius: '12px',
+
+  // Ombre portée
+  shadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+
+  // Titre
+  title: colors.neutral[900], // Noir presque pur
+
+  // Description
+  description: colors.neutral[600], // Gris moyen
+
+  // Bouton de fermeture
+  closeButton: colors.neutral[500], // Gris
+  closeButtonHover: colors.neutral[700], // Gris foncé
+
+  // Focus
+  focusRing: colors.primary[500], // Bleu
 } as const;

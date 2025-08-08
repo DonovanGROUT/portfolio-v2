@@ -46,11 +46,26 @@ export default defineConfig({
         '.next/**',
         'next.config.js',
         'tailwind.config.js',
-        'postcss.config.ts',
+        'postcss.config.*', // Configuration PostCSS
         // Configuration files
         'eslint.config.ts',
         'next.config.ts',
         'vitest.config.ts',
+        // Scripts de documentation et debug
+        'docs/scripts/**',
+        // Pages de démo - exemples pour développement
+        'src/app/button-demo/**',
+        'src/app/typography-demo/**',
+        'src/app/navigation-demo/**',
+        'src/app/card-demo/**',
+        'src/app/modal-demo/**',
+        'src/app/form-demo/**',
+        'src/app/privacy-notice-demo/**',
+        // Pages temporaires - simples placeholders sans logique à tester
+        'src/app/about/page.tsx',
+        'src/app/projects/page.tsx',
+        'src/app/contact/page.tsx',
+        'src/app/politique-confidentialite/page.tsx',
         // Layout is difficult to test in isolation
         'src/app/layout.tsx',
         // Husky hooks are shell scripts

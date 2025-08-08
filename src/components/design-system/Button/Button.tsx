@@ -1,13 +1,17 @@
 'use client';
 
-// Composant Button - Design System Portfolio
-// Accessible, responsive, sécurisé avec variants et états
-import { ButtonHTMLAttributes, forwardRef } from 'react';
-import { cn } from '@/lib/utils';
+// ===================================================================
+// COMPOSANT BUTTON - DESIGN SYSTEM PORTFOLIO
+// ===================================================================
+// Accessible, responsive, sécurisé, variants, tailles, états, WCAG 2.1 AA
+// ===================================================================
 
-// ===================================================================
+import { ButtonHTMLAttributes, forwardRef } from 'react';
+import { colors } from '../../../lib/colors';
+
+// -------------------------------------------------------------------
 // TYPES & INTERFACES
-// ===================================================================
+// -------------------------------------------------------------------
 
 /**
  * Variants disponibles pour le bouton
@@ -35,75 +39,9 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
 }
 
-// ===================================================================
-// VARIANTES DE STYLES (CSS Classes)
-// ===================================================================
-
-const buttonVariants = {
-  // Styles de base communs - Design System Donovan GROUT
-  base: [
-    // Layout et dimensionnement
-    'inline-flex items-center justify-center',
-    'border border-solid rounded-lg', // radius moderne (8px)
-    'font-medium text-center whitespace-nowrap',
-    'transition-all duration-200 ease-in-out', // transition plus fluide
-
-    // Accessibilité et UX améliorée
-    'focus:outline-none focus:ring-2 focus:ring-offset-2',
-    'disabled:cursor-not-allowed disabled:opacity-50',
-    'active:scale-[0.98]', // Micro feedback au clic (dynamisme sportif)
-
-    // Touch targets (minimum 44px pour mobile)
-    'min-h-[44px] min-w-[44px]',
-
-    // États hover et focus optimisés
-    'transform-gpu', // Optimisation performances
-  ].join(' '),
-
-  // Variants visuels - Palette "Tech & Nature"
-  variants: {
-    primary: [
-      // Couleur principale - Bleu océan normand
-      'bg-sky-700 border-sky-700 text-white',
-      'hover:bg-sky-800 hover:border-sky-800 hover:shadow-md',
-      'focus:ring-sky-500',
-      'active:bg-sky-900',
-      'disabled:bg-sky-300 disabled:border-sky-300',
-      'shadow-sm', // Ombrage subtil pour profondeur
-    ].join(' '),
-
-    secondary: [
-      // Couleur secondaire - Vert éco-conception (WCAG AA compliant)
-      'bg-emerald-700 border-emerald-700 text-white',
-      'hover:bg-emerald-800 hover:border-emerald-800 hover:shadow-md',
-      'focus:ring-emerald-500',
-      'active:bg-emerald-900',
-      'disabled:bg-emerald-300 disabled:border-emerald-300',
-      'shadow-sm',
-    ].join(' '),
-
-    outline: [
-      // Variante outline - Moderne et épurée
-      'bg-transparent border-sky-700 text-sky-700',
-      'hover:bg-sky-50 hover:border-sky-800 hover:text-sky-800',
-      'focus:ring-sky-500',
-      'active:bg-sky-100',
-      'disabled:bg-transparent disabled:border-slate-300 disabled:text-slate-400',
-      // Pas d'ombre pour style épuré
-    ].join(' '),
-  },
-
-  // Tailles optimisées pour l'accessibilité
-  sizes: {
-    small: 'px-3 py-1.5 text-sm leading-5', // Compact mais accessible
-    medium: 'px-4 py-2 text-base leading-6', // Taille standard confortable
-    large: 'px-6 py-3 text-lg leading-7', // Prominente et impactante
-  },
-};
-
-// ===================================================================
-// COMPOSANT BUTTON
-// ===================================================================
+// -------------------------------------------------------------------
+// COMPOSANT PRINCIPAL BUTTON
+// -------------------------------------------------------------------
 
 /**
  * Composant Button accessible et responsive
@@ -115,6 +53,7 @@ const buttonVariants = {
  * - Accessibilité complète (WCAG 2.1 AA)
  * - Touch-friendly (44px minimum)
  * - Sécurité XSS (échappement automatique)
+ * - Performance optimisée (classes CSS statiques)
  */
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
@@ -163,31 +102,101 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     };
 
     // ===================================================================
-    // CONSTRUCTION DES CLASSES CSS
+    // CONSTRUCTION DES STYLES INLINE - SYSTÈME COLORS.TS
     // ===================================================================
 
-    const buttonClasses = cn(
-      // Classes de base
-      'btn',
-      buttonVariants.base,
+    // Styles de base selon les variants
+    const getVariantStyles = () => {
+      switch (variant) {
+        case 'primary':
+          return {
+            backgroundColor: colors.primary[700],
+            borderColor: colors.primary[700],
+            color: '#ffffff',
+          };
+        case 'secondary':
+          return {
+            backgroundColor: colors.secondary[600],
+            borderColor: colors.secondary[600],
+            color: '#ffffff',
+          };
+        case 'outline':
+          return {
+            backgroundColor: 'rgba(0, 0, 0, 0)',
+            borderColor: colors.primary[700],
+            color: colors.primary[700],
+          };
+        default:
+          return {
+            backgroundColor: colors.primary[700],
+            borderColor: colors.primary[700],
+            color: '#ffffff',
+          };
+      }
+    };
 
-      // Variant principal
-      `btn-${variant}`,
-      buttonVariants.variants[variant],
+    // Gestion des états hover et focus
+    const handleMouseEnter = (event: React.MouseEvent<HTMLButtonElement>) => {
+      if (isDisabled) return;
 
-      // Taille
-      `btn-${size}`,
-      buttonVariants.sizes[size],
+      const button = event.currentTarget;
+      switch (variant) {
+        case 'primary':
+          button.style.backgroundColor = colors.primary[800];
+          button.style.borderColor = colors.primary[800];
+          break;
+        case 'secondary':
+          button.style.backgroundColor = colors.secondary[700];
+          button.style.borderColor = colors.secondary[700];
+          break;
+        case 'outline':
+          button.style.backgroundColor = colors.primary[50];
+          button.style.color = colors.primary[800];
+          break;
+      }
+    };
 
-      // États conditionnels
-      {
-        'btn-disabled': isDisabled,
-        'btn-loading': loading,
-      },
+    const handleMouseLeave = (event: React.MouseEvent<HTMLButtonElement>) => {
+      if (isDisabled) return;
 
-      // Classes personnalisées
-      className
-    );
+      const button = event.currentTarget;
+      const baseStyles = getVariantStyles();
+      button.style.backgroundColor = baseStyles.backgroundColor;
+      button.style.borderColor = baseStyles.borderColor;
+      button.style.color = baseStyles.color;
+    };
+
+    const handleFocus = (event: React.FocusEvent<HTMLButtonElement>) => {
+      const button = event.currentTarget;
+      button.style.boxShadow = `0 0 0 2px ${colors.primary[500]}40`;
+    };
+
+    const handleBlur = (event: React.FocusEvent<HTMLButtonElement>) => {
+      const button = event.currentTarget;
+      button.style.boxShadow = 'none';
+    };
+
+    const baseStyles: React.CSSProperties = getVariantStyles();
+
+    // Styles disabled
+    if (isDisabled) {
+      baseStyles.opacity = '0.5';
+      baseStyles.cursor = 'not-allowed';
+    }
+
+    const sizeClasses: Record<string, string> = {
+      small: 'px-3 py-1.5 text-sm leading-5',
+      medium: 'px-4 py-2 text-base leading-6',
+      large: 'px-6 py-3 text-lg leading-7',
+    };
+
+    const classes = [
+      'inline-flex items-center justify-center border border-solid rounded-lg font-medium text-center whitespace-nowrap transition-all duration-200 ease-in-out focus:outline-none active:scale-[0.98] min-h-[44px] min-w-[44px] transform-gpu',
+      sizeClasses[size],
+      className,
+    ]
+      .filter(Boolean)
+      .join(' ');
 
     // ===================================================================
     // RENDU DU COMPOSANT
@@ -197,10 +206,15 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={ref}
         type="button"
-        className={buttonClasses}
+        className={classes}
+        style={baseStyles}
         disabled={isDisabled}
         onClick={handleClick}
         onKeyDown={handleKeyDown}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
         // Accessibilité ARIA
         aria-disabled={isDisabled}
         aria-busy={loading}

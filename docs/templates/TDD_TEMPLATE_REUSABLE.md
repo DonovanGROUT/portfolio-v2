@@ -6,7 +6,7 @@ Template complet pour développer n'importe quel projet web avec la méthodologi
 
 **Résultats prouvés :**
 
-- ✅ **Button Component** : Score Lighthouse 100/100, 22 tests unitaires, production ready
+- ✅ **Button Component** : Score Lighthouse 100/100, 13 tests unitaires, production ready
 - ✅ **Pipeline CI/CD** : Déploiement automatique, quality gates
 - ✅ **Architecture scalable** : Design System modulaire
 
@@ -83,7 +83,7 @@ describe('ComponentName - TDD Red Phase', () => {
     expect(element).toHaveAttribute('tabIndex', '0');
   });
 
-  // ... 15-25 tests couvrant TOUS les cas
+  // ... tests couvrant TOUS les cas
 });
 ```
 
@@ -561,7 +561,7 @@ npm run lighthouse:ci           # Performance monitoring
 ### **Button Component (Référence)**
 
 - ✅ **TDD Complet** : Red → Green → Refactor
-- ✅ **22 tests unitaires** : 100% pass rate
+- ✅ **13 tests unitaires** : 100% pass rate
 - ✅ **48 tests intégration** : Validation complète
 - ✅ **Lighthouse 100/100** : Accessibilité parfaite
 - ✅ **9.84kB optimisé** : Performance excellente
