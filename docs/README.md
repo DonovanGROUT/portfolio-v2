@@ -7,7 +7,6 @@
 ### **📋 Documents Principaux**
 
 - **[📖 TECHNICAL_DOCUMENTATION.md](./core/TECHNICAL_DOCUMENTATION.md)** → Vue d'ensemble technique complète
-- **[🔄 TDD_TEMPLATE_REUSABLE.md](./templates/TDD_TEMPLATE_REUSABLE.md)** → Méthodologie réutilisable sur autres projets
 
 ### **🏗️ Phases de Développement**
 
@@ -30,6 +29,8 @@
 - **[✅ CARD_TESTING_CHECKLIST.md](./guides/CARD_TESTING_CHECKLIST.md)** → Validation Card Component
 - **[✅ NAVIGATION_TESTING_CHECKLIST.md](./guides/NAVIGATION_TESTING_CHECKLIST.md)** → Validation Navigation Component
 - **[✅ MODAL_TESTING_CHECKLIST.md](./guides/MODAL_TESTING_CHECKLIST.md)** → Validation Modal Component
+- **[✅ FORM_TESTING_CHECKLIST.md](./guides/FORM_TESTING_CHECKLIST.md)** → Validation Form Component
+- **[✅ PRIVACYNOTICE_TESTING_CHECKLIST.md](./guides/PRIVACYNOTICE_TESTING_CHECKLIST.md)** → Validation PrivacyNotice Component
 - **[🧪 ADVANCED_TESTING_GUIDE.md](./guides/ADVANCED_TESTING_GUIDE.md)** → Guide tests approfondis
 
 ---
@@ -46,6 +47,8 @@
 - **[🧭 NAVIGATION_TEST_SCRIPT.js](./scripts/NAVIGATION_TEST_SCRIPT.js)** → Validation Navigation responsive, ARIA et interactions
 - **[📋 CARD_TEST_SCRIPT.js](./scripts/CARD_TEST_SCRIPT.js)** → Validation Card présence, structure modulaire, accessibilité, XSS et touch targets
 - **[🟦 MODAL_TEST_SCRIPT.js](./scripts/MODAL_TEST_SCRIPT.js)** → Validation Modal structure, ARIA, overlay, focus, accessibilité
+- **[📝 FORM_TEST_SCRIPT.js](./scripts/FORM_TEST_SCRIPT.js)** → Validation Form inputs, validation, sécurité
+- **[🔒 PRIVACYNOTICE_TEST_SCRIPT.js](./scripts/PRIVACYNOTICE_TEST_SCRIPT.js)** → Validation PrivacyNotice RGPD, expansion, consentement
 - **[🎭 ANIMATION_TEST_SCRIPT.js](./scripts/ANIMATION_TEST_SCRIPT.js)** → Tests animations et états
 
 ---
@@ -60,6 +63,10 @@
 ### **Configuration Serveurs**
 
 - **[🌐 DOMAIN_DNS_SETUP_TEMPLATE.md](./templates/DOMAIN_DNS_SETUP_TEMPLATE.md)** → Template DNS anonymisé (sécurisé)
+
+### **REUTILISABILITE**
+
+- **[🔄 TDD_TEMPLATE_REUSABLE.md](./templates/TDD_TEMPLATE_REUSABLE.md)** → Méthodologie réutilisable sur autres projets
 
 ---
 
@@ -79,6 +86,8 @@
 4. **[✅ CARD_TESTING_CHECKLIST.md](./guides/CARD_TESTING_CHECKLIST.md)** → Validation visuelle Card
 5. **[✅ NAVIGATION_TESTING_CHECKLIST.md](./guides/NAVIGATION_TESTING_CHECKLIST.md)** → Validation visuelle Navigation
 6. **[✅ MODAL_TESTING_CHECKLIST.md](./guides/MODAL_TESTING_CHECKLIST.md)** → Validation visuelle Modal
+7. **[✅ FORM_TESTING_CHECKLIST.md](./guides/FORM_TESTING_CHECKLIST.md)** → Validation visuelle Form
+8. **[✅ PRIVACYNOTICE_TESTING_CHECKLIST.md](./guides/PRIVACYNOTICE_TESTING_CHECKLIST.md)** → Validation visuelle PrivacyNotice
 
 ### **🧪 QA/Testeur**
 
@@ -89,6 +98,8 @@
 5. **[📋 CARD_TEST_SCRIPT.js](./scripts/CARD_TEST_SCRIPT.js)** → Tests techniques Card
 6. **[🧭 NAVIGATION_TEST_SCRIPT.js](./scripts/NAVIGATION_TEST_SCRIPT.js)** → Tests techniques Navigation
 7. **[🟦 MODAL_TEST_SCRIPT.js](./scripts/MODAL_TEST_SCRIPT.js)** → Tests techniques Modal
+8. **[🟦 FORM_TEST_SCRIPT.js](./scripts/FORM_TEST_SCRIPT.js)** → Tests techniques Form
+9. **[🟦 PRIVACYNOTICE_TEST_SCRIPT.js](./scripts/PRIVACYNOTICE_TEST_SCRIPT.js)** → Tests techniques PrivacyNotice
 
 ### **🚀 DevOps/CI-CD**
 
@@ -103,6 +114,8 @@
 4. **[✅ CARD_TESTING_CHECKLIST.md](./guides/CARD_TESTING_CHECKLIST.md)** → Métriques qualité
 5. **[✅ NAVIGATION_TESTING_CHECKLIST.md](./guides/NAVIGATION_TESTING_CHECKLIST.md)** → Métriques qualité
 6. **[✅ MODAL_TESTING_CHECKLIST.md](./guides/MODAL_TESTING_CHECKLIST.md)** → Métriques qualité
+7. **[✅ FORM_TESTING_CHECKLIST.md](./guides/FORM_TESTING_CHECKLIST.md)** → Métriques qualité
+8. **[✅ PRIVACYNOTICE_TESTING_CHECKLIST.md](./guides/PRIVACYNOTICE_TESTING_CHECKLIST.md)** → Métriques qualité
 
 ### **🔄 Réutilisation Autre Projet**
 
@@ -118,14 +131,11 @@
 
 - **Phase 1** : Setup environnement ✅
 - **Phase 2** : Pipeline CI/CD ✅
+- **Phase 3** : Design System TDD
 
 ### 🚧 **Phase En Cours**
 
-- **Phase 3** : Design System TDD (88% - Button, Typography, Card, Navigation, Modal terminés) 🔄
-
-### ⏳ **Phases À Venir**
-
-- **Phase 4** : Portfolio Sections ⏳
+- **Phase 4** : Portfolio Sections 🔄
 
 ---
 

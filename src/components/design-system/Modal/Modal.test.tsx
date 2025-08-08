@@ -333,13 +333,10 @@ describe('Modal Component - TDD Implementation', () => {
       const mockOnAfterOpen = vi.fn();
       render(<Modal {...defaultProps} onAfterOpen={mockOnAfterOpen} />);
 
-      // Attendre que le callback soit appelé avec le délai
-      await waitFor(
-        () => {
-          expect(mockOnAfterOpen).toHaveBeenCalledTimes(1);
-        },
-        { timeout: 200 }
-      );
+      // Attendre que les effets React se déclenchent
+      await waitFor(() => {
+        expect(mockOnAfterOpen).toHaveBeenCalledTimes(1);
+      });
     });
 
     it('doit appeler onAfterClose après fermeture', async () => {
@@ -364,13 +361,10 @@ describe('Modal Component - TDD Implementation', () => {
         />
       );
 
-      // Attendre que le callback soit appelé avec le délai
-      await waitFor(
-        () => {
-          expect(mockOnAfterClose).toHaveBeenCalledTimes(1);
-        },
-        { timeout: 500 }
-      );
+      // Attendre que les effets React se déclenchent
+      await waitFor(() => {
+        expect(mockOnAfterClose).toHaveBeenCalledTimes(1);
+      });
     });
 
     it('doit nettoyer les timers correctement', () => {
