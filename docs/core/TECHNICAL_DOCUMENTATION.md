@@ -165,7 +165,7 @@ Deploy: Vercel (preview) + PlanetHoster (prod)
 
 ---
 
-### ⏳ **PHASE 4 : PORTFOLIO SECTIONS - EN COURS**
+### 🚧 **PHASE 4 : PORTFOLIO SECTIONS - EN COURS**
 
 **Statut** : ⏳ En cours
 
@@ -191,7 +191,7 @@ Deploy: Vercel (preview) + PlanetHoster (prod)
 **Constat initial** :
 
 - ✅ Next.js 15.3.3 avec TypeScript
-- ✅ Tailwind CSS 4 configuré
+- ✅ Tailwind CSS 3 configuré
 - ⚠️ Fichiers `.mjs` pour ESLint et PostCSS (incohérent avec approche TypeScript)
 - ⚠️ Configuration minimale (pas de tests, linting basique)
 
@@ -322,8 +322,8 @@ Deploy: Vercel (preview) + PlanetHoster (prod)
 - ✅ Branche `master` → `main` renommée
 - ✅ Branche `develop` créée (intégration)
 - ✅ Feature `feature/setup-environment` créée
-- ✅ **NOUVEAU** : Dépôt GitHub `portfolio-v2` connecté
-- 🚧 **EN COURS** : Configuration de l'environnement de développement
+- ✅ Dépôt GitHub `portfolio-v2` connecté
+- ✅ Environnement de développement configuré
 
 **Actions terminées** :
 
@@ -347,10 +347,6 @@ Deploy: Vercel (preview) + PlanetHoster (prod)
 - ✅ **Tests robustes** : 12 tests avec mocks browser APIs complets
 - ✅ **Documentation technique** : Workflow complet + Glossaire 60+ termes
 - ✅ **Standards zéro-warning** : Impossible de commit/push sans tests
-
-**Prochaine étape** :
-
-- 🚧 **EN COURS** : Configuration GitHub Actions CI/CD
 
 ---
 

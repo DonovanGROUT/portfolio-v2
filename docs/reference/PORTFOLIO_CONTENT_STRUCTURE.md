@@ -6,7 +6,7 @@
 
 - **Nom :** Donovan GROUT
 - **Titre :** Développeur Web Full-Stack
-- **Sous-titre :** "En recherche d'alternance en Concepteur Développeur d'Applications ou d'un CDI. Bientôt freelance également."
+- **Sous-titre :** "En préparation du lancement de mon activité de développeur web freelance."
 - **Localisation :** Caen, Normandie, France
 - **CTA :** "Voir mes projets" / "Me contacter"
 
@@ -14,7 +14,7 @@
 
 Passionné par la création de solutions web performantes, accessibles et éco-conçues, j'accorde une grande importance à la qualité du code, à l'expérience utilisateur, à la sécurité et à la protection des données personnelles.
 
-Développeur web full-stack, basé à Caen, je viens de passer mon titre professionnel Développeur Web et Web Mobile suite à ma formation O'Clock (2024-2025). Je recherche de nouveaux défis : alternance en Concepteur Développeur d'Applications ou CDI en développement web, et je m'apprête également à lancer mon activité en tant que micro-entrepreneur.
+Développeur web full-stack, basé à Caen, j'ai obtenu mon titre professionnel Développeur Web et Web Mobile avec les félicitations du jury suite à ma formation O'Clock (2024-2025). Je prépare actuellement le lancement de mon activité en tant que développeur web freelance.
 
 **Passions :**
 
@@ -83,15 +83,18 @@ Développeur web full-stack, basé à Caen, je viens de passer mon titre profess
 - **Période :** 2024-2025
 - **Description :** Formation intensive en téléprésentiel, labellisée Grande École du Numérique.
 - **Technologies :** HTML, CSS, Javascript, NodeJS, SQL, API Rest, MVC, POO, React, DevOps, CMS etc.
+- **Distinction :** Titre professionnel obtenu avec les félicitations du jury.
 
-#### **Formation OPQuast - Maîtrise de la qualité en projet web**
+#### **Certification Opquast - Maîtrise de la qualité en projet web**
 
-- **Période :** 2024
-- **Description :** Concepts de qualité web, accessibilité, référencement, performance
-- **Technologies :** Standards web, bonnes pratiques, métriques qualité
+- **Période :** 2025
+- **Niveau :** Expert (900/1000)
+- **Description :** Certification sur les bonnes pratiques et l'assurance qualité web
+- **Contenu :** Accessibilité, référencement, éco-conception, sécurité, performance, mise en place de règles qualité dans les projets web
 
 #### **Formation Cybersécurité**
 
+- **Organisme :** ANSSI
 - **Période :** 2024
 - **Description :** Concepts de sécurité des systèmes d'information
 - **Contenu :** Pratiques de sécurisation des infrastructures
@@ -119,8 +122,22 @@ Développeur web full-stack, basé à Caen, je viens de passer mon titre profess
 
 - **Description :** Portfolio avec Next.js, TypeScript, TDD et CI/CD
 - **Technologies :** Next.js 15, TypeScript, Tailwind CSS, Vitest, GitHub Actions, Vercel
-- **Statut :** En développement
+- **Statut :** En développement (Phase 4 - Contenu et sections)
 - **Lien :** [donovan-grout.com](https://donovan-grout.com)
+
+#### **GreenRoots**
+
+- **Description :** Application web complète avec back office administrateur
+- **Technologies :** Node.js, Express, PostgreSQL, EJS, HTML5, CSS3, JavaScript
+- **Statut :** Projet de stage (Haras du Val Aubrée, mars-avril 2025)
+- **Lien :** [green-roots.donovan-grout.com](https://green-roots.donovan-grout.com/)
+
+#### **Medisys**
+
+- **Description :** Application de gestion médicale
+- **Technologies :** Node.js, Express, PostgreSQL
+- **Statut :** Projet en développement
+- **Lien :** [github.com/DonovanGROUT/Medisys](https://github.com/DonovanGROUT/Medisys)
 
 #### **O-Coffee**
 
@@ -134,25 +151,34 @@ Développeur web full-stack, basé à Caen, je viens de passer mon titre profess
 - **Technologies :** HTML5, CSS3, Javascript, Bootstrap, jQuery
 - **Lien :** [sitepro-donovangrout.netlify.app](https://sitepro-donovangrout.netlify.app/)
 
+#### **Profil GitHub Automatisé**
+
+- **Description :** Profil GitHub dynamique avec statistiques et projets
+- **Technologies :** GitHub Actions, Markdown
+- **Lien :** [github.com/DonovanGROUT](https://github.com/DonovanGROUT)
+
+#### **Snake Game**
+
+- **Description :** Jeu classique du snake revisité
+- **Technologies :** JavaScript, HTML5, CSS3
+- **Lien :** [donovangrout.github.io/snake_game](https://donovangrout.github.io/snake_game/)
+
 #### **Page Web Agence de Voyage**
 
 - **Description :** Page web statique d'agence de voyage factice
-- **Technologies :** HTML, CSS
+- **Technologies :** HTML5, CSS3
 - **Statut :** Projet d'apprentissage
+- **Lien :** [donovangrout.github.io/page_web_voyage](https://donovangrout.github.io/page_web_voyage/)
 
 #### **BurgerCode**
 
 - **Description :** Site factice de commande de fast-food, avec interface administrateur
 - **Technologies :** PHP, HTML, CSS, JavaScript
-
-#### **Snake Game**
-
-- **Description :** Jeu classique du snake
-- **Technologies :** JavaScript
+- **Lien :** [github.com/DonovanGROUT/BurgerCode](https://github.com/DonovanGROUT/BurgerCode/)
 
 ### **7. Section Recommandations**
 
-#### **Claire LANGLOIS**
+#### **Claire LOISEL**
 
 - **Fonction :** Développeuse Web
 - **Recommandation :** "J'ai travaillé avec Donovan : toujours présent, à l'écoute, et en recherche d'amélioration constante !"

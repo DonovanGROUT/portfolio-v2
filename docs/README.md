@@ -135,7 +135,7 @@
 
 ### 🚧 **Phase En Cours**
 
-- **Phase 4** : Portfolio Sections 🔄
+- **Phase 4** : Portfolio Sections (Contenu et intégration) � EN COURS
 
 ---
 
