@@ -19,53 +19,6 @@ describe("Page d'accueil", () => {
     createMockIntersectionObserver();
   });
 
-  // ============= TESTS DE RENDU GROUPÉS =============
-
-  it('affiche tous les éléments principaux de la page', () => {
-    render(<Home />);
-
-    // Tests groupés pour éviter plusieurs renders
-    const logo = screen.getByAltText('Next.js logo');
-    const deployButton = screen.getByRole('link', { name: /Deploy now/i });
-    const main = screen.getByRole('main');
-
-    expect(logo).toBeInTheDocument();
-    expect(deployButton).toBeInTheDocument();
-    expect(deployButton).toHaveAttribute(
-      'href',
-      expect.stringContaining('vercel')
-    );
-    expect(main).toBeInTheDocument();
-    expect(main).toHaveClass('flex', 'flex-col', 'gap-[32px]');
-  });
-
-  it('affiche toutes les icônes et liens avec sécurité appropriée', () => {
-    render(<Home />);
-
-    // Tests d'icônes groupés
-    const icons = [
-      screen.getByAltText('Vercel logomark'),
-      screen.getByAltText('File icon'),
-      screen.getByAltText('Window icon'),
-      screen.getByAltText('Globe icon'),
-    ];
-
-    icons.forEach(icon => {
-      expect(icon).toBeInTheDocument();
-      expect(icon).toHaveAttribute('src');
-    });
-
-    // Tests de sécurité des liens groupés
-    const externalLinks = screen.getAllByRole('link', {
-      name: /vercel|docs|nextjs/i,
-    });
-
-    externalLinks.forEach(link => {
-      expect(link).toHaveAttribute('target', '_blank');
-      expect(link).toHaveAttribute('rel', 'noopener noreferrer');
-    });
-  });
-
   // ============= TESTS DE RESPONSIVITÉ =============
 
   it("s'affiche correctement sur les appareils mobiles", () => {

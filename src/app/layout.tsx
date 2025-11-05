@@ -30,7 +30,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="fr">
+      <head>
+        <meta
+          name="description"
+          content="Portfolio de Donovan GROUT, développeur web full-stack certifié Opquast Expert, spécialisé en accessibilité, performance, SEO et design system. Découvrez mes projets, compétences et recommandations."
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

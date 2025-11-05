@@ -3,6 +3,39 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Animation fade-in personnalisée */
+@keyframes fadein {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadein {
+  animation: fadein 0.8s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* Animations progressives par blocs avec délais */
+.animate-fadein-delay-1 {
+  animation: fadein 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s both;
+}
+
+.animate-fadein-delay-2 {
+  animation: fadein 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.8s both;
+}
+
+.animate-fadein-delay-3 {
+  animation: fadein 0.8s cubic-bezier(0.4, 0, 0.2, 1) 1.2s both;
+}
+
+.animate-fadein-delay-4 {
+  animation: fadein 0.8s cubic-bezier(0.4, 0, 0.2, 1) 1.6s both;
+}
+
 /* Reset CSS basique pour assurer la compatibilité */
 * {
   box-sizing: border-box;
