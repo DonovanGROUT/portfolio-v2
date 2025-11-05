@@ -20,97 +20,91 @@ describe('Button Component - Design System', () => {
     expect(button).toHaveTextContent('Cliquer ici');
   });
 
-  it('devrait appliquer la classe CSS par défaut', () => {
+  it('devrait appliquer les classes Tailwind par défaut', () => {
     render(<Button>Test</Button>);
 
     const button = screen.getByRole('button');
     expect(button).toHaveClass('inline-flex'); // classe de base optimisée
-    // Vérifier les styles inline du système colors.ts
-    expect(button).toHaveStyle({
-      backgroundColor: '#0369a1', // colors.primary[700]
-      borderColor: '#0369a1',
-      color: '#ffffff',
-    });
+    expect(button).toHaveClass(
+      'bg-primary-700',
+      'border-primary-700',
+      'text-white'
+    );
   });
 
   // ===================================================================
   // TESTS VARIANTS & TAILLES GROUPÉS
   // ===================================================================
 
-  it('devrait supporter tous les variants', () => {
-    // Test tous les variants en une fois
+  it('devrait supporter tous les variants Tailwind', () => {
     const { rerender } = render(<Button variant="primary">Primary</Button>);
     let button = screen.getByRole('button');
-    expect(button).toHaveStyle({
-      backgroundColor: '#0369a1', // colors.primary[700]
-      borderColor: '#0369a1',
-      color: '#ffffff',
-    });
+    expect(button).toHaveClass(
+      'bg-primary-700',
+      'border-primary-700',
+      'text-white'
+    );
 
     rerender(<Button variant="secondary">Secondary</Button>);
     button = screen.getByRole('button');
-    expect(button).toHaveStyle({
-      backgroundColor: '#047857', // colors.secondary[600]
-      borderColor: '#047857',
-      color: '#ffffff',
-    });
+    expect(button).toHaveClass(
+      'bg-secondary-600',
+      'border-secondary-600',
+      'text-white'
+    );
 
     rerender(<Button variant="outline">Outline</Button>);
     button = screen.getByRole('button');
-    expect(button).toHaveStyle({
-      borderColor: '#0369a1', // colors.primary[700]
-      color: '#0369a1',
-    });
-    // Vérifier que le background est transparent (peu importe le format)
-    expect(button.style.backgroundColor).toMatch(
-      /transparent|rgba\(0,\s*0,\s*0,\s*0\)/
+    expect(button).toHaveClass(
+      'border-primary-700',
+      'text-primary-700',
+      'bg-transparent'
     );
   });
 
-  it('devrait utiliser le variant par défaut si variant non spécifié', () => {
+  it('devrait utiliser les classes Tailwind du variant par défaut si non spécifié', () => {
     render(<Button>Default Button</Button>);
     const button = screen.getByRole('button');
-    expect(button).toHaveStyle({
-      backgroundColor: '#0369a1', // colors.primary[700] (default)
-      borderColor: '#0369a1',
-      color: '#ffffff',
-    });
+    expect(button).toHaveClass(
+      'bg-primary-700',
+      'border-primary-700',
+      'text-white'
+    );
   });
 
-  it('devrait supporter toutes les tailles', () => {
-    // Test toutes les tailles en une fois
+  it('devrait supporter toutes les tailles Tailwind', () => {
     const { rerender } = render(<Button size="small">Small</Button>);
     let button = screen.getByRole('button');
-    expect(button).toHaveClass('px-3'); // small optimisé
+    expect(button).toHaveClass('px-3');
 
     rerender(<Button size="medium">Medium</Button>);
     button = screen.getByRole('button');
-    expect(button).toHaveClass('px-4'); // medium optimisé
+    expect(button).toHaveClass('px-4');
 
     rerender(<Button size="large">Large</Button>);
     button = screen.getByRole('button');
-    expect(button).toHaveClass('px-6'); // large optimisé
+    expect(button).toHaveClass('px-6');
   });
 
   // ===================================================================
   // TESTS ÉTATS
   // ===================================================================
 
-  it("devrait supporter l'état disabled", () => {
+  it("devrait supporter l'état disabled avec classes Tailwind", () => {
     render(<Button disabled>Disabled</Button>);
 
     const button = screen.getByRole('button');
     expect(button).toBeDisabled();
-    expect(button).toHaveStyle({ opacity: '0.5', cursor: 'not-allowed' });
+    expect(button).toHaveClass('opacity-50', 'cursor-not-allowed');
     expect(button).toHaveAttribute('aria-disabled', 'true');
   });
 
-  it("devrait supporter l'état loading", () => {
+  it("devrait supporter l'état loading avec classes Tailwind", () => {
     render(<Button loading>Loading</Button>);
 
     const button = screen.getByRole('button');
     expect(button).toBeDisabled();
-    expect(button).toHaveStyle({ opacity: '0.5', cursor: 'not-allowed' });
+    expect(button).toHaveClass('opacity-50', 'cursor-not-allowed');
     expect(button).toHaveAttribute('aria-busy', 'true');
     expect(button).toHaveAttribute('aria-disabled', 'true');
   });
@@ -409,24 +403,7 @@ describe('Button Component - Design System', () => {
   // TESTS VARIANTS COMPLETS POUR getVariantStyles()
   // ===================================================================
 
-  it('teste tous les variants pour couverture getVariantStyles complète', () => {
-    const { rerender } = render(<Button variant="primary">Primary</Button>);
-    let button = screen.getByRole('button');
-    expect(button).toHaveStyle({ backgroundColor: '#0369a1' });
-
-    rerender(<Button variant="secondary">Secondary</Button>);
-    button = screen.getByRole('button');
-    expect(button).toHaveStyle({ backgroundColor: '#047857' });
-
-    rerender(<Button variant="outline">Outline</Button>);
-    button = screen.getByRole('button');
-    expect(button).toHaveStyle({ backgroundColor: 'rgba(0, 0, 0, 0)' });
-
-    // Test variant par défaut (default case)
-    rerender(<Button>Default</Button>);
-    button = screen.getByRole('button');
-    expect(button).toHaveStyle({ backgroundColor: '#0369a1' });
-  });
+  // ...test obsolète supprimé (vérification styles inline)...
 
   // ===================================================================
   // TESTS HANDLECLICK AVEC DISABLED
