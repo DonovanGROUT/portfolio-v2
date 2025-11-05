@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://donovan-grout.com
+
+# Sitemaps
+Sitemap: https://donovan-grout.com/sitemap.xml

@@ -25,35 +25,32 @@ export default defineConfig({
     ],
     // Configuration de la couverture de code
     coverage: {
-      // Moteur de couverture V8 (plus rapide que c8)
-      provider: 'v8',
-      // Formats de rapport : console + JSON + HTML
-      reporter: ['text', 'json', 'html'],
-      // Fichiers exclus de la couverture
+      provider: 'v8', // Moteur de couverture V8 (plus rapide que c8)
+      reporter: ['text', 'json', 'html'], // Formats de rapport : console + JSON + HTML
       exclude: [
-        'coverage/**',
-        'dist/**',
-        'packages/*/test{,s}/**',
-        '**/*.d.ts',
-        'cypress/**',
-        'test{,s}/**',
-        'test{,-*}.{js,cjs,mjs,ts,tsx,jsx}',
-        '**/*{.,-}test.{js,cjs,mjs,ts,tsx,jsx}',
-        '**/*{.,-}spec.{js,cjs,mjs,ts,tsx,jsx}',
-        '**/__tests__/**',
-        '**/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build}.config.*',
-        '**/.{eslint,mocha,prettier}rc.{js,cjs,yml}',
-        '.next/**',
-        'next.config.js',
-        'tailwind.config.js',
-        'postcss.config.*', // Configuration PostCSS
-        // Configuration files
-        'eslint.config.ts',
-        'next.config.ts',
-        'vitest.config.ts',
-        // Scripts de documentation et debug
-        'docs/scripts/**',
-        // Pages de démo - exemples pour développement
+        // Fichiers exclus de la couverture
+        'coverage/**', // Dossier de rapport coverage
+        'dist/**', // Dossier de build
+        'packages/*/test{,s}/**', // Tests dans packages monorepo
+        '**/*.d.ts', // Typescript types
+        'cypress/**', // E2E tests Cypress
+        'test{,s}/**', // Dossier de tests utilitaires
+        'test{,-*}.{js,cjs,mjs,ts,tsx,jsx}', // Fichiers de test utilitaires
+        '**/*{.,-}test.{js,cjs,mjs,ts,tsx,jsx}', // Tous les fichiers de test
+        '**/*{.,-}spec.{js,cjs,mjs,ts,tsx,jsx}', // Tous les fichiers de spec
+        '**/__tests__/**', // Dossier __tests__
+        '**/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build}.config.*', // Fichiers de config outils
+        '**/.{eslint,mocha,prettier}rc.{js,cjs,yml}', // Fichiers de config linter/test
+        '.next/**', // Build Next.js
+        'next.config.js', // Config Next.js
+        'next-sitemap.config.js', // Config sitemap (ajouté)
+        'tailwind.config.js', // Config Tailwind
+        'postcss.config.*', // Config PostCSS
+        'eslint.config.ts', // Config ESLint
+        'next.config.ts', // Config Next.js
+        'vitest.config.ts', // Config Vitest
+        'docs/scripts/**', // Scripts de documentation
+        // Pages de démo et exemples
         'src/app/button-demo/**',
         'src/app/typography-demo/**',
         'src/app/navigation-demo/**',
@@ -61,23 +58,24 @@ export default defineConfig({
         'src/app/modal-demo/**',
         'src/app/form-demo/**',
         'src/app/privacy-notice-demo/**',
-        // Pages temporaires - simples placeholders sans logique à tester
+        'src/app/hero-demo/page.tsx', // Page de démo Hero (ajouté)
+        // Pages statiques sans logique métier
         'src/app/about/page.tsx',
         'src/app/projects/page.tsx',
         'src/app/contact/page.tsx',
         'src/app/politique-confidentialite/page.tsx',
-        // Layout is difficult to test in isolation
+        // Layout global
         'src/app/layout.tsx',
-        // Husky hooks are shell scripts
+        // Hooks Husky
         '.husky/**',
       ],
       // Seuils de couverture obligatoires (CI échoue si non atteints)
       thresholds: {
         global: {
-          branches: 80, // 80% des branches conditionnelles
-          functions: 80, // 80% des fonctions
-          lines: 80, // 80% des lignes de code
-          statements: 80, // 80% des instructions
+          branches: 80,
+          functions: 80,
+          lines: 80,
+          statements: 80,
         },
       },
     },
