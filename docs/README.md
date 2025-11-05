@@ -32,6 +32,7 @@
 - **[✅ FORM_TESTING_CHECKLIST.md](./guides/FORM_TESTING_CHECKLIST.md)** → Validation Form Component
 - **[✅ PRIVACYNOTICE_TESTING_CHECKLIST.md](./guides/PRIVACYNOTICE_TESTING_CHECKLIST.md)** → Validation PrivacyNotice Component
 - **[🧪 ADVANCED_TESTING_GUIDE.md](./guides/ADVANCED_TESTING_GUIDE.md)** → Guide tests approfondis
+- **[✅ HERO_TESTING_CHECKLIST.md](./guides/HERO_TESTING_CHECKLIST.md)** → Validation Hero Component
 
 ---
 
@@ -48,8 +49,9 @@
 - **[📋 CARD_TEST_SCRIPT.js](./scripts/CARD_TEST_SCRIPT.js)** → Validation Card présence, structure modulaire, accessibilité, XSS et touch targets
 - **[🟦 MODAL_TEST_SCRIPT.js](./scripts/MODAL_TEST_SCRIPT.js)** → Validation Modal structure, ARIA, overlay, focus, accessibilité
 - **[📝 FORM_TEST_SCRIPT.js](./scripts/FORM_TEST_SCRIPT.js)** → Validation Form inputs, validation, sécurité
-- **[🔒 PRIVACYNOTICE_TEST_SCRIPT.js](./scripts/PRIVACYNOTICE_TEST_SCRIPT.js)** → Validation PrivacyNotice RGPD, expansion, consentement
+- **[� PRIVACYNOTICE_TEST_SCRIPT.js](./scripts/PRIVACYNOTICE_TEST_SCRIPT.js)** → Validation PrivacyNotice RGPD, expansion, consentement
 - **[🎭 ANIMATION_TEST_SCRIPT.js](./scripts/ANIMATION_TEST_SCRIPT.js)** → Tests animations et états
+- **[🦸 HERO_TEST_SCRIPT.js](./scripts/HERO_TEST_SCRIPT.js)** → Validation Hero structure, accessibilité, métriques
 
 ---
 
@@ -88,6 +90,7 @@
 6. **[✅ MODAL_TESTING_CHECKLIST.md](./guides/MODAL_TESTING_CHECKLIST.md)** → Validation visuelle Modal
 7. **[✅ FORM_TESTING_CHECKLIST.md](./guides/FORM_TESTING_CHECKLIST.md)** → Validation visuelle Form
 8. **[✅ PRIVACYNOTICE_TESTING_CHECKLIST.md](./guides/PRIVACYNOTICE_TESTING_CHECKLIST.md)** → Validation visuelle PrivacyNotice
+9. **[✅ HERO_TESTING_CHECKLIST.md](./guides/HERO_TESTING_CHECKLIST.md)** → Validation visuelle Hero
 
 ### **🧪 QA/Testeur**
 
@@ -100,6 +103,7 @@
 7. **[🟦 MODAL_TEST_SCRIPT.js](./scripts/MODAL_TEST_SCRIPT.js)** → Tests techniques Modal
 8. **[🟦 FORM_TEST_SCRIPT.js](./scripts/FORM_TEST_SCRIPT.js)** → Tests techniques Form
 9. **[🟦 PRIVACYNOTICE_TEST_SCRIPT.js](./scripts/PRIVACYNOTICE_TEST_SCRIPT.js)** → Tests techniques PrivacyNotice
+10. **[🦸 HERO_TEST_SCRIPT.js](./scripts/HERO_TEST_SCRIPT.js)** → Tests techniques Hero
 
 ### **🚀 DevOps/CI-CD**
 
@@ -116,6 +120,7 @@
 6. **[✅ MODAL_TESTING_CHECKLIST.md](./guides/MODAL_TESTING_CHECKLIST.md)** → Métriques qualité
 7. **[✅ FORM_TESTING_CHECKLIST.md](./guides/FORM_TESTING_CHECKLIST.md)** → Métriques qualité
 8. **[✅ PRIVACYNOTICE_TESTING_CHECKLIST.md](./guides/PRIVACYNOTICE_TESTING_CHECKLIST.md)** → Métriques qualité
+9. **[✅ HERO_TESTING_CHECKLIST.md](./guides/HERO_TESTING_CHECKLIST.md)** → Métriques qualité
 
 ### **🔄 Réutilisation Autre Projet**
 
