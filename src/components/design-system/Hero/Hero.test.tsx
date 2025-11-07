@@ -2,12 +2,64 @@
  * @vitest-environment jsdom
  */
 
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Hero from './Hero';
 
+// Mock des sous-composants pour accélérer les tests Hero
+import React from 'react';
+vi.mock('../Button/Button', () => ({
+  __esModule: true,
+  default: ((props: React.PropsWithChildren<Record<string, unknown>>) => (
+    <button {...props}>{props.children || 'Button'}</button>
+  )) as React.FC,
+}));
+vi.mock('../Typography/Typography', () => ({
+  __esModule: true,
+  default: ((props: React.PropsWithChildren<Record<string, unknown>>) => (
+    <span {...props}>{props.children || 'Typography'}</span>
+  )) as React.FC,
+}));
+
 describe('Hero Component - TDD Phase 4', () => {
+  // Mock navigation pour éviter les erreurs jsdom et accélérer les tests
+  let assignSpy: ReturnType<typeof vi.spyOn> | undefined;
+  let openSpy: ReturnType<typeof vi.spyOn> | undefined;
+  let replaceSpy: ReturnType<typeof vi.spyOn> | undefined;
+  beforeEach(() => {
+    try {
+      assignSpy = vi
+        .spyOn(window.location, 'assign')
+        .mockImplementation(() => {});
+    } catch {
+      assignSpy = undefined;
+    }
+    try {
+      openSpy = vi
+        .spyOn(window, 'open')
+        .mockImplementation(() => null) as unknown as ReturnType<
+        typeof vi.spyOn
+      >;
+    } catch {
+      openSpy = undefined;
+    }
+    try {
+      replaceSpy = vi
+        .spyOn(window.location, 'replace')
+        .mockImplementation(() => {});
+    } catch {
+      replaceSpy = undefined;
+    }
+  });
+  afterEach(() => {
+    if (assignSpy && typeof assignSpy.mockRestore === 'function')
+      assignSpy.mockRestore();
+    if (openSpy && typeof openSpy.mockRestore === 'function')
+      openSpy.mockRestore();
+    if (replaceSpy && typeof replaceSpy.mockRestore === 'function')
+      replaceSpy.mockRestore();
+  });
   // ===================================================================
   // 🎯 TESTS DE RENDU DE BASE
   // ===================================================================
