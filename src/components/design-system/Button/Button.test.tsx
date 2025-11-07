@@ -263,36 +263,6 @@ describe('Button Component - Design System', () => {
     expect(handleClick).not.toHaveBeenCalled();
   });
 
-  // Test spécifique pour couvrir la prévention clavier sur disabled
-
-  it('ne devrait pas déclencher onClick via clavier quand disabled', () => {
-    const handleClick = vi.fn();
-    render(
-      <Button disabled onClick={handleClick}>
-        Disabled Keyboard
-      </Button>
-    );
-
-    const button = screen.getByRole('button');
-    fireEvent.keyDown(button, { key: 'Enter' });
-    fireEvent.keyDown(button, { key: ' ' });
-
-    expect(handleClick).not.toHaveBeenCalled();
-  });
-
-  it('couvre le bloc preventDefault/return clavier sur loading', () => {
-    const handleClick = vi.fn();
-    render(
-      <Button loading onClick={handleClick}>
-        Loading Keyboard
-      </Button>
-    );
-    const button = screen.getByRole('button');
-    fireEvent.keyDown(button, { key: 'Enter' });
-    fireEvent.keyDown(button, { key: ' ' });
-    expect(handleClick).not.toHaveBeenCalled();
-  });
-
   it('ne doit pas appeler onClick si disabled', () => {
     const onClick = vi.fn();
     render(
@@ -400,12 +370,6 @@ describe('Button Component - Design System', () => {
   });
 
   // ===================================================================
-  // TESTS VARIANTS COMPLETS POUR getVariantStyles()
-  // ===================================================================
-
-  // ...test obsolète supprimé (vérification styles inline)...
-
-  // ===================================================================
   // TESTS HANDLECLICK AVEC DISABLED
   // ===================================================================
 
@@ -433,5 +397,45 @@ describe('Button Component - Design System', () => {
 
     fireEvent.click(button);
     expect(onClick).not.toHaveBeenCalled(); // Même logique disabled
+  });
+
+  // ===================================================================
+  // TESTS COUVERTURE BRANCHES CLAVIER
+  // ===================================================================
+  it('ne déclenche aucune action clavier sur bouton disabled', () => {
+    const onClick = vi.fn();
+    render(
+      <Button disabled onClick={onClick}>
+        Disabled Key
+      </Button>
+    );
+    const button = screen.getByRole('button');
+    fireEvent.keyDown(button, { key: 'Enter' });
+    fireEvent.keyDown(button, { key: ' ' });
+    fireEvent.keyDown(button, { key: 'Tab' });
+    expect(onClick).not.toHaveBeenCalled();
+  });
+
+  it('ne déclenche aucune action clavier sur bouton loading', () => {
+    const onClick = vi.fn();
+    render(
+      <Button loading onClick={onClick}>
+        Loading Key
+      </Button>
+    );
+    const button = screen.getByRole('button');
+    fireEvent.keyDown(button, { key: 'Enter' });
+    fireEvent.keyDown(button, { key: ' ' });
+    fireEvent.keyDown(button, { key: 'Tab' });
+    expect(onClick).not.toHaveBeenCalled();
+  });
+
+  it('ne déclenche rien sur touche non supportée', () => {
+    const onClick = vi.fn();
+    render(<Button onClick={onClick}>Other Key</Button>);
+    const button = screen.getByRole('button');
+    fireEvent.keyDown(button, { key: 'Escape' });
+    fireEvent.keyDown(button, { key: 'ArrowDown' });
+    expect(onClick).not.toHaveBeenCalled();
   });
 });
