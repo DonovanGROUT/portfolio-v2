@@ -6,9 +6,17 @@
 
 import '@testing-library/jest-dom';
 
+import { vi } from 'vitest';
+
 beforeEach(() => {
   // Reset de l'état global avant chaque test
   document.body.innerHTML = '';
+});
+
+afterEach(() => {
+  // Nettoyage global des mocks et timers pour éviter les fuites de contexte
+  vi.clearAllMocks();
+  vi.useRealTimers();
 });
 
 // Mock des APIs du navigateur si nécessaire
