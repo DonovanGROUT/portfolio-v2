@@ -298,6 +298,37 @@ Deploy: Vercel (preview) + PlanetHoster (prod)
 
 ---
 
+## 🧪 Stratégie de tests : structurels vs fonctionnels
+
+### Séparation des tests structurels et fonctionnels
+
+Pour optimiser la rapidité et la robustesse des tests du design system, on sépare :
+
+- **Tests structurels/rendu** (présence des sous-composants, structure DOM, snapshot) : dans des fichiers dédiés `*.structure.test.tsx` avec un mock global du composant principal. Ces tests sont ultra-rapides, stables, et ne testent que la structure.
+- **Tests fonctionnels/avancés** (accessibilité, validation, interactions, focus, logique métier) : dans le fichier principal `*.test.tsx` sans mock global, pour garantir la couverture réelle.
+
+#### Exemple (Form)
+
+- `Form.structure.test.tsx` : mock global de `Form`, tests de rendu/présence des sous-composants, typage strict.
+- `Form.test.tsx` : tous les tests d’accessibilité, validation, interactions, etc. (aucun mock global destructeur).
+
+#### Avantages
+
+- Exécution des tests structurels en quelques ms
+- Couverture fonctionnelle complète et fiable
+- Possibilité d’harmoniser la structure sur tous les composants complexes (Modal, Card, etc.)
+
+#### Limites
+
+- Inutile pour les composants très simples
+- Ne pas mocker globalement pour les tests d’accessibilité ou de logique métier
+
+#### Recommandation
+
+- Appliquer ce modèle à tous les composants avec sous-composants ou logique de rendu complexe (Form, Modal, Card…)
+
+---
+
 ## 🔧 Phase 1 : Configuration de l'environnement - HISTORIQUE
 
 ### ✅ Étape 1.1 : Audit de la configuration actuelle - TERMINÉ
