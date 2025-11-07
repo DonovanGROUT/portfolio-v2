@@ -29,6 +29,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // On gère le nonce uniquement côté client si besoin, sinon on laisse Next/_document injecter le nonce
+  let nonce: string | undefined = undefined;
+  if (
+    typeof window !== 'undefined' &&
+    typeof crypto !== 'undefined' &&
+    crypto.randomUUID
+  ) {
+    nonce = crypto.randomUUID();
+  }
+
   return (
     <html lang="fr">
       <head>
@@ -36,9 +46,12 @@ export default function RootLayout({
           name="description"
           content="Portfolio de Donovan GROUT, développeur web full-stack certifié Opquast Expert, spécialisé en accessibilité, performance, SEO et design system. Découvrez mes projets, compétences et recommandations."
         />
+        {/* Exemple d'injection de nonce dans un script inline (si besoin) */}
+        {/* <script nonce={nonce}>{`console.log('CSP nonce test')`}</script> */}
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        nonce={nonce}
       >
         {children}
       </body>
