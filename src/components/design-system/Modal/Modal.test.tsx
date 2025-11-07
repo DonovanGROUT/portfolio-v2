@@ -329,17 +329,19 @@ describe('Modal Component - TDD Implementation', () => {
       expect(dialog.className).toContain('animate-in');
     });
 
-    it('doit appeler onAfterOpen après ouverture', async () => {
+    it('doit appeler onAfterOpen après ouverture', () => {
+      vi.useFakeTimers();
       const mockOnAfterOpen = vi.fn();
       render(<Modal {...defaultProps} onAfterOpen={mockOnAfterOpen} />);
 
-      // Attendre que les effets React se déclenchent
-      await waitFor(() => {
-        expect(mockOnAfterOpen).toHaveBeenCalledTimes(1);
-      });
+      // Simule le délai d'animation (par exemple 150ms)
+      vi.advanceTimersByTime(150);
+      expect(mockOnAfterOpen).toHaveBeenCalledTimes(1);
+      vi.useRealTimers();
     });
 
-    it('doit appeler onAfterClose après fermeture', async () => {
+    it('doit appeler onAfterClose après fermeture', () => {
+      vi.useFakeTimers();
       const mockOnAfterClose = vi.fn();
       const { rerender } = render(
         <Modal
@@ -361,10 +363,10 @@ describe('Modal Component - TDD Implementation', () => {
         />
       );
 
-      // Attendre que les effets React se déclenchent
-      await waitFor(() => {
-        expect(mockOnAfterClose).toHaveBeenCalledTimes(1);
-      });
+      // Simule le délai d'animation (par exemple 300ms)
+      vi.advanceTimersByTime(300);
+      expect(mockOnAfterClose).toHaveBeenCalledTimes(1);
+      vi.useRealTimers();
     });
 
     it('doit nettoyer les timers correctement', () => {
