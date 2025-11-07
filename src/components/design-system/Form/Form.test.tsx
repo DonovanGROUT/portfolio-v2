@@ -24,6 +24,8 @@ vi.mock('../Typography/Typography', () => ({
   ),
 }));
 
+// Mocks globaux des sous-composants Form pour accélérer les tests de structure/rendu
+
 describe('Form Component - Design System', () => {
   describe('Form Structure and Rendering', () => {
     test('should render form with correct attributes', () => {
