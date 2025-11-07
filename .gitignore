@@ -43,3 +43,7 @@ next-env.d.ts
 
 # Vercel
 .vercel/
+
+# Rapports d'analyse et fichiers JSON
+/analyze/
+*.json
