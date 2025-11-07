@@ -14,6 +14,9 @@ export default defineConfig({
     environment: 'jsdom',
     // Fichier de configuration des tests (mocks, setup)
     setupFiles: ['./src/test/setup.ts'],
+    // Optimisation de la parallélisation et de l'isolation
+    pool: 'threads', // Utilise des threads pour chaque worker (plus stable)
+    isolate: true, // Isole chaque fichier de test pour éviter les fuites d'état
     // Pattern des fichiers de test à inclure
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     // Dossiers/fichiers à exclure des tests
