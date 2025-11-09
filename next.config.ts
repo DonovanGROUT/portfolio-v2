@@ -13,10 +13,11 @@ import type { NextConfig } from 'next';
 const isVercelProd =
   process.env.VERCEL === '1' || process.env.VERCEL === 'true';
 const isProd = process.env.NODE_ENV === 'production' && isVercelProd;
+// Use Next.js native nonce replacement: 'nonce-[nonce]' will be replaced in Vercel prod
 const ContentSecurityPolicy = isProd
   ? `
     default-src 'self';
-    script-src 'self' 'nonce-__REPLACE_WITH_NONCE__';
+    script-src 'self' 'nonce-[nonce]';
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
     img-src 'self' data: https:;
     font-src 'self' https://fonts.gstatic.com;
@@ -76,7 +77,7 @@ const nextConfig: NextConfig = {
           {
             key: 'Content-Security-Policy',
             // La valeur du nonce sera remplacée dynamiquement côté serveur (voir layout.tsx)
-            value: ContentSecurityPolicy.replace(/\n/g, ''),
+            value: ContentSecurityPolicy.replace(/\s{2,}/g, ' ').trim(),
           },
           {
             key: 'Strict-Transport-Security',
