@@ -47,6 +47,8 @@ const nextConfig: NextConfig = {
   async headers() {
     // En dev, CSP permissive pour ne rien casser
     const isDev = process.env.NODE_ENV !== 'production';
+    // Détection environnement Vercel preview (VERCEL_ENV = preview ou development)
+    const isVercelPreview = process.env.VERCEL_ENV === 'preview';
 
     const cspDev = [
       "default-src 'self'",
@@ -60,13 +62,14 @@ const nextConfig: NextConfig = {
       "form-action 'self'",
     ].join('; ');
 
+    // En preview Vercel, autoriser vercel.live pour le widget de feedback
     const cspProd = [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline'", // unsafe-inline nécessaire pour Next.js
+      `script-src 'self' 'unsafe-inline'${isVercelPreview ? ' https://vercel.live' : ''}`, // unsafe-inline nécessaire pour Next.js
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "img-src 'self' data: https:",
       "font-src 'self' https://fonts.gstatic.com",
-      "connect-src 'self'",
+      `connect-src 'self'${isVercelPreview ? ' https://vercel.live' : ''}`,
       "frame-ancestors 'none'",
       "base-uri 'self'",
       "form-action 'self'",
