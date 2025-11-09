@@ -69,6 +69,8 @@ export default defineConfig({
         'src/app/politique-confidentialite/page.tsx',
         // Layout global
         'src/app/layout.tsx',
+        // Document custom Next.js (jamais testé, purement SSR)
+        'src/pages/_document.tsx',
         // Hooks Husky
         '.husky/**',
       ],
