@@ -70,6 +70,7 @@ const nextConfig: NextConfig = {
       "img-src 'self' data: https:",
       "font-src 'self' https://fonts.gstatic.com",
       `connect-src 'self'${isVercelPreview ? ' https://vercel.live' : ''}`,
+      `frame-src${isVercelPreview ? ' https://vercel.live' : " 'none'"}`, // Autoriser iframe vercel.live en preview
       "frame-ancestors 'none'",
       "base-uri 'self'",
       "form-action 'self'",
