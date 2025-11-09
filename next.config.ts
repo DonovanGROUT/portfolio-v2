@@ -10,34 +10,7 @@ import type { NextConfig } from 'next';
 
 // La valeur de nonce sera injectée dynamiquement côté serveur (voir layout.tsx)
 // En local (dev OU build/start local), on autorise unsafe-inline/unsafe-eval pour éviter l'écran blanc
-const isVercelProd =
-  process.env.VERCEL === '1' || process.env.VERCEL === 'true';
-const isProd = process.env.NODE_ENV === 'production' && isVercelProd;
-// Use Next.js native nonce replacement: 'nonce-[nonce]' will be replaced in Vercel prod
-const ContentSecurityPolicy = isProd
-  ? `
-    default-src 'self';
-    script-src 'self' 'nonce-[nonce]';
-    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-    img-src 'self' data: https:;
-    font-src 'self' https://fonts.gstatic.com;
-    connect-src 'self';
-    frame-ancestors 'none';
-    base-uri 'self';
-    form-action 'self';
-    require-trusted-types-for 'script';
-  `
-  : `
-    default-src 'self';
-    script-src 'self' 'unsafe-inline' 'unsafe-eval';
-    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-    img-src 'self' data: https:;
-    font-src 'self' https://fonts.gstatic.com;
-    connect-src 'self';
-    frame-ancestors 'none';
-    base-uri 'self';
-    form-action 'self';
-  `;
+// La politique CSP est désormais gérée par le middleware (middleware.ts) pour tous les environnements.
 
 const nextConfig: NextConfig = {
   webpack(config, { isServer }) {
@@ -69,15 +42,43 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [],
   },
+  // Headers de sécurité appliqués sur toutes les routes
+  // Fonctionnent en production Vercel et en mode local (build + start)
   async headers() {
+    // En dev, CSP permissive pour ne rien casser
+    const isDev = process.env.NODE_ENV !== 'production';
+
+    const cspDev = [
+      "default-src 'self'",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+      "img-src 'self' data: https:",
+      "font-src 'self' https://fonts.gstatic.com",
+      "connect-src 'self'",
+      "frame-ancestors 'none'",
+      "base-uri 'self'",
+      "form-action 'self'",
+    ].join('; ');
+
+    const cspProd = [
+      "default-src 'self'",
+      "script-src 'self' 'unsafe-inline'", // unsafe-inline nécessaire pour Next.js
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+      "img-src 'self' data: https:",
+      "font-src 'self' https://fonts.gstatic.com",
+      "connect-src 'self'",
+      "frame-ancestors 'none'",
+      "base-uri 'self'",
+      "form-action 'self'",
+    ].join('; ');
+
     return [
       {
-        source: '/(.*)',
+        source: '/:path*',
         headers: [
           {
             key: 'Content-Security-Policy',
-            // La valeur du nonce sera remplacée dynamiquement côté serveur (voir layout.tsx)
-            value: ContentSecurityPolicy.replace(/\s{2,}/g, ' ').trim(),
+            value: isDev ? cspDev : cspProd,
           },
           {
             key: 'Strict-Transport-Security',
@@ -98,6 +99,10 @@ const nextConfig: NextConfig = {
           {
             key: 'Referrer-Policy',
             value: 'strict-origin-when-cross-origin',
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()',
           },
         ],
       },
