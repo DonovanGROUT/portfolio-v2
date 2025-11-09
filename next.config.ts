@@ -36,7 +36,6 @@ const ContentSecurityPolicy = isProd
     frame-ancestors 'none';
     base-uri 'self';
     form-action 'self';
-    require-trusted-types-for 'script';
   `;
 
 const nextConfig: NextConfig = {
