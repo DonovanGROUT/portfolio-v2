@@ -1,9 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export function middleware(request: NextRequest) {
-  // Log d'exécution du middleware (visible dans la console du serveur)
-  console.log('[middleware] Executed for:', request.nextUrl.pathname);
-
   // Le middleware ne modifie pas les headers car ils sont déjà définis dans next.config.ts
   // Il sert uniquement de fallback pour les routes dynamiques non couvertes
   const response = NextResponse.next();
