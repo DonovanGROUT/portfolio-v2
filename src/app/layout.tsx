@@ -33,6 +33,17 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <head>
+        {/* Préconnexion Google Fonts CDN pour améliorer le TTFB des polices */}
+        <link
+          rel="preconnect"
+          href="https://fonts.googleapis.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
         <meta
           name="description"
           content="Portfolio de Donovan GROUT, développeur web full-stack certifié Opquast Expert, spécialisé en accessibilité, performance, SEO et design system. Découvrez mes projets, compétences et recommandations."
