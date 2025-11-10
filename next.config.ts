@@ -2,8 +2,8 @@
 // Définit les paramètres de build, optimisations et comportement de l'application
 
 // Ajout Webpack Bundle Analyzer
-const withBundleAnalyzer =
-  require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+const withBundleAnalyzer = BundleAnalyzerPlugin;
 import type { NextConfig } from 'next';
 
 /** @type {import('next').NextConfig} */
