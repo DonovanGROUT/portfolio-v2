@@ -47,3 +47,7 @@ next-env.d.ts
 # Rapports d'analyse et fichiers JSON
 /analyze/
 *.json
+
+# Sitemaps générés automatiquement par next-sitemap
+public/sitemap*.xml
+public/robots.txt
