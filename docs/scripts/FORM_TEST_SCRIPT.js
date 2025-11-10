@@ -134,7 +134,7 @@ console.log('Types sécurisés:', securityChecks);
 
 // 9. Test d'accessibilité WCAG
 console.log("♿ Tests d'accessibilité:");
-let accessibilityIssues = [];
+const accessibilityIssues = [];
 
 // Labels associés
 inputs.forEach(input => {
