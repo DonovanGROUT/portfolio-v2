@@ -4,7 +4,7 @@
   "installCommand": "npm ci",
   "framework": "nextjs",
   "outputDirectory": ".next",
-  "ignoreCommand": "npx vercel-ignore-check",
+
   "headers": [
     {
       "source": "/(.*)",

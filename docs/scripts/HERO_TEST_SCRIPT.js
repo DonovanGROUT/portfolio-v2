@@ -3,7 +3,11 @@
 // À coller dans la console du navigateur sur /hero-demo ou la page d'accueil
 
 function logResult(label, result) {
-  // Résultat du test (affichage désactivé pour lint clean)
+  console.log(
+    `%c${label}: %c${result ? 'OK' : 'ÉCHEC'}`,
+    'font-weight:bold;color:#0369a1',
+    result ? 'color:green' : 'color:red'
+  );
 }
 
 // Vérification du gradient
@@ -58,3 +62,4 @@ logResult('Typographie H1', name && name.className.includes('text-4xl'));
 logResult('Typographie H2', title && title.className.includes('text-2xl'));
 
 // Résumé
+console.log('%cHERO_TEST_SCRIPT.js terminé', 'font-weight:bold;color:#10b981');

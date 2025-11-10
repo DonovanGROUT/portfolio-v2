@@ -1,6 +1,3 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-
 # Vérification complète avant push
 echo "🚀 Pre-push: Running complete verification..."
 npm run check

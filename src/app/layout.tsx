@@ -29,7 +29,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Le nonce est injecté côté serveur via _document.tsx, inutile de le gérer ici côté client
   return (
     <html lang="fr">
       <head>
@@ -48,8 +47,6 @@ export default function RootLayout({
           name="description"
           content="Portfolio de Donovan GROUT, développeur web full-stack certifié Opquast Expert, spécialisé en accessibilité, performance, SEO et design system. Découvrez mes projets, compétences et recommandations."
         />
-        {/* Exemple d'injection de nonce dans un script inline (si besoin) */}
-        {/* <script>{`console.log('CSP nonce test')`}</script> */}
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
