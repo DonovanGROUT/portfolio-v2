@@ -180,8 +180,8 @@
 
 ### **Métriques Globales Projet**
 
-- ✅ **Couverture Exceptionnelle** : **98.24%** statements (objectif 80% largement dépassé) ✅
-- ✅ **Tests Totaux** : **174 tests** sur 8 fichiers ✅
+- ✅ **Couverture Exceptionnelle** : **98.24%** statements design system (objectif 80% largement dépassé) ✅
+- ✅ **Tests Totaux** : **261 tests** sur 14 fichiers ✅
 - ✅ **Performance** : Tous composants <800ms ✅
 - ✅ **Lighthouse** : **100/100 Accessibilité** ⭐
 - ✅ **Performance** : Bundle optimisé, tests <800ms ✅

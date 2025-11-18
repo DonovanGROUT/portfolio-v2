@@ -48,6 +48,9 @@ next-env.d.ts
 /analyze/
 *.json
 
+# Rapports d'analyse locaux (ne pas commiter)
+docs/reference/COHERENCE_ANALYSIS_REPORT.md
+
 # Sitemaps générés automatiquement par next-sitemap
 public/sitemap*.xml
 public/robots.txt

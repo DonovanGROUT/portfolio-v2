@@ -88,8 +88,9 @@ Deploy: Vercel (preview) + PlanetHoster (prod)
 
 #### **Métriques Finales Globales :**
 
-- **Tests Totaux** : **232 tests** passés ✅
-- **Couverture Globale** : **97.82%** statements, **94.5%** branches ✅
+- **Tests Totaux** : **261 tests** passés (234 design system + 27 utilities/pages) ✅
+- **Couverture Design System** : **98.24%** statements, **95.06%** branches ✅
+- **Couverture Globale Projet** : **86.55%** statements (inclut pages non testées) ✅
 - **Performance** : Tous composants optimisés ✅
 - **Standards** : WCAG 2.1 AA + RGPD/GDPR ✅
 - **Sécurité** : XSS protection sur tous composants ✅
@@ -337,7 +338,7 @@ Pour optimiser la rapidité et la robustesse des tests du design system, on sép
 
 **Constat initial** :
 
-- ✅ Next.js 15.3.3 avec TypeScript
+- ✅ Next.js 15.5.6 avec TypeScript
 - ✅ Tailwind CSS 3 configuré
 - ⚠️ Fichiers `.mjs` pour ESLint et PostCSS (incohérent avec approche TypeScript)
 - ⚠️ Configuration minimale (pas de tests, linting basique)
@@ -744,7 +745,7 @@ www CNAME cname.vercel-dns.com
 
 **Dépendances ajoutées** :
 
-- `@lhci/cli@^0.14.0` - Lighthouse CI automation
+- `@lhci/cli@^0.15.0` - Lighthouse CI automation
 - `audit-ci@^7.1.0` - Audit sécurité automatisé
 - `wait-on@^8.0.1` - Attente serveur pour tests
 
@@ -1004,8 +1005,8 @@ www CNAME cname.vercel-dns.com
 
 **📊 Métriques Globales Phase 3** :
 
-- **Couverture** : **97.82%** statements, **94.5%** branches, **100%** functions, 97.82% lines (objectif 80% largement dépassé)
-- **Tests Total** : **232 tests** sur 10 fichiers
+- **Couverture Design System** : **98.24%** statements, **95.06%** branches, **96.66%** functions (objectif 80% largement dépassé)
+- **Tests Total** : **261 tests** sur 14 fichiers (234 design system + 27 utilities/pages)
 - **Performance** : Tous tests <1300ms (Button: 444ms, Typography: 240ms, Card: 482ms, Navigation: 627ms, Modal: 721ms, Form: 1291ms, PrivacyNotice: 368ms, Home: 265ms, Colors: 11ms, Utils: 26ms)
 - **Quality Score** : 0 warning, 0 erreur
 - **Lighthouse Desktop** : Tous composants 100/100 (Button, Typography, Card, Navigation, Modal, Form et PrivacyNotice).

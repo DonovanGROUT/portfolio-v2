@@ -1,6 +1,35 @@
 # Structure et Contenu du Portfolio - Donovan GROUT
 
-## 🎯 **Structure complète définitive**
+## �️ **Architecture du site**
+
+### **Page d'accueil (/) - One-page scrollable**
+
+Toutes les sections principales sont sur la page d'accueil, accessibles par scroll et ancres :
+
+1. Hero/Accueil (`#hero`)
+2. À propos (`#about`)
+3. Compétences (`#skills`)
+4. Formation (`#education`)
+5. Certifications (`#certifications`)
+6. Expérience (`#experience`)
+7. Projets (`#projects`)
+8. Recommandations (`#testimonials`)
+9. Contact (`#contact`)
+
+### **Pages dédiées**
+
+- **`/services`** → Détails des prestations freelance, process, tarifs
+- **`/privacy-policy`** → Politique de confidentialité (RGPD)
+
+### **Navigation**
+
+- Les liens vers les sections utilisent des ancres : `#about`, `#contact`, `#projects`, etc.
+- Les liens vers les pages dédiées utilisent des routes : `/services`, `/privacy-policy`
+- Navigation fixe avec smooth scroll
+
+---
+
+## 🎯 **Sections de la page d'accueil**
 
 ### **1. Section Hero/Accueil**
 
@@ -85,6 +114,8 @@ Développeur web full-stack, basé à Caen, j'ai obtenu mon titre professionnel 
 - **Technologies :** HTML, CSS, Javascript, NodeJS, SQL, API Rest, MVC, POO, React, DevOps, CMS etc.
 - **Distinction :** Titre professionnel obtenu avec les félicitations du jury.
 
+### **5. Section Certifications**
+
 #### **Certification Opquast - Maîtrise de la qualité en projet web**
 
 - **Période :** 2025
@@ -99,7 +130,7 @@ Développeur web full-stack, basé à Caen, j'ai obtenu mon titre professionnel 
 - **Description :** Concepts de sécurité des systèmes d'information
 - **Contenu :** Pratiques de sécurisation des infrastructures
 
-### **5. Section Expérience**
+### **6. Section Expérience**
 
 #### **Développeur stagiaire**
 
@@ -116,7 +147,7 @@ Développeur web full-stack, basé à Caen, j'ai obtenu mon titre professionnel 
   - Résolution de problèmes techniques
   - Contact référent avec le prestataire technique
 
-### **6. Section Projets Portfolio**
+### **7. Section Projets Portfolio**
 
 #### **Portfolio-v2** (Projet actuel)
 
@@ -176,7 +207,7 @@ Développeur web full-stack, basé à Caen, j'ai obtenu mon titre professionnel 
 - **Technologies :** PHP, HTML, CSS, JavaScript
 - **Lien :** [github.com/DonovanGROUT/BurgerCode](https://github.com/DonovanGROUT/BurgerCode/)
 
-### **7. Section Recommandations**
+### **8. Section Recommandations**
 
 #### **Claire LOISEL**
 
@@ -190,7 +221,7 @@ Développeur web full-stack, basé à Caen, j'ai obtenu mon titre professionnel 
 
 > Note : D'autres recommandations peuvent être ajoutées depuis le portfolio actuel si nécessaire
 
-### **8. Section Contact**
+### **9. Section Contact**
 
 #### **Formulaire de contact**
 
@@ -201,12 +232,186 @@ Développeur web full-stack, basé à Caen, j'ai obtenu mon titre professionnel 
 - Message
 - Bouton d'envoi
 
-#### **Informations de contact**
+#### **Informations de contact et réseaux sociaux**
 
 - **Email :** <donovan.grout.pro@gmail.com>
 - **LinkedIn :** [linkedin.com/in/donovan-grout](https://www.linkedin.com/in/donovan-grout/)
 - **GitHub :** [github.com/DonovanGROUT](https://github.com/DonovanGROUT)
-- **Portfolio actuel :** [sitepro-donovangrout.netlify.app](https://sitepro-donovangrout.netlify.app/)
+
+#### **Protection des données**
+
+- Notice de confidentialité affichée directement dans la section
+- Lien vers la politique de confidentialité complète : `/privacy-policy`
+- Checkbox de consentement obligatoire avant envoi
+
+---
+
+## 📄 **Pages dédiées**
+
+### **Page Services / Prestations (`/services`)**
+
+#### **Titre**
+
+Mes prestations de développement web
+
+#### **Introduction**
+
+En tant que développeur web full-stack freelance, je vous accompagne dans vos projets web de A à Z.
+
+#### **Prestations proposées**
+
+##### **🌐 Création de sites web**
+
+- Sites vitrines
+- Sites e-commerce
+- Applications web sur mesure
+- Landing pages
+
+##### **🔄 Refonte et modernisation**
+
+---
+
+## 🗂️ **Fichiers et routes à créer/supprimer**
+
+### **Routes à créer**
+
+- `src/app/services/page.tsx` → Page prestations
+- `src/app/privacy-policy/page.tsx` → Politique de confidentialité
+
+### **Routes à supprimer (redondantes avec sections home)**
+
+- `src/app/about/page.tsx` → Remplacé par section `#about` de la home
+- `src/app/contact/page.tsx` → Remplacé par section `#contact` de la home
+- `src/app/projects/page.tsx` → Remplacé par section `#projects` de la home
+
+### **Composants à créer**
+
+- `src/components/sections/HeroSection.tsx`
+- `src/components/sections/AboutSection.tsx`
+- `src/components/sections/SkillsSection.tsx`
+- `src/components/sections/EducationSection.tsx`
+- `src/components/sections/CertificationsSection.tsx`
+- `src/components/sections/ExperienceSection.tsx`
+- `src/components/sections/ProjectsSection.tsx`
+- `src/components/sections/TestimonialsSection.tsx`
+- `src/components/sections/ContactSection.tsx`
+
+### **Navigation à adapter**
+
+- Mettre à jour `src/components/design-system/Navigation/Navigation.tsx`
+- Gérer les ancres pour les sections (`#about`, `#contact`, etc.)
+- Gérer les routes pour les pages dédiées (`/services`, `/privacy-policy`)
+- Ajouter smooth scroll
+
+---
+
+**📅 Date de création :** 11 juin 2025  
+**📅 Date de mise à jour :** 12 novembre 2025  
+**🚀 Phase :** 4 - Contenu et sections  
+**📝 Statut :** Architecture clarifiée, prête pour développement
+
+##### **🛠️ Maintenance et support**
+
+- Maintenance corrective et évolutive
+- Mises à jour de sécurité
+- Support technique
+- Hébergement et gestion de domaine
+
+##### **🎨 Design et UX**
+
+- Création de chartes graphiques
+- Wireframes et maquettes
+- Design responsive
+- Accessibilité WCAG
+
+##### **🔍 Audit et conseil**
+
+- Audit de performance
+- Audit de sécurité
+- Audit d'accessibilité
+- Recommandations et plan d'action
+
+#### **Méthodologie**
+
+1. **Découverte** : Échange pour comprendre vos besoins
+2. **Proposition** : Devis détaillé et planning
+3. **Conception** : Maquettes et validation
+4. **Développement** : Création avec méthodologie Agile
+5. **Tests** : Validation qualité et accessibilité
+6. **Livraison** : Mise en ligne et formation
+7. **Suivi** : Accompagnement post-livraison
+
+#### **Engagements qualité**
+
+- ✅ Code propre et maintenable (TDD, CI/CD)
+- ✅ Performance optimisée
+- ✅ Accessibilité WCAG
+- ✅ Sécurité renforcée
+- ✅ Éco-conception
+- ✅ Respect des délais
+
+#### **CTA**
+
+- Bouton "Demander un devis" (vers formulaire de contact avec sujet pré-rempli)
+- Bouton "Me contacter" (vers section contact de la home)
+
+---
+
+### **Page Politique de confidentialité (`/privacy-policy`)**
+
+#### **Titre**
+
+Politique de confidentialité
+
+#### **Contenu**
+
+##### **Responsable du traitement**
+
+Donovan GROUT - Développeur web freelance
+
+##### **Données collectées**
+
+- Via le formulaire de contact : nom, prénom, email, téléphone, société (optionnel), message
+- Données de navigation (cookies techniques uniquement, pas de tracking)
+
+##### **Finalité du traitement**
+
+- Répondre aux demandes de contact
+- Gérer les demandes de devis
+- Aucune utilisation commerciale ou marketing
+
+##### **Base légale**
+
+Consentement (RGPD Art. 6.1.a)
+
+##### **Durée de conservation**
+
+- Données du formulaire : 1 an après dernier contact
+- Emails archivés : 3 ans maximum
+
+##### **Droits des utilisateurs**
+
+- Droit d'accès, de rectification, de suppression
+- Droit à la portabilité
+- Droit d'opposition
+- Contact : donovan.grout.pro@gmail.com
+
+##### **Sécurité**
+
+- Transmission chiffrée (HTTPS)
+- Stockage sécurisé
+- Pas de partage avec des tiers
+- Hébergement : Vercel (conforme RGPD)
+
+##### **Cookies**
+
+- Cookies techniques uniquement (navigation)
+- Pas de cookies de tracking ou publicitaires
+- Pas de consent banner nécessaire (exemption CNIL)
+
+##### **Contact**
+
+Pour toute question : donovan.grout.pro@gmail.com
 
 ---
 
