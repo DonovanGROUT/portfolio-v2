@@ -44,8 +44,7 @@ export interface FormProps extends React.FormHTMLAttributes<HTMLFormElement> {
 /**
  * Props du composant Form.Input
  */
-export interface FormInputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface FormInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   name: string;
   label: string;
   type?: InputType;
@@ -53,8 +52,7 @@ export interface FormInputProps
   className?: string;
 }
 
-export interface FormTextareaProps
-  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+export interface FormTextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   name: string;
   label: string;
   error?: string;
@@ -62,8 +60,7 @@ export interface FormTextareaProps
   className?: string;
 }
 
-export interface FormSelectProps
-  extends React.SelectHTMLAttributes<HTMLSelectElement> {
+export interface FormSelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   name: string;
   label: string;
   options?: SelectOption[];
@@ -71,8 +68,7 @@ export interface FormSelectProps
   className?: string;
 }
 
-export interface FormSubmitProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface FormSubmitProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   loading?: boolean;
   variant?: 'primary' | 'secondary';
   className?: string;
