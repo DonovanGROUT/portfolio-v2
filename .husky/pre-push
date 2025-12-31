@@ -1,7 +1,10 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
 # Vérification complète avant push
 echo "🚀 Pre-push: Running complete verification..."
-pnpm run check
+npm run check
 
 # Tests avec couverture avant push
 echo "📊 Pre-push: Running tests with coverage..."
-pnpm run test:coverage
+npm run test:coverage

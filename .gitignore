@@ -63,3 +63,7 @@ public/robots.txt
 # Lighthouse CI - Rapports locaux (ne pas commiter)
 .lighthouseci/
 bundle-stats.json
+
+# Lighthouse CI - Rapports locaux (ne pas commiter)
+.lighthouseci/
+bundle-stats.json
