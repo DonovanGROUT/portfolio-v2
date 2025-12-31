@@ -19,7 +19,9 @@
     "format:check": "prettier --check .",
     "check": "npm run format:check && npm run lint:strict && npm run test:run",
     "prepare": "husky",
-    "audit:security": "audit-ci --config audit-ci.json"
+    "audit:security": "audit-ci --config audit-ci.json",
+    "lighthouse": "bash scripts/check-server.sh && lhci autorun",
+    "lighthouse:mobile": "bash scripts/check-server.sh && lhci autorun --config=.lighthouserc.mobile.json"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.16",
