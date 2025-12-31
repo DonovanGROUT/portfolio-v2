@@ -463,7 +463,6 @@ Deploy: Vercel (preview) + PlanetHoster (prod)
 **Pipeline d'Intégration Continue (.github/workflows/ci.yml)** :
 
 1. **Job Quality** (Ubuntu) :
-
    - ✅ Vérification formatage Prettier
    - ✅ Linting ESLint strict
    - ✅ Build production Next.js
@@ -471,13 +470,11 @@ Deploy: Vercel (preview) + PlanetHoster (prod)
    - ✅ Upload métriques coverage local
 
 2. **Job Build Matrix** (Multi-OS/Multi-Node) :
-
    - ✅ Test Ubuntu/Windows/macOS
    - ✅ Test Node.js 18.x/20.x
    - ✅ Validation compatibilité cross-platform
 
 3. **Job Security Audit** :
-
    - ✅ npm audit (vulnérabilités dépendances)
    - ✅ audit-ci avec seuils automatiques
    - ✅ Scanning sécurité avancé
