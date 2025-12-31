@@ -3,6 +3,5 @@
   "devCommand": "pnpm dev",
   "installCommand": "pnpm install --frozen-lockfile",
   "framework": "nextjs",
-  "outputDirectory": ".next",
-  "ignoreCommand": "npx vercel-ignore-check"
+  "outputDirectory": ".next"
 }
