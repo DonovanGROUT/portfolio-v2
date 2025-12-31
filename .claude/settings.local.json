@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:sitepro-donovangrout.netlify.app)",
+      "Bash(npm test:*)",
+      "Bash(npm run check:*)",
+      "Bash(npm run format:*)",
+      "Bash(npm run lint:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm start)",
+      "Bash(npm run lighthouse:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

@@ -13,8 +13,14 @@ import type { NextConfig } from 'next';
 // La politique CSP est désormais gérée par le middleware (middleware.ts) pour tous les environnements.
 
 const nextConfig: NextConfig = {
-  webpack(config, { isServer }) {
-    if (process.env.ANALYZE === 'true') {
+  // Turbopack en dev (rapide)
+  turbopack: {
+    root: __dirname, // définit clairement la racine du projet pour Turbopack
+  },
+
+  // Hook Webpack uniquement pour la build prod
+  webpack(config, { isServer, dev }) {
+    if (!dev && process.env.ANALYZE === 'true') {
       // Visualisation HTML classique (désactivée temporairement)
       /*
         config.plugins.push(

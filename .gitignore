@@ -46,11 +46,20 @@ next-env.d.ts
 
 # Rapports d'analyse et fichiers JSON
 /analyze/
-*.json
+/analyze/*.json
 
 # Rapports d'analyse locaux (ne pas commiter)
 docs/reference/COHERENCE_ANALYSIS_REPORT.md
 
+# Claude Code - Fichiers locaux développement
+CLAUDE.md
+context.md
+docs/prompts-claude-code/
+
 # Sitemaps générés automatiquement par next-sitemap
 public/sitemap*.xml
 public/robots.txt
+
+# Lighthouse CI - Rapports locaux (ne pas commiter)
+.lighthouseci/
+bundle-stats.json

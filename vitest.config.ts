@@ -62,6 +62,7 @@ export default defineConfig({
         'src/app/form-demo/**',
         'src/app/privacy-notice-demo/**',
         'src/app/hero-demo/page.tsx', // Page de démo Hero (ajouté)
+        'src/app/skills-demo/**', // Page de démo Skills (ajouté)
         // Pages statiques sans logique métier
         'src/app/about/page.tsx',
         'src/app/projects/page.tsx',

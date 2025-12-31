@@ -6,6 +6,8 @@
 // ===================================================================
 
 import Hero from '@/components/design-system/Hero/Hero';
+import { Skills } from '@/components/design-system/Skills/Skills';
+import { portfolioSkills, categoryMeta } from '@/data/portfolioSkills';
 // import Image from 'next/image';
 
 export default function Home() {
@@ -28,11 +30,16 @@ export default function Home() {
           baseline="Faites confiance à un développeur full-stack certifié Expert Opquast, engagé pour l'accessibilité. Un site accessible et performant, c'est aussi un meilleur référencement et donc un levier puissant pour attirer de nouveaux clients."
         />
 
-        {/* Icône Vercel logomark pour test d'accessibilité */}
-        {/* Icône Vercel logomark supprimée (test obsolète) */}
+        {/* Skills Section - Compétences techniques */}
+        <section className="max-w-6xl mx-auto px-4 py-12">
+          <Skills
+            skills={portfolioSkills}
+            title="Mes Compétences"
+            categoryMeta={categoryMeta}
+          />
+        </section>
 
         {/* TODO Phase 4 : Ajouter les sections suivantes */}
-        {/* - Skills Component (compétences techniques) */}
         {/* - Featured Projects (projets mis en avant) */}
         {/* - Testimonials (recommandations) */}
         {/* - Footer Component (liens permanents) */}

@@ -1,0 +1,7 @@
+ignoredBuiltDependencies:
+  - ngrok
+  - unrs-resolver
+
+onlyBuiltDependencies:
+  - esbuild
+  - sharp
