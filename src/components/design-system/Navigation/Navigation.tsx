@@ -67,12 +67,13 @@ export const Navigation: React.FC<NavigationProps> = ({
     const isExternal = target === '_blank' || href.startsWith('http');
 
     // Classes de base pour les liens - Utilise notre système de couleurs
-    const baseClasses = 'transition-colors duration-200 font-medium';
+    const baseClasses =
+      'transition-colors duration-200 ease-in-out font-medium focus:outline-2 focus:outline-offset-2 focus:outline-primary-700 rounded-lg';
     const baseStyles = {
-      color: colors.neutral[600], // text-slate-600
+      color: colors.neutral[600], // text-slate-600 (gris slate - inactive)
     };
     const hoverStyles = {
-      color: colors.primary[700], // hover:text-sky-700 (bleu océan principal)
+      color: colors.primary[500], // hover:text-sky-500 (bleu clair - innovation, dynamisme)
     };
     const activeClasses = isActive ? 'border-b-2' : '';
     const activeStyles = isActive
@@ -151,12 +152,12 @@ export const Navigation: React.FC<NavigationProps> = ({
           <Link
             href="/"
             aria-label={`Retour à l'accueil - ${brand}`}
-            className="flex items-center space-x-2 transition-colors duration-200"
+            className="flex items-center space-x-2 transition-colors duration-200 ease-in-out"
             style={{
               color: colors.neutral[800], // text-slate-800
             }}
             onMouseEnter={e => {
-              e.currentTarget.style.color = colors.primary[700]; // hover:text-sky-700
+              e.currentTarget.style.color = colors.primary[500]; // hover:text-sky-500 (bleu clair)
             }}
             onMouseLeave={e => {
               e.currentTarget.style.color = colors.neutral[800];
@@ -211,7 +212,7 @@ export const Navigation: React.FC<NavigationProps> = ({
         <div
           role="menu"
           aria-hidden={!isMenuOpen}
-          className={`md:hidden absolute top-16 left-0 right-0 border-b shadow-lg transition-all duration-300 ${
+          className={`md:hidden absolute top-16 left-0 right-0 border-b shadow-lg transition-all duration-300 ease-in-out ${
             isMenuOpen ? 'block' : 'hidden'
           }`}
           style={{
@@ -223,14 +224,14 @@ export const Navigation: React.FC<NavigationProps> = ({
             {links.map(link => {
               const mobileLink = renderLink(
                 link,
-                'block px-3 py-2 text-base rounded-md'
+                'block px-3 py-3 text-base rounded-lg min-h-[44px] flex items-center'
               );
               // Ajouter les styles hover pour mobile
               return React.cloneElement(mobileLink, {
                 ...mobileLink.props,
                 onMouseEnter: (e: React.MouseEvent<HTMLAnchorElement>) => {
                   if (!link.isActive) {
-                    e.currentTarget.style.color = colors.primary[700];
+                    e.currentTarget.style.color = colors.primary[500]; // Bleu clair (innovation, dynamisme)
                     e.currentTarget.style.backgroundColor = colors.neutral[50]; // hover:bg-slate-50
                   }
                 },
