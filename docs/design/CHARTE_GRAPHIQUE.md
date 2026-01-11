@@ -125,8 +125,17 @@ Inspiration :
 ### Boutons
 
 ```bash
-Primary : Bleu océan (#0369a1) + Blanc
-Secondary : Vert éco (#047857) + Blanc **WCAG AA**
+# Call-to-Action Principal (CTAs sur fonds colorés)
+Primary CTA : Vert éco (#047857) + Blanc **WCAG AA** - Contraste maximal sur Hero bleu
+
+# Actions Secondaires
+Secondary : Bleu océan (#0369a1) + Blanc - Actions standards, liens importants
+
+# Boutons Outline (sur fonds colorés)
+Outline White : Transparent + Border blanc - CTAs secondaires sur Hero bleu
+Outline : Transparent + Border bleu océan - Actions tertiaires sur fond blanc
+
+# États de succès
 Success : Vert éco (#047857) + Blanc
 ```
 

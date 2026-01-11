@@ -9,6 +9,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "lint:strict": "eslint . --max-warnings 0",
+    "lint:a11y": "eslint . --max-warnings 0",
+    "typecheck": "tsc --noEmit",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:run": "vitest run",
@@ -43,6 +45,7 @@
     "uuid": "^13.0.0"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.11.0",
     "@eslint/eslintrc": "^3",
     "@lhci/cli": "^0.15.0",
     "@testing-library/jest-dom": "^6.6.3",

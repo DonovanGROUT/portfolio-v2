@@ -51,9 +51,15 @@ const eslintConfig = [
       'react/jsx-no-target-blank': 'error',
       'react-hooks/exhaustive-deps': 'warn',
 
-      // Accessibilité de base
+      // Accessibilité WCAG 2.1 AA
       'jsx-a11y/alt-text': 'error',
       'jsx-a11y/anchor-is-valid': 'error',
+      'jsx-a11y/aria-role': 'error',
+      'jsx-a11y/click-events-have-key-events': 'error',
+      'jsx-a11y/interactive-supports-focus': 'error',
+      'jsx-a11y/no-static-element-interactions': 'error',
+      'jsx-a11y/label-has-associated-control': 'error',
+      'jsx-a11y/no-autofocus': 'warn',
     },
   },
 
