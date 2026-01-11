@@ -53,6 +53,10 @@ jobs:
       - name: 🔍 Lint code (strict mode)
         run: pnpm run lint:strict
 
+      # Audit accessibilité (WCAG 2.1 AA)
+      - name: ♿ Accessibility audit (WCAG 2.1 AA)
+        run: pnpm run lint:a11y
+
       # Vérification des types TypeScript
       - name: 📝 Type checking
         run: npx tsc --noEmit
