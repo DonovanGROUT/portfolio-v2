@@ -25,7 +25,13 @@ import { Typography } from '../Typography/Typography';
 
 export interface CardProps extends React.HTMLAttributes<HTMLElement> {
   /** Variante visuelle de la card */
-  variant?: 'default' | 'project' | 'skill' | 'experience' | 'testimonial';
+  variant?:
+    | 'default'
+    | 'project'
+    | 'skill'
+    | 'experience'
+    | 'testimonial'
+    | 'skill-inline';
   /** Taille de la card */
   size?: 'sm' | 'md' | 'lg';
   /** Active l'effet hover */
@@ -42,6 +48,8 @@ export interface CardProps extends React.HTMLAttributes<HTMLElement> {
   className?: string;
   /** Enfants de la card */
   children?: React.ReactNode;
+  /** Couleur de bordure pour variant skill-inline */
+  categoryColor?: string;
 }
 
 // Sous-composants Card
@@ -201,6 +209,7 @@ function CardBase({
   loading = false,
   responsive = true,
   className = '',
+  categoryColor,
   role = 'article',
   'aria-label': ariaLabel,
   'aria-labelledby': ariaLabelledby,
@@ -228,6 +237,11 @@ function CardBase({
         return {
           backgroundColor: colors.secondary[50],
           borderColor: colors.secondary[200],
+        };
+      case 'skill-inline':
+        return {
+          backgroundColor: 'rgba(255, 255, 255, 0.9)',
+          borderLeftColor: categoryColor || colors.neutral[300],
         };
       case 'experience':
         return {
@@ -259,6 +273,11 @@ function CardBase({
       case 'skill':
         element.style.borderColor = colors.secondary[300];
         break;
+      case 'skill-inline':
+        if (categoryColor) {
+          element.style.borderLeftWidth = '8px';
+        }
+        break;
       case 'experience':
         element.style.borderColor = colors.neutral[400];
         break;
@@ -273,7 +292,11 @@ function CardBase({
 
     const element = event.currentTarget;
     const baseStyles = getVariantStyles();
-    element.style.borderColor = baseStyles.borderColor as string;
+    if (variant === 'skill-inline') {
+      element.style.borderLeftWidth = '4px';
+    } else {
+      element.style.borderColor = baseStyles.borderColor as string;
+    }
   };
 
   const baseStyles = getVariantStyles();
@@ -302,9 +325,13 @@ function CardBase({
   const responsiveClass = responsive !== false ? 'w-full' : '';
   const contrastClass =
     variant === 'project' || variant === 'default' ? 'text-slate-800' : '';
+  const skillInlineClasses =
+    variant === 'skill-inline'
+      ? 'border-l-4 backdrop-blur-sm shadow-md'
+      : 'border';
 
   const classes = [
-    'border',
+    skillInlineClasses,
     paddingResponsive,
     sizeClasses[size],
     interactiveClasses,
