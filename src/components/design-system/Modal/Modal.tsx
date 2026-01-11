@@ -286,6 +286,10 @@ const Modal: React.FC<ModalProps> = ({
         backgroundColor: modalColors.overlay,
       }}
       onClick={handleOverlayClick}
+      onKeyDown={(e: React.KeyboardEvent) => {
+        if (e.key === 'Escape') onClose();
+      }}
+      role="presentation"
       data-testid="modal-overlay"
     >
       <div
@@ -294,6 +298,12 @@ const Modal: React.FC<ModalProps> = ({
         aria-modal="true"
         aria-labelledby={title ? titleId : undefined}
         aria-describedby={description ? descriptionId : undefined}
+        onClick={(e: React.MouseEvent) => e.stopPropagation()}
+        onKeyDown={(e: React.KeyboardEvent) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.stopPropagation();
+          }
+        }}
         className={[
           'relative w-full max-h-[90vh] overflow-hidden',
           animationClasses,
@@ -308,7 +318,6 @@ const Modal: React.FC<ModalProps> = ({
           borderRadius: modalColors.borderRadius,
           boxShadow: modalColors.shadow,
         }}
-        onClick={e => e.stopPropagation()}
         {...sanitizedProps}
       >
         {/* En-tête du modal */}
