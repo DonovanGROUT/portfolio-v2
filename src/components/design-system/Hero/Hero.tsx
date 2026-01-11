@@ -3,6 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
+import { LinkButton } from '../LinkButton/LinkButton';
 
 /**
  * Props du Hero Component
@@ -246,65 +247,22 @@ const Hero: React.FC<HeroProps> = ({
             {/* CTAs */}
             {showCtas && (
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4 lg:hidden animate-fadein-delay-4">
-                {/* CTA Primaire */}
-                <a
+                <LinkButton
                   href={sanitizeUrl(primaryCta.href)}
+                  variant="primary"
+                  size="large"
                   onClick={() => handleCtaClick('primary')}
-                  className={cn(
-                    'inline-flex',
-                    'items-center',
-                    'justify-center',
-                    'px-6',
-                    'py-3',
-                    'rounded-lg',
-                    'font-medium',
-                    'text-base',
-                    'bg-emerald-600',
-                    'text-black',
-                    'transition-all',
-                    'duration-300',
-                    'hover:bg-emerald-700',
-                    'hover:scale-105',
-                    'hover:shadow-lg',
-                    'focus:outline-none',
-                    'focus:ring-2',
-                    'focus:ring-emerald-400',
-                    'focus:ring-offset-2',
-                    'focus:ring-offset-sky-800'
-                  )}
                 >
                   {primaryCta.label}
-                </a>
-                <a
+                </LinkButton>
+                <LinkButton
                   href={sanitizeUrl(secondaryCta.href)}
+                  variant="outline-white"
+                  size="large"
                   onClick={() => handleCtaClick('secondary')}
-                  className={cn(
-                    'inline-flex',
-                    'items-center',
-                    'justify-center',
-                    'px-6',
-                    'py-3',
-                    'rounded-lg',
-                    'font-medium',
-                    'text-base',
-                    'bg-transparent',
-                    'text-white',
-                    'border-2',
-                    'border-white',
-                    'transition-all',
-                    'duration-300',
-                    'hover:bg-white',
-                    'hover:text-sky-800',
-                    'hover:scale-105',
-                    'focus:outline-none',
-                    'focus:ring-2',
-                    'focus:ring-white',
-                    'focus:ring-offset-2',
-                    'focus:ring-offset-sky-800'
-                  )}
                 >
                   {secondaryCta.label}
-                </a>
+                </LinkButton>
               </div>
             )}
           </div>
@@ -338,64 +296,22 @@ const Hero: React.FC<HeroProps> = ({
             {/* CTAs en desktop sous la photo */}
             {showCtas && (
               <div className="hidden lg:flex flex-row gap-4 justify-center pt-8 animate-fadein-delay-4">
-                <a
+                <LinkButton
                   href={sanitizeUrl(primaryCta.href)}
+                  variant="primary"
+                  size="large"
                   onClick={() => handleCtaClick('primary')}
-                  className={cn(
-                    'inline-flex',
-                    'items-center',
-                    'justify-center',
-                    'px-6',
-                    'py-3',
-                    'rounded-lg',
-                    'font-medium',
-                    'text-base',
-                    'bg-emerald-600',
-                    'text-black',
-                    'transition-all',
-                    'duration-300',
-                    'hover:bg-emerald-700',
-                    'hover:scale-105',
-                    'hover:shadow-lg',
-                    'focus:outline-none',
-                    'focus:ring-2',
-                    'focus:ring-emerald-400',
-                    'focus:ring-offset-2',
-                    'focus:ring-offset-sky-800'
-                  )}
                 >
                   {primaryCta.label}
-                </a>
-                <a
+                </LinkButton>
+                <LinkButton
                   href={sanitizeUrl(secondaryCta.href)}
+                  variant="outline-white"
+                  size="large"
                   onClick={() => handleCtaClick('secondary')}
-                  className={cn(
-                    'inline-flex',
-                    'items-center',
-                    'justify-center',
-                    'px-6',
-                    'py-3',
-                    'rounded-lg',
-                    'font-medium',
-                    'text-base',
-                    'bg-transparent',
-                    'text-white',
-                    'border-2',
-                    'border-white',
-                    'transition-all',
-                    'duration-300',
-                    'hover:bg-white',
-                    'hover:text-sky-800',
-                    'hover:scale-105',
-                    'focus:outline-none',
-                    'focus:ring-2',
-                    'focus:ring-white',
-                    'focus:ring-offset-2',
-                    'focus:ring-offset-sky-800'
-                  )}
                 >
                   {secondaryCta.label}
-                </a>
+                </LinkButton>
               </div>
             )}
           </div>

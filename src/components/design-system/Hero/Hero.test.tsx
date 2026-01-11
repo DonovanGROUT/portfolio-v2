@@ -175,6 +175,35 @@ describe('Hero Component - TDD Phase 4', () => {
         expect(btn).toHaveAttribute('href', '/other')
       );
     });
+
+    it('devrait utiliser LinkButton component avec variantes appropriées', () => {
+      render(
+        <Hero
+          name="Test Name"
+          title="Test Title"
+          subtitle="Test Subtitle"
+          location="Test Location"
+          primaryCta={{ label: 'Voir mes projets', href: '/projects' }}
+          secondaryCta={{ label: 'Me contacter', href: '/contact' }}
+        />
+      );
+
+      const primaryButtons = screen.getAllByRole('link', {
+        name: 'Voir mes projets',
+      });
+      const secondaryButtons = screen.getAllByRole('link', {
+        name: 'Me contacter',
+      });
+
+      primaryButtons.forEach(btn => {
+        expect(btn).toHaveClass('bg-emerald-700');
+      });
+
+      secondaryButtons.forEach(btn => {
+        expect(btn).toHaveClass('bg-transparent');
+        expect(btn).toHaveClass('border-white');
+      });
+    });
   });
 
   // ===================================================================
