@@ -106,9 +106,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     // ===================================================================
 
     const variantClasses: Record<ButtonVariant, string> = {
-      primary: 'bg-primary-700 border-primary-700 text-white',
-      secondary: 'bg-secondary-600 border-secondary-600 text-white',
-      outline: 'bg-transparent border-primary-700 text-primary-700',
+      primary:
+        'bg-emerald-700 border-emerald-700 text-white hover:bg-emerald-800',
+      secondary: 'bg-sky-700 border-sky-700 text-white hover:bg-sky-800',
+      outline: 'bg-transparent border-sky-700 text-sky-700 hover:bg-sky-50',
     };
 
     const sizeClasses: Record<ButtonSize, string> = {
@@ -122,7 +123,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       .join(' ');
 
     const classes = [
-      'inline-flex items-center justify-center border border-solid rounded-lg font-medium text-center whitespace-nowrap transition-all duration-200 ease-in-out focus:outline-none active:scale-[0.98] min-h-[44px] min-w-[44px] transform-gpu',
+      'inline-flex items-center justify-center border border-solid rounded-lg font-medium text-center whitespace-nowrap transition-all duration-200 ease-in-out focus:outline-2 focus:outline-offset-2 focus:outline-primary-700 active:scale-[0.98] min-h-[44px] min-w-[44px] transform-gpu',
       variantClasses[variant],
       sizeClasses[size],
       stateClasses,

@@ -24,10 +24,10 @@ describe('Button Component - Design System', () => {
     render(<Button>Test</Button>);
 
     const button = screen.getByRole('button');
-    expect(button).toHaveClass('inline-flex'); // classe de base optimisée
+    expect(button).toHaveClass('inline-flex');
     expect(button).toHaveClass(
-      'bg-primary-700',
-      'border-primary-700',
+      'bg-emerald-700',
+      'border-emerald-700',
       'text-white'
     );
   });
@@ -40,24 +40,20 @@ describe('Button Component - Design System', () => {
     const { rerender } = render(<Button variant="primary">Primary</Button>);
     let button = screen.getByRole('button');
     expect(button).toHaveClass(
-      'bg-primary-700',
-      'border-primary-700',
+      'bg-emerald-700',
+      'border-emerald-700',
       'text-white'
     );
 
     rerender(<Button variant="secondary">Secondary</Button>);
     button = screen.getByRole('button');
-    expect(button).toHaveClass(
-      'bg-secondary-600',
-      'border-secondary-600',
-      'text-white'
-    );
+    expect(button).toHaveClass('bg-sky-700', 'border-sky-700', 'text-white');
 
     rerender(<Button variant="outline">Outline</Button>);
     button = screen.getByRole('button');
     expect(button).toHaveClass(
-      'border-primary-700',
-      'text-primary-700',
+      'border-sky-700',
+      'text-sky-700',
       'bg-transparent'
     );
   });
@@ -66,8 +62,8 @@ describe('Button Component - Design System', () => {
     render(<Button>Default Button</Button>);
     const button = screen.getByRole('button');
     expect(button).toHaveClass(
-      'bg-primary-700',
-      'border-primary-700',
+      'bg-emerald-700',
+      'border-emerald-700',
       'text-white'
     );
   });
