@@ -43,11 +43,6 @@ const categoryMeta = {
 };
 
 export default function SkillsDemoPage() {
-  const handleSkillClick = (skill: Skill) => {
-    // Demo callback - in production, this would navigate or open modal
-    void skill;
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-sky-50 to-slate-100">
       <div className="max-w-6xl mx-auto px-4 py-12 space-y-12">
@@ -57,7 +52,7 @@ export default function SkillsDemoPage() {
             Skills Component Demo
           </Typography>
           <Typography variant="body" color="muted">
-            Phase 4 TDD - Design System Integration (Option 3 Enrichi)
+            Phase 4 TDD - Design System Integration (Static Display)
           </Typography>
         </div>
 
@@ -66,7 +61,6 @@ export default function SkillsDemoPage() {
           <Skills
             skills={demoSkills}
             title="Mes Compétences"
-            onSkillClick={handleSkillClick}
             categoryMeta={categoryMeta}
           />
         </section>

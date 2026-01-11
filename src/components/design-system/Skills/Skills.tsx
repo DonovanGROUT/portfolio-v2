@@ -3,6 +3,7 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 import { Typography } from '@/components/design-system/Typography/Typography';
+import { Card } from '@/components/design-system/Card/Card';
 import { useInView } from '@/hooks/useInView';
 
 /**
@@ -17,7 +18,6 @@ export interface SkillsProps {
   skills: Skill[];
   title?: string;
   className?: string;
-  onSkillClick?: (skill: Skill) => void;
   /** Optional category metadata (emoji, color) */
   categoryMeta?: Record<string, { emoji?: string; color?: string }>;
 }
@@ -67,8 +67,6 @@ interface SkillCategoryProps {
   emoji?: string | undefined;
   customColor?: string | undefined;
   index: number;
-  onSkillClick: (skill: Skill) => void;
-  onKeyDown: (event: React.KeyboardEvent, skill: Skill) => void;
 }
 
 const SkillCategory: React.FC<SkillCategoryProps> = ({
@@ -77,8 +75,6 @@ const SkillCategory: React.FC<SkillCategoryProps> = ({
   emoji,
   customColor,
   index,
-  onSkillClick,
-  onKeyDown,
 }) => {
   const { ref, isInView } = useInView({
     threshold: 0.1,
@@ -121,16 +117,13 @@ const SkillCategory: React.FC<SkillCategoryProps> = ({
       {/* Skills grid - responsive 1→2→3→4 columns */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {skills.map((skill, skillIndex) => (
-          <button
+          <Card
             key={`${skill.name}-${skillIndex}`}
-            type="button"
-            onClick={() => onSkillClick(skill)}
-            onKeyDown={e => onKeyDown(e, skill)}
-            className="group relative px-5 py-4 text-left bg-white/90 backdrop-blur-sm rounded-lg shadow-md border-l-4 border-slate-300 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-l-8 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2"
-            style={{
-              borderLeftColor: getCategoryBorderColor(category, customColor),
-            }}
+            variant="skill-inline"
+            hover
+            categoryColor={getCategoryBorderColor(category, customColor)}
             aria-label={skill.name}
+            className="relative group"
           >
             {/* Subtle background gradient (always visible) */}
             <div
@@ -163,7 +156,7 @@ const SkillCategory: React.FC<SkillCategoryProps> = ({
               )}
               aria-hidden="true"
             />
-          </button>
+          </Card>
         ))}
       </div>
     </div>
@@ -188,7 +181,6 @@ export const Skills: React.FC<SkillsProps> = ({
   skills,
   title = 'Compétences',
   className,
-  onSkillClick,
   categoryMeta = {},
 }) => {
   // Group skills by category
@@ -207,19 +199,6 @@ export const Skills: React.FC<SkillsProps> = ({
   }, [skills]);
 
   const categories = Object.keys(groupedSkills);
-
-  // Handle skill click
-  const handleSkillClick = (skill: Skill) => {
-    onSkillClick?.(skill);
-  };
-
-  // Handle keyboard events
-  const handleKeyDown = (event: React.KeyboardEvent, skill: Skill) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      handleSkillClick(skill);
-    }
-  };
 
   return (
     <section
@@ -250,8 +229,6 @@ export const Skills: React.FC<SkillsProps> = ({
                 emoji={emoji}
                 customColor={customColor}
                 index={categoryIndex}
-                onSkillClick={handleSkillClick}
-                onKeyDown={handleKeyDown}
               />
             );
           })}

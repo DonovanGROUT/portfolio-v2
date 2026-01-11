@@ -1,6 +1,5 @@
 import { render, screen, within } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { Skills } from './Skills';
 
 // Test data
@@ -84,12 +83,14 @@ describe('Skills', () => {
       expect(screen.getByRole('region')).toHaveClass('custom-class');
     });
 
-    it('calls onSkillClick when skill is clicked', async () => {
-      const handleClick = vi.fn();
-      render(<Skills skills={mockSkills} onSkillClick={handleClick} />);
+    it('skill cards are static (non-interactive)', () => {
+      render(<Skills skills={mockSkills} />);
 
-      await userEvent.click(screen.getByText('React'));
-      expect(handleClick).toHaveBeenCalledWith(mockSkills[0]);
+      const skillArticles = screen.getAllByRole('article');
+      skillArticles.forEach(article => {
+        expect(article).not.toHaveAttribute('tabIndex');
+        expect(article).not.toHaveAttribute('onClick');
+      });
     });
   });
 
@@ -132,10 +133,8 @@ describe('Skills', () => {
       render(<Skills skills={mockSkills} />);
 
       mockSkills.forEach(skill => {
-        const skillElement = screen
-          .getByText(skill.name)
-          .closest('button, [role="button"]');
-        expect(skillElement).toHaveAccessibleName(skill.name);
+        const skillElement = screen.getByLabelText(skill.name);
+        expect(skillElement).toHaveAttribute('aria-label', skill.name);
       });
     });
   });
@@ -144,61 +143,22 @@ describe('Skills', () => {
   // 4. KEYBOARD NAVIGATION
   // ===========================================
   describe('Keyboard Navigation', () => {
-    it('all skill items are focusable with Tab', async () => {
+    it('skill cards are not focusable (static display)', () => {
       render(<Skills skills={mockSkills} />);
 
-      // All skills should be focusable
-      const skillButtons = screen.getAllByRole('button');
-      skillButtons.forEach(button => {
-        expect(button).not.toHaveAttribute('tabIndex', '-1');
+      const skillArticles = screen.getAllByRole('article');
+      skillArticles.forEach(article => {
+        expect(article).not.toHaveAttribute('tabIndex', '0');
       });
     });
 
-    it('has visible focus ring on focus', () => {
+    it('no interactive keyboard handlers on skill cards', () => {
       render(<Skills skills={mockSkills} />);
 
-      const skillButtons = screen.getAllByRole('button');
-      skillButtons.forEach(button => {
-        expect(button).toHaveClass('focus:ring-2');
+      const skillArticles = screen.getAllByRole('article');
+      skillArticles.forEach(article => {
+        expect(article).not.toHaveAttribute('onKeyDown');
       });
-    });
-
-    it('triggers click on Enter key', async () => {
-      const handleClick = vi.fn();
-      render(<Skills skills={mockSkills} onSkillClick={handleClick} />);
-
-      const firstSkill = screen.getByText('React').closest('button');
-      expect(firstSkill).toBeInTheDocument();
-      firstSkill?.focus();
-      await userEvent.keyboard('{Enter}');
-
-      expect(handleClick).toHaveBeenCalledWith(mockSkills[0]);
-    });
-
-    it('triggers click on Space key', async () => {
-      const handleClick = vi.fn();
-      render(<Skills skills={mockSkills} onSkillClick={handleClick} />);
-
-      const firstSkill = screen.getByText('React').closest('button');
-      expect(firstSkill).toBeInTheDocument();
-      firstSkill?.focus();
-      await userEvent.keyboard(' ');
-
-      expect(handleClick).toHaveBeenCalledWith(mockSkills[0]);
-    });
-
-    it('can Tab through all skills sequentially', async () => {
-      render(<Skills skills={mockSkills} />);
-
-      const skillButtons = screen.getAllByRole('button');
-
-      // Tab to first skill
-      await userEvent.tab();
-      expect(skillButtons[0]).toHaveFocus();
-
-      // Tab to second skill
-      await userEvent.tab();
-      expect(skillButtons[1]).toHaveFocus();
     });
   });
 
@@ -238,11 +198,12 @@ describe('Skills', () => {
     it('uses Card component for skills', () => {
       render(<Skills skills={mockSkills} />);
 
-      // Skills should be wrapped in Card-like elements with proper styling
-      const skillButtons = screen.getAllByRole('button');
-      skillButtons.forEach(button => {
-        // Should have Card-like styling (rounded, shadow, etc.)
-        expect(button.className).toMatch(/rounded|shadow|border/);
+      // Skills should be wrapped in Card variant="skill-inline"
+      const skillArticles = screen.getAllByRole('article');
+      skillArticles.forEach(article => {
+        expect(article.className).toMatch(/border-l-4/);
+        expect(article.className).toMatch(/backdrop-blur-sm/);
+        expect(article.className).toMatch(/shadow/);
       });
     });
 
