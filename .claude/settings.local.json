@@ -9,7 +9,21 @@
       "Bash(npm run lint:*)",
       "Bash(npm run build:*)",
       "Bash(npm start)",
-      "Bash(npm run lighthouse:*)"
+      "Bash(npm run lighthouse:*)",
+      "Bash(pnpm format:*)",
+      "Bash(pnpm lint:*)",
+      "Bash(pnpm typecheck:*)",
+      "Bash(pnpm test:run:*)",
+      "Bash(pnpm test:*)",
+      "Bash(pnpm audit:*)",
+      "Bash(pnpm prettier:*)",
+      "mcp__distill__code_execute",
+      "Bash(pnpm add:*)",
+      "Bash(pnpm run test:run:*)",
+      "Bash(pnpm run lint:strict:*)",
+      "Bash(npx tsc:*)",
+      "Bash(pnpm build:*)",
+      "Bash(pnpm run lint:a11y:*)"
     ],
     "deny": [],
     "ask": []
