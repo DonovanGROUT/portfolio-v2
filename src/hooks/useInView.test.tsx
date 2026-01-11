@@ -12,11 +12,16 @@ function TestComponent({
   rootMargin?: string;
   triggerOnce?: boolean;
 }) {
-  const { ref, isInView, hasBeenInView } = useInView({
-    threshold,
-    rootMargin,
-    triggerOnce,
-  });
+  const options: {
+    threshold?: number;
+    rootMargin?: string;
+    triggerOnce?: boolean;
+  } = {};
+  if (threshold !== undefined) options.threshold = threshold;
+  if (rootMargin !== undefined) options.rootMargin = rootMargin;
+  if (triggerOnce !== undefined) options.triggerOnce = triggerOnce;
+
+  const { ref, isInView, hasBeenInView } = useInView(options);
 
   return (
     <div ref={ref} data-testid="observed-element">

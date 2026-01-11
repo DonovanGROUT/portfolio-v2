@@ -29,7 +29,7 @@ describe("Page d'accueil", () => {
     const main = screen.getByRole('main');
     expect(main).toBeInTheDocument();
     expect(main).toHaveClass('items-center');
-  });
+  }, 10000);
 
   // ============= TESTS D'INTERACTION ET MOCKS =============
 

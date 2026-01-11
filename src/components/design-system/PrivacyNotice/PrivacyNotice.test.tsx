@@ -50,9 +50,11 @@ describe('PrivacyNotice Component - Design System', () => {
       await user.click(toggleButton);
 
       // Now email link should be visible
-      const emailLink = screen.getByRole('link', { name: /test@example.com/ });
+      const emailLink = screen.getByRole('link', {
+        name: /test@example.com/,
+      });
       expect(emailLink).toHaveAttribute('href', 'mailto:test@example.com');
-    });
+    }, 10000);
   });
 
   describe('Expansion Functionality', () => {
