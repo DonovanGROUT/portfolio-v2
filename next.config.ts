@@ -1,16 +1,9 @@
 // Configuration Next.js pour le portfolio
 // Définit les paramètres de build, optimisations et comportement de l'application
 
-// Ajout Webpack Bundle Analyzer
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-const withBundleAnalyzer = BundleAnalyzerPlugin;
 import type { NextConfig } from 'next';
 
 /** @type {import('next').NextConfig} */
-
-// La valeur de nonce sera injectée dynamiquement côté serveur (voir layout.tsx)
-// En local (dev OU build/start local), on autorise unsafe-inline/unsafe-eval pour éviter l'écran blanc
-// La politique CSP est désormais gérée par le middleware (middleware.ts) pour tous les environnements.
 
 const nextConfig: NextConfig = {
   // Turbopack en dev (rapide)
@@ -21,20 +14,10 @@ const nextConfig: NextConfig = {
   // Hook Webpack uniquement pour la build prod
   webpack(config, { isServer, dev }) {
     if (!dev && process.env.ANALYZE === 'true') {
-      // Visualisation HTML classique (désactivée temporairement)
-      /*
-        config.plugins.push(
-          new withBundleAnalyzer({
-            analyzerMode: 'static',
-            reportFilename: isServer
-              ? '../analyze/server.html'
-              : './analyze/client.html',
-          })
-        );
-        */
-      // Génération du rapport JSON pour analyse textuelle
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
+      const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
       config.plugins.push(
-        new withBundleAnalyzer({
+        new BundleAnalyzerPlugin({
           analyzerMode: 'json',
           reportFilename: isServer
             ? '../analyze/server.json'

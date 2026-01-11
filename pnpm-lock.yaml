@@ -44,6 +44,9 @@ importers:
         specifier: ^13.0.0
         version: 13.0.0
     devDependencies:
+      "@axe-core/playwright":
+        specifier: ^4.11.0
+        version: 4.11.0(playwright-core@1.57.0)
       "@eslint/eslintrc":
         specifier: ^3
         version: 3.3.3
@@ -167,6 +170,14 @@ packages:
       {
         integrity: sha512-K1A6z8tS3XsmCMM86xoWdn7Fkdn9m6RSVtocUrJYIwZnFVkng/PvkEoWtOWmP+Scc6saYWHWZYbndEEXxl24jw==,
       }
+
+  "@axe-core/playwright@4.11.0":
+    resolution:
+      {
+        integrity: sha512-70vBT/Ylqpm65RQz2iCG2o0JJCEG/WCNyefTr2xcOcr1CoSee60gNQYUMZZ7YukoKkFLv26I/jjlsvwwp532oQ==,
+      }
+    peerDependencies:
+      playwright-core: ">= 1.0.0"
 
   "@babel/code-frame@7.27.1":
     resolution:
@@ -5658,6 +5669,14 @@ packages:
       }
     engines: { node: ">= 6" }
 
+  playwright-core@1.57.0:
+    resolution:
+      {
+        integrity: sha512-agTcKlMw/mjBWOnD6kFZttAAGHgi/Nw0CZ2o6JqWSbMlI219lAFLZZCyqByTsvVAJq5XA5H8cA6PrvBRpBWEuQ==,
+      }
+    engines: { node: ">=18" }
+    hasBin: true
+
   possible-typed-array-names@1.1.0:
     resolution:
       {
@@ -7453,6 +7472,11 @@ snapshots:
       "@csstools/css-parser-algorithms": 3.0.5(@csstools/css-tokenizer@3.0.4)
       "@csstools/css-tokenizer": 3.0.4
       lru-cache: 10.4.3
+
+  "@axe-core/playwright@4.11.0(playwright-core@1.57.0)":
+    dependencies:
+      axe-core: 4.11.0
+      playwright-core: 1.57.0
 
   "@babel/code-frame@7.27.1":
     dependencies:
@@ -10898,6 +10922,8 @@ snapshots:
   pify@2.3.0: {}
 
   pirates@4.0.7: {}
+
+  playwright-core@1.57.0: {}
 
   possible-typed-array-names@1.1.0: {}
 

@@ -70,8 +70,6 @@ export default defineConfig({
         'src/app/politique-confidentialite/page.tsx',
         // Layout global
         'src/app/layout.tsx',
-        // Middleware Next.js (non testable en unitaires)
-        'middleware.ts',
         // Hooks Husky
         '.husky/**',
       ],
