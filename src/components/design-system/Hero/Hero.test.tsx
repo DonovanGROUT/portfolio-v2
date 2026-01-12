@@ -394,6 +394,9 @@ describe('Hero Component - TDD Phase 4', () => {
       });
       expect(contactButtons.length).toBeGreaterThan(0);
       const button = contactButtons[0] as HTMLElement;
+
+      // Empêcher la navigation jsdom
+      button.addEventListener('click', e => e.preventDefault());
       await user.click(button);
 
       expect(handleCtaClick).toHaveBeenCalledWith('secondary');
@@ -412,7 +415,11 @@ describe('Hero Component - TDD Phase 4', () => {
       const projectsButtons = screen.getAllByRole('link', {
         name: /voir mes projets/i,
       });
-      await user.click(projectsButtons[0] as HTMLElement);
+      const button = projectsButtons[0] as HTMLElement;
+
+      // Empêcher la navigation jsdom
+      button.addEventListener('click', e => e.preventDefault());
+      await user.click(button);
       // Pas d'erreur, pas de callback
     });
 
@@ -448,6 +455,9 @@ describe('Hero Component - TDD Phase 4', () => {
       });
       expect(projectsButtons.length).toBeGreaterThan(0);
       const button = projectsButtons[0] as HTMLElement;
+
+      // Empêcher la navigation jsdom
+      button.addEventListener('click', e => e.preventDefault());
       await user.click(button);
 
       expect(handleCtaClick).toHaveBeenCalledWith('primary');
