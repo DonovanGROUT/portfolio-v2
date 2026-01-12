@@ -70,6 +70,11 @@ export default defineConfig({
         'src/app/politique-confidentialite/page.tsx',
         // Layout global
         'src/app/layout.tsx',
+        // Routes API (testées en intégration, pas en unit)
+        'src/app/api/**',
+        // Utilitaires de test
+        'src/lib/test-utils.tsx',
+        'src/test/utils.tsx',
         // Hooks Husky
         '.husky/**',
       ],
