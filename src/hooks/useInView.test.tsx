@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor, act } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { useInView } from './useInView';
 
@@ -114,7 +114,9 @@ describe('useInView', () => {
       // Simuler l'entrée dans le viewport
       const observerCallback = (global.IntersectionObserver as any).mock
         .calls[0][0];
-      observerCallback([{ isIntersecting: true }]);
+      act(() => {
+        observerCallback([{ isIntersecting: true }]);
+      });
 
       rerender(<TestComponent />);
 
@@ -133,7 +135,9 @@ describe('useInView', () => {
         .calls[0][0];
 
       // Entrer dans le viewport
-      observerCallback([{ isIntersecting: true }]);
+      act(() => {
+        observerCallback([{ isIntersecting: true }]);
+      });
       rerender(<TestComponent triggerOnce={false} />);
 
       await waitFor(() => {
@@ -143,7 +147,9 @@ describe('useInView', () => {
       });
 
       // Sortir du viewport
-      observerCallback([{ isIntersecting: false }]);
+      act(() => {
+        observerCallback([{ isIntersecting: false }]);
+      });
       rerender(<TestComponent triggerOnce={false} />);
 
       await waitFor(() => {
@@ -188,7 +194,9 @@ describe('useInView', () => {
 
       const observerCallback = (global.IntersectionObserver as any).mock
         .calls[0][0];
-      observerCallback([{ isIntersecting: true }]);
+      act(() => {
+        observerCallback([{ isIntersecting: true }]);
+      });
 
       rerender(<TestComponent triggerOnce={true} />);
 
@@ -202,7 +210,9 @@ describe('useInView', () => {
 
       const observerCallback = (global.IntersectionObserver as any).mock
         .calls[0][0];
-      observerCallback([{ isIntersecting: true }]);
+      act(() => {
+        observerCallback([{ isIntersecting: true }]);
+      });
 
       rerender(<TestComponent triggerOnce={false} />);
 
